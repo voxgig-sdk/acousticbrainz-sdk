@@ -1,0 +1,29 @@
+{
+  "existing": {
+    "high_level": {
+      "HIGH_LEVEL00": {
+        "highlevel": {},
+        "metadata": {},
+        "mbid": "MBID01"
+      },
+      "HIGH_LEVEL01": {
+        "highlevel": {},
+        "metadata": {},
+        "mbid": "MBID01"
+      },
+      "HIGH_LEVEL02": {
+        "highlevel": {},
+        "metadata": {},
+        "mbid": "MBID01"
+      }
+    }
+  },
+  "new": {
+    "high_level": {
+      "high_level_ref01": {
+        "highlevel": {},
+        "metadata": {}
+      }
+    }
+  }
+}

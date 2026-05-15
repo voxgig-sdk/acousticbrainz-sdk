@@ -1,0 +1,32 @@
+# BasicHighLevelFlow
+
+main: kit: flow: BasicHighLevelFlow:
+{
+  entity: "high_level",
+  kind: "basic",
+  name: "BasicHighLevelFlow",
+  step: [
+    {
+      input: {
+        ref: "high_level_ref01",
+        srcdatavar: "high_level_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "high_level01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-high_level_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicHighLevelFlow"
+}

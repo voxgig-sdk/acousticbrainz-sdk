@@ -1,0 +1,71 @@
+# Entity: high_level
+
+main: kit: entity: high_level: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "highlevel"
+      req: false
+      type: "`$OBJECT`"
+    }
+    {
+      name: "metadata"
+      req: false
+      type: "`$OBJECT`"
+    }
+  ]
+
+  name: "high_level"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                example: "0dad432b-16cc-4bf0-8961-fd31d124b01b"
+                kind: "param"
+                name: "mbid"
+                orig: "mbid"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+            query: [
+              {
+                example: 0
+                kind: "query"
+                name: "n"
+                orig: "n"
+                reqd: false
+                type: "`$INTEGER`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/{mbid}/high-level"
+          parts: [
+            "{mbid}"
+            "high-level"
+          ]
+          select: {
+            exist: [
+              "mbid"
+              "n"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

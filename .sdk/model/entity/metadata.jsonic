@@ -1,0 +1,60 @@
+# Entity: metadata
+
+main: kit: entity: metadata: {
+
+  alias: field: {}
+
+  fields: [
+    {
+      name: "count"
+      req: false
+      type: "`$INTEGER`"
+    }
+    {
+      name: "mbid"
+      req: false
+      type: "`$STRING`"
+    }
+  ]
+
+  name: "metadata"
+  op: {
+    load: {
+      name: "load"
+      points: [
+        {
+          args: {
+            params: [
+              {
+                example: "0dad432b-16cc-4bf0-8961-fd31d124b01b"
+                kind: "param"
+                name: "mbid"
+                orig: "mbid"
+                reqd: true
+                type: "`$STRING`"
+              }
+            ]
+          }
+          method: "GET"
+          orig: "/{mbid}/count"
+          parts: [
+            "{mbid}"
+            "count"
+          ]
+          select: {
+            exist: [
+              "mbid"
+            ]
+          }
+          transform: {
+            req: "`reqdata`"
+            res: "`body`"
+          }
+        }
+      ]
+    }
+  }
+
+
+
+}

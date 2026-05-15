@@ -1,0 +1,37 @@
+{
+  "existing": {
+    "low_level": {
+      "LOW_LEVEL00": {
+        "lowlevel": {},
+        "metadata": {},
+        "rhythm": {},
+        "tonal": {},
+        "mbid": "MBID01"
+      },
+      "LOW_LEVEL01": {
+        "lowlevel": {},
+        "metadata": {},
+        "rhythm": {},
+        "tonal": {},
+        "mbid": "MBID01"
+      },
+      "LOW_LEVEL02": {
+        "lowlevel": {},
+        "metadata": {},
+        "rhythm": {},
+        "tonal": {},
+        "mbid": "MBID01"
+      }
+    }
+  },
+  "new": {
+    "low_level": {
+      "low_level_ref01": {
+        "lowlevel": {},
+        "metadata": {},
+        "rhythm": {},
+        "tonal": {}
+      }
+    }
+  }
+}

@@ -1,0 +1,32 @@
+# BasicLowLevelFlow
+
+main: kit: flow: BasicLowLevelFlow:
+{
+  entity: "low_level",
+  kind: "basic",
+  name: "BasicLowLevelFlow",
+  step: [
+    {
+      input: {
+        ref: "low_level_ref01",
+        srcdatavar: "low_level_ref01_data",
+        suffix: "_dt0"
+      }
+
+      match: {
+        id: "low_level01"
+      }
+
+      op: "load",
+      valid: [
+        {
+          apply: "TextFieldMark",
+          def: {
+            mark: "Mark01-low_level_ref01"
+          }
+        }
+      ]
+    }
+  ],
+  "key$": "BasicLowLevelFlow"
+}

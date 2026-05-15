@@ -1,0 +1,625 @@
+{
+  "openapi": "3.0.3",
+  "info": {
+    "title": "AcousticBrainz API",
+    "description": "The AcousticBrainz API provides access to music feature data, including low-level and high-level semantic descriptors derived from audio files. It allows users to retrieve information about musical characteristics such as rhythm, tonality, and mood, which can be utilized in music analysis and classification tasks.",
+    "version": "1.0.0",
+    "contact": {
+      "name": "AcousticBrainz",
+      "url": "https://acousticbrainz.org"
+    }
+  },
+  "servers": [
+    {
+      "url": "https://acousticbrainz.org/api/v1",
+      "description": "Production server"
+    }
+  ],
+  "paths": {
+    "/{mbid}/low-level": {
+      "get": {
+        "summary": "Get low-level data for a recording",
+        "description": "Retrieve low-level acoustic data for a specific MusicBrainz recording ID. Low-level data includes acoustic descriptors characterizing overall loudness, dynamics, spectral shape, rhythm descriptors (including BPM), and tonal information (including keys and scales).",
+        "operationId": "getLowLevelData",
+        "tags": [
+          "Low-level Data"
+        ],
+        "parameters": [
+          {
+            "name": "mbid",
+            "in": "path",
+            "required": true,
+            "description": "MusicBrainz ID (MBID) of the recording",
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "example": "0dad432b-16cc-4bf0-8961-fd31d124b01b"
+            }
+          },
+          {
+            "name": "n",
+            "in": "query",
+            "required": false,
+            "description": "Offset number for submissions (0 for most recent)",
+            "schema": {
+              "type": "integer",
+              "default": 0,
+              "minimum": 0
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with low-level data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LowLevelData"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Recording not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/{mbid}/high-level": {
+      "get": {
+        "summary": "Get high-level data for a recording",
+        "description": "Retrieve high-level semantic descriptors for a specific MusicBrainz recording ID. High-level data includes semantically meaningful music features computed from trained models.",
+        "operationId": "getHighLevelData",
+        "tags": [
+          "High-level Data"
+        ],
+        "parameters": [
+          {
+            "name": "mbid",
+            "in": "path",
+            "required": true,
+            "description": "MusicBrainz ID (MBID) of the recording",
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "example": "0dad432b-16cc-4bf0-8961-fd31d124b01b"
+            }
+          },
+          {
+            "name": "n",
+            "in": "query",
+            "required": false,
+            "description": "Offset number for submissions (0 for most recent)",
+            "schema": {
+              "type": "integer",
+              "default": 0,
+              "minimum": 0
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with high-level data",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HighLevelData"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Recording not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/{mbid}/count": {
+      "get": {
+        "summary": "Get submission count for a recording",
+        "description": "Retrieve the number of submissions available for a specific MusicBrainz recording ID.",
+        "operationId": "getSubmissionCount",
+        "tags": [
+          "Metadata"
+        ],
+        "parameters": [
+          {
+            "name": "mbid",
+            "in": "path",
+            "required": true,
+            "description": "MusicBrainz ID (MBID) of the recording",
+            "schema": {
+              "type": "string",
+              "format": "uuid",
+              "example": "0dad432b-16cc-4bf0-8961-fd31d124b01b"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response with submission count",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "mbid": {
+                      "type": "string",
+                      "format": "uuid",
+                      "description": "MusicBrainz ID"
+                    },
+                    "count": {
+                      "type": "integer",
+                      "description": "Number of submissions for this recording"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Recording not found",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Error"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "LowLevelData": {
+        "type": "object",
+        "description": "Low-level acoustic features extracted from audio",
+        "properties": {
+          "tonal": {
+            "type": "object",
+            "description": "Tonal features including key, scale, chords, and harmonic characteristics",
+            "properties": {
+              "key_key": {
+                "type": "string",
+                "description": "Detected musical key",
+                "example": "C#"
+              },
+              "key_scale": {
+                "type": "string",
+                "description": "Detected scale (major or minor)",
+                "enum": [
+                  "major",
+                  "minor"
+                ],
+                "example": "minor"
+              },
+              "key_strength": {
+                "type": "number",
+                "description": "Confidence of key detection",
+                "example": 0.776947379112
+              },
+              "chords_key": {
+                "type": "string",
+                "description": "Key of detected chords",
+                "example": "C#"
+              },
+              "chords_scale": {
+                "type": "string",
+                "description": "Scale of detected chords",
+                "enum": [
+                  "major",
+                  "minor"
+                ],
+                "example": "minor"
+              },
+              "chords_strength": {
+                "$ref": "#/components/schemas/StatisticalDescriptor"
+              },
+              "chords_changes_rate": {
+                "type": "number",
+                "description": "Rate of chord changes"
+              },
+              "chords_number_rate": {
+                "type": "number",
+                "description": "Number rate of chords"
+              },
+              "chords_histogram": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                },
+                "description": "Histogram of chord occurrences"
+              },
+              "tuning_frequency": {
+                "type": "number",
+                "description": "Detected tuning frequency in Hz",
+                "example": 442.03793335
+              },
+              "tuning_diatonic_strength": {
+                "type": "number",
+                "description": "Strength of diatonic tuning"
+              },
+              "tuning_equal_tempered_deviation": {
+                "type": "number",
+                "description": "Deviation from equal temperament"
+              },
+              "tuning_nontempered_energy_ratio": {
+                "type": "number",
+                "description": "Ratio of non-tempered energy"
+              },
+              "hpcp": {
+                "$ref": "#/components/schemas/MultiDimensionalStatisticalDescriptor"
+              },
+              "hpcp_entropy": {
+                "$ref": "#/components/schemas/StatisticalDescriptor"
+              },
+              "thpcp": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                },
+                "description": "Tonal harmonic pitch class profile"
+              }
+            }
+          },
+          "rhythm": {
+            "type": "object",
+            "description": "Rhythm features including BPM, beats, and danceability",
+            "properties": {
+              "bpm": {
+                "type": "number",
+                "description": "Beats per minute",
+                "example": 148.126449585
+              },
+              "beats_count": {
+                "type": "integer",
+                "description": "Number of detected beats",
+                "example": 233
+              },
+              "danceability": {
+                "type": "number",
+                "description": "Danceability measure (0-1)",
+                "minimum": 0,
+                "maximum": 1,
+                "example": 0.860110342503
+              },
+              "onset_rate": {
+                "type": "number",
+                "description": "Rate of note onsets"
+              },
+              "beats_position": {
+                "type": "array",
+                "items": {
+                  "type": "number"
+                },
+                "description": "Positions of detected beats in seconds"
+              },
+              "beats_loudness": {
+                "$ref": "#/components/schemas/StatisticalDescriptor"
+              },
+              "beats_loudness_band_ratio": {
+                "$ref": "#/components/schemas/MultiDimensionalStatisticalDescriptor"
+              },
+              "bpm_histogram_first_peak_bpm": {
+                "$ref": "#/components/schemas/StatisticalDescriptor"
+              },
+              "bpm_histogram_first_peak_weight": {
+                "$ref": "#/components/schemas/StatisticalDescriptor"
+              },
+              "bpm_histogram_first_peak_spread": {
+                "$ref": "#/components/schemas/StatisticalDescriptor"
+              },
+              "bpm_histogram_second_peak_bpm": {
+                "$ref": "#/components/schemas/StatisticalDescriptor"
+              },
+              "bpm_histogram_second_peak_weight": {
+                "$ref": "#/components/schemas/StatisticalDescriptor"
+              },
+              "bpm_histogram_second_peak_spread": {
+                "$ref": "#/components/schemas/StatisticalDescriptor"
+              }
+            }
+          },
+          "lowlevel": {
+            "type": "object",
+            "description": "Low-level spectral and temporal features",
+            "properties": {
+              "hfc": {
+                "$ref": "#/components/schemas/StatisticalDescriptor"
+              },
+              "spectral_energyband_low": {
+                "$ref": "#/components/schemas/StatisticalDescriptor"
+              },
+              "spectral_energyband_middle_low": {
+                "$ref": "#/components/schemas/StatisticalDescriptor"
+              },
+              "melbands": {
+                "$ref": "#/components/schemas/MultiDimensionalStatisticalDescriptor"
+              },
+              "melbands_skewness": {
+                "$ref": "#/components/schemas/StatisticalDescriptor"
+              }
+            }
+          },
+          "metadata": {
+            "type": "object",
+            "description": "Metadata about the analysis",
+            "properties": {
+              "version": {
+                "type": "object",
+                "properties": {
+                  "essentia": {
+                    "type": "string"
+                  },
+                  "essentia_git_sha": {
+                    "type": "string"
+                  },
+                  "extractor": {
+                    "type": "string"
+                  }
+                }
+              },
+              "audio_properties": {
+                "type": "object",
+                "properties": {
+                  "length": {
+                    "type": "number",
+                    "description": "Length of audio in seconds"
+                  },
+                  "bit_rate": {
+                    "type": "integer",
+                    "description": "Bit rate in bits per second"
+                  },
+                  "codec": {
+                    "type": "string",
+                    "description": "Audio codec"
+                  },
+                  "sample_rate": {
+                    "type": "integer",
+                    "description": "Sample rate in Hz"
+                  },
+                  "channels": {
+                    "type": "integer",
+                    "description": "Number of audio channels"
+                  }
+                }
+              },
+              "tags": {
+                "type": "object",
+                "properties": {
+                  "file_name": {
+                    "type": "string"
+                  },
+                  "musicbrainz_recordingid": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "HighLevelData": {
+        "type": "object",
+        "description": "High-level semantic music features",
+        "properties": {
+          "highlevel": {
+            "type": "object",
+            "description": "High-level semantic descriptors",
+            "additionalProperties": {
+              "type": "object",
+              "properties": {
+                "all": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "number"
+                  }
+                },
+                "value": {
+                  "type": "string"
+                },
+                "probability": {
+                  "type": "number",
+                  "minimum": 0,
+                  "maximum": 1
+                }
+              }
+            }
+          },
+          "metadata": {
+            "type": "object",
+            "properties": {
+              "version": {
+                "type": "object",
+                "properties": {
+                  "essentia": {
+                    "type": "string"
+                  },
+                  "models_essentia_git_sha": {
+                    "type": "string"
+                  }
+                }
+              },
+              "audio_properties": {
+                "type": "object",
+                "properties": {
+                  "length": {
+                    "type": "number"
+                  },
+                  "bit_rate": {
+                    "type": "integer"
+                  },
+                  "codec": {
+                    "type": "string"
+                  },
+                  "sample_rate": {
+                    "type": "integer"
+                  }
+                }
+              },
+              "tags": {
+                "type": "object",
+                "properties": {
+                  "musicbrainz_recordingid": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "StatisticalDescriptor": {
+        "type": "object",
+        "description": "Statistical descriptor with various measures",
+        "properties": {
+          "min": {
+            "type": "number",
+            "description": "Minimum value"
+          },
+          "max": {
+            "type": "number",
+            "description": "Maximum value"
+          },
+          "mean": {
+            "type": "number",
+            "description": "Mean value"
+          },
+          "median": {
+            "type": "number",
+            "description": "Median value"
+          },
+          "var": {
+            "type": "number",
+            "description": "Variance"
+          },
+          "dmean": {
+            "type": "number",
+            "description": "Derivative mean"
+          },
+          "dmean2": {
+            "type": "number",
+            "description": "Second derivative mean"
+          },
+          "dvar": {
+            "type": "number",
+            "description": "Derivative variance"
+          },
+          "dvar2": {
+            "type": "number",
+            "description": "Second derivative variance"
+          }
+        }
+      },
+      "MultiDimensionalStatisticalDescriptor": {
+        "type": "object",
+        "description": "Multi-dimensional statistical descriptor",
+        "properties": {
+          "min": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          },
+          "max": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          },
+          "mean": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          },
+          "median": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          },
+          "var": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          },
+          "dmean": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          },
+          "dmean2": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          },
+          "dvar": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          },
+          "dvar2": {
+            "type": "array",
+            "items": {
+              "type": "number"
+            }
+          }
+        }
+      },
+      "Error": {
+        "type": "object",
+        "properties": {
+          "error": {
+            "type": "string",
+            "description": "Error message"
+          },
+          "status": {
+            "type": "integer",
+            "description": "HTTP status code"
+          }
+        }
+      }
+    }
+  },
+  "tags": [
+    {
+      "name": "Low-level Data",
+      "description": "Operations related to low-level acoustic features"
+    },
+    {
+      "name": "High-level Data",
+      "description": "Operations related to high-level semantic features"
+    },
+    {
+      "name": "Metadata",
+      "description": "Operations related to metadata and submission information"
+    }
+  ]
+}

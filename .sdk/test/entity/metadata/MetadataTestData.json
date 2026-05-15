@@ -1,0 +1,26 @@
+{
+  "existing": {
+    "metadata": {
+      "METADATA00": {
+        "count": "s14",
+        "mbid": "s15"
+      },
+      "METADATA01": {
+        "count": "s28",
+        "mbid": "s29"
+      },
+      "METADATA02": {
+        "count": "s3c",
+        "mbid": "s3d"
+      }
+    }
+  },
+  "new": {
+    "metadata": {
+      "metadata_ref01": {
+        "count": "s50",
+        "mbid": "s51"
+      }
+    }
+  }
+}
