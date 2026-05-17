@@ -4,17 +4,20 @@
       "HIGH_LEVEL00": {
         "highlevel": {},
         "metadata": {},
-        "mbid": "MBID01"
+        "mbid": "MBID01",
+        "id": "HIGH_LEVEL00"
       },
       "HIGH_LEVEL01": {
         "highlevel": {},
         "metadata": {},
-        "mbid": "MBID01"
+        "mbid": "MBID01",
+        "id": "HIGH_LEVEL01"
       },
       "HIGH_LEVEL02": {
         "highlevel": {},
         "metadata": {},
-        "mbid": "MBID01"
+        "mbid": "MBID01",
+        "id": "HIGH_LEVEL02"
       }
     }
   },

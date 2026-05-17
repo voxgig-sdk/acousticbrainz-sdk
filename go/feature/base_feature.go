@@ -1,7 +1,7 @@
 package feature
 
 import (
-	"github.com/voxgig-sdk/acousticbrainz-sdk/core"
+	"github.com/voxgig-sdk/acousticbrainz-sdk/go/core"
 )
 
 type BaseFeature struct {

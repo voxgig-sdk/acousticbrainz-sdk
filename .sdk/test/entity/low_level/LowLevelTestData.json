@@ -6,21 +6,24 @@
         "metadata": {},
         "rhythm": {},
         "tonal": {},
-        "mbid": "MBID01"
+        "mbid": "MBID01",
+        "id": "LOW_LEVEL00"
       },
       "LOW_LEVEL01": {
         "lowlevel": {},
         "metadata": {},
         "rhythm": {},
         "tonal": {},
-        "mbid": "MBID01"
+        "mbid": "MBID01",
+        "id": "LOW_LEVEL01"
       },
       "LOW_LEVEL02": {
         "lowlevel": {},
         "metadata": {},
         "rhythm": {},
         "tonal": {},
-        "mbid": "MBID01"
+        "mbid": "MBID01",
+        "id": "LOW_LEVEL02"
       }
     }
   },

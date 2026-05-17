@@ -6,8 +6,8 @@ import (
 	"strings"
 	"testing"
 
-	sdk "github.com/voxgig-sdk/acousticbrainz-sdk"
-	"github.com/voxgig-sdk/acousticbrainz-sdk/core"
+	sdk "github.com/voxgig-sdk/acousticbrainz-sdk/go"
+	"github.com/voxgig-sdk/acousticbrainz-sdk/go/core"
 )
 
 func TestLowLevelDirect(t *testing.T) {

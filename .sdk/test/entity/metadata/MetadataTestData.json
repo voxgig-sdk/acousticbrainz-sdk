@@ -3,15 +3,18 @@
     "metadata": {
       "METADATA00": {
         "count": "s14",
-        "mbid": "s15"
+        "mbid": "s15",
+        "id": "METADATA00"
       },
       "METADATA01": {
         "count": "s28",
-        "mbid": "s29"
+        "mbid": "s29",
+        "id": "METADATA01"
       },
       "METADATA02": {
         "count": "s3c",
-        "mbid": "s3d"
+        "mbid": "s3d",
+        "id": "METADATA02"
       }
     }
   },

@@ -9,10 +9,10 @@ import (
 	"testing"
 	"time"
 
-	sdk "github.com/voxgig-sdk/acousticbrainz-sdk"
-	"github.com/voxgig-sdk/acousticbrainz-sdk/core"
+	sdk "github.com/voxgig-sdk/acousticbrainz-sdk/go"
+	"github.com/voxgig-sdk/acousticbrainz-sdk/go/core"
 
-	vs "github.com/voxgig/struct"
+	vs "github.com/voxgig-sdk/acousticbrainz-sdk/go/utility/struct"
 )
 
 func TestLowLevelEntity(t *testing.T) {

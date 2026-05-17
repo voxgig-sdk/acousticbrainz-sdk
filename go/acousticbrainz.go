@@ -1,10 +1,10 @@
 package voxgigacousticbrainzsdk
 
 import (
-	"github.com/voxgig-sdk/acousticbrainz-sdk/core"
-	"github.com/voxgig-sdk/acousticbrainz-sdk/entity"
-	"github.com/voxgig-sdk/acousticbrainz-sdk/feature"
-	_ "github.com/voxgig-sdk/acousticbrainz-sdk/utility"
+	"github.com/voxgig-sdk/acousticbrainz-sdk/go/core"
+	"github.com/voxgig-sdk/acousticbrainz-sdk/go/entity"
+	"github.com/voxgig-sdk/acousticbrainz-sdk/go/feature"
+	_ "github.com/voxgig-sdk/acousticbrainz-sdk/go/utility"
 )
 
 // Type aliases preserve external API.
