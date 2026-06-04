@@ -70,14 +70,12 @@ function high_level_direct_setup(mockres)
   local env = runner.env_override({
     ["ACOUSTICBRAINZ_TEST_HIGH_LEVEL_ENTID"] = {},
     ["ACOUSTICBRAINZ_TEST_LIVE"] = "FALSE",
-    ["ACOUSTICBRAINZ_APIKEY"] = "NONE",
   })
 
   local live = env["ACOUSTICBRAINZ_TEST_LIVE"] == "TRUE"
 
   if live then
     local merged_opts = {
-      apikey = env["ACOUSTICBRAINZ_APIKEY"],
     }
     local client = sdk.new(merged_opts)
     return {

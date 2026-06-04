@@ -91,7 +91,6 @@ def _metadata_basic_setup(extra):
         "ACOUSTICBRAINZ_TEST_METADATA_ENTID": idmap,
         "ACOUSTICBRAINZ_TEST_LIVE": "FALSE",
         "ACOUSTICBRAINZ_TEST_EXPLAIN": "FALSE",
-        "ACOUSTICBRAINZ_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -102,7 +101,6 @@ def _metadata_basic_setup(extra):
     if env.get("ACOUSTICBRAINZ_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("ACOUSTICBRAINZ_APIKEY"),
             },
             extra or {},
         ])

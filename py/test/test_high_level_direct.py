@@ -66,14 +66,12 @@ def _high_level_direct_setup(mockres):
     env = runner.env_override({
         "ACOUSTICBRAINZ_TEST_HIGH_LEVEL_ENTID": {},
         "ACOUSTICBRAINZ_TEST_LIVE": "FALSE",
-        "ACOUSTICBRAINZ_APIKEY": "NONE",
     })
 
     live = env.get("ACOUSTICBRAINZ_TEST_LIVE") == "TRUE"
 
     if live:
         merged_opts = {
-            "apikey": env.get("ACOUSTICBRAINZ_APIKEY"),
         }
         client = AcousticbrainzSDK(merged_opts)
         return {

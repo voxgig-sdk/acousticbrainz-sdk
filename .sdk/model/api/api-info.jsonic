@@ -17,8 +17,29 @@ main: {
       ]
       title: "AcousticBrainz API"
       version: "1.0.0"
+      tagline: "Query crowdsourced acoustic and semantic descriptors for music recordings, indexed by MusicBrainz ID"
+      homepage: "https://acousticbrainz.org/"
+      docs_url: "https://acousticbrainz.readthedocs.io/"
+      license_short: "Data released under CC0 (public domain)"
+      license_md: `- All AcousticBrainz data is released under the [CC0 1.0 Universal](https://creativecommons.org/publicdomain/zero/1.0/) public-domain dedication
+- Recordings are identified by [MusicBrainz](https://musicbrainz.org/) IDs (MBIDs); MusicBrainz metadata has its own licensing terms
+- The project ran from 2015 to 2022 and is no longer accepting new submissions, but the existing dataset and API remain accessible
+- No attribution is legally required, though crediting AcousticBrainz and the MusicBrainz/MTG-UPF collaboration is encouraged`
+      about_md: `[AcousticBrainz](https://acousticbrainz.org/) is a crowdsourced database of acoustic descriptors extracted from music recordings. It was a joint project between the [Music Technology Group](https://www.upf.edu/web/mtg) at Universitat Pompeu Fabra (Barcelona) and the [MusicBrainz](https://musicbrainz.org/) project, with audio analysis performed by the open-source [Essentia](https://essentia.upf.edu/) toolkit. New submissions stopped in 2022, but the API at \`https://acousticbrainz.org/api/v1\` continues to serve the accumulated dataset.
+
+What you get from the API:
+
+- **Low-level descriptors** — spectral features (centroid, rolloff, entropy, MFCC, mel-band, bark-band), loudness and dynamics, zero-crossing rate, rhythm (BPM, onsets, beat positions), and tonal analysis (key, scale, chord progressions), with statistical summaries (mean, median, variance, min, max)
+- **High-level descriptors** — semantic classifier outputs for genre, mood, danceability, and other music-understanding tasks, derived from the low-level features
+- **Lookups by MusicBrainz recording ID (MBID)** so results join cleanly with MusicBrainz catalog metadata
+
+The API is read-only and unauthenticated. Because the project is in archival mode, expect some endpoints to be intermittently slow or to return errors for recordings that were never analysed; client code should tolerate missing data.`
+      entity_desc: {
+        high_level: "Semantic, classifier-derived descriptors for a recording (genre, mood, danceability, etc.), looked up by MusicBrainz recording ID under the `/api/v1` high-level endpoint"
+        low_level: "Raw acoustic features extracted by Essentia — spectral, rhythm, tonal, loudness and MFCC/mel/bark-band statistics — looked up by MusicBrainz recording ID under the `/api/v1` low-level endpoint"
+        metadata: "Recording-level metadata associated with an analysis submission, used to resolve and describe the MusicBrainz recordings backing each acoustic data document"
+      }
+      auth: false
     }
   }
-}
-
 }

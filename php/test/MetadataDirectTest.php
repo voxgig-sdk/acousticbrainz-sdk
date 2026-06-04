@@ -75,14 +75,12 @@ function metadata_direct_setup($mockres)
     $env = Runner::env_override([
         "ACOUSTICBRAINZ_TEST_METADATA_ENTID" => [],
         "ACOUSTICBRAINZ_TEST_LIVE" => "FALSE",
-        "ACOUSTICBRAINZ_APIKEY" => "NONE",
     ]);
 
     $live = $env["ACOUSTICBRAINZ_TEST_LIVE"] === "TRUE";
 
     if ($live) {
         $merged_opts = [
-            "apikey" => $env["ACOUSTICBRAINZ_APIKEY"],
         ];
         $client = new AcousticbrainzSDK($merged_opts);
         return [

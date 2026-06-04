@@ -15,9 +15,6 @@ module AcousticbrainzConfig
       },
       "options" => {
         "base" => "https://acousticbrainz.org/api/v1",
-        "auth" => {
-          "prefix" => "Bearer",
-        },
         "headers" => {
           "content-type" => "application/json",
         },
