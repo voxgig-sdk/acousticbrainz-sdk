@@ -117,6 +117,7 @@ func low_levelBasicSetup(extra map[string]any) *entityTestSetup {
 		"ACOUSTICBRAINZ_TEST_LOW_LEVEL_ENTID": idmap,
 		"ACOUSTICBRAINZ_TEST_LIVE":      "FALSE",
 		"ACOUSTICBRAINZ_TEST_EXPLAIN":   "FALSE",
+		"ACOUSTICBRAINZ_APIKEY":         "NONE",
 	})
 
 	idmapResolved := core.ToMapAny(env["ACOUSTICBRAINZ_TEST_LOW_LEVEL_ENTID"])
@@ -127,6 +128,7 @@ func low_levelBasicSetup(extra map[string]any) *entityTestSetup {
 	if env["ACOUSTICBRAINZ_TEST_LIVE"] == "TRUE" {
 		mergedOpts := vs.Merge([]any{
 			map[string]any{
+				"apikey": env["ACOUSTICBRAINZ_APIKEY"],
 			},
 			extra,
 		})

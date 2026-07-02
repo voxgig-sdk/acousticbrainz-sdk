@@ -15,6 +15,9 @@ def make_config():
         },
         "options": {
             "base": "https://acousticbrainz.org/api/v1",
+            "auth": {
+                "prefix": "Bearer",
+            },
             "headers": {
         "content-type": "application/json",
       },
@@ -28,47 +31,49 @@ def make_config():
       "high_level": {
         "fields": [
           {
+            "active": True,
             "name": "highlevel",
             "req": False,
             "type": "`$OBJECT`",
-            "active": True,
             "index$": 0,
           },
           {
+            "active": True,
             "name": "metadata",
             "req": False,
             "type": "`$OBJECT`",
-            "active": True,
             "index$": 1,
           },
         ],
         "name": "high_level",
         "op": {
           "load": {
+            "input": "data",
             "name": "load",
             "points": [
               {
+                "active": True,
                 "args": {
                   "params": [
                     {
+                      "active": True,
                       "example": "0dad432b-16cc-4bf0-8961-fd31d124b01b",
                       "kind": "param",
                       "name": "mbid",
                       "orig": "mbid",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "active": True,
                     },
                   ],
                   "query": [
                     {
+                      "active": True,
                       "example": 0,
                       "kind": "query",
                       "name": "n",
                       "orig": "n",
                       "reqd": False,
                       "type": "`$INTEGER`",
-                      "active": True,
                     },
                   ],
                 },
@@ -88,11 +93,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "active": True,
                 "index$": 0,
               },
             ],
-            "input": "data",
             "key$": "load",
           },
         },
@@ -103,61 +106,63 @@ def make_config():
       "low_level": {
         "fields": [
           {
+            "active": True,
             "name": "lowlevel",
             "req": False,
             "type": "`$OBJECT`",
-            "active": True,
             "index$": 0,
           },
           {
+            "active": True,
             "name": "metadata",
             "req": False,
             "type": "`$OBJECT`",
-            "active": True,
             "index$": 1,
           },
           {
+            "active": True,
             "name": "rhythm",
             "req": False,
             "type": "`$OBJECT`",
-            "active": True,
             "index$": 2,
           },
           {
+            "active": True,
             "name": "tonal",
             "req": False,
             "type": "`$OBJECT`",
-            "active": True,
             "index$": 3,
           },
         ],
         "name": "low_level",
         "op": {
           "load": {
+            "input": "data",
             "name": "load",
             "points": [
               {
+                "active": True,
                 "args": {
                   "params": [
                     {
+                      "active": True,
                       "example": "0dad432b-16cc-4bf0-8961-fd31d124b01b",
                       "kind": "param",
                       "name": "mbid",
                       "orig": "mbid",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "active": True,
                     },
                   ],
                   "query": [
                     {
+                      "active": True,
                       "example": 0,
                       "kind": "query",
                       "name": "n",
                       "orig": "n",
                       "reqd": False,
                       "type": "`$INTEGER`",
-                      "active": True,
                     },
                   ],
                 },
@@ -177,11 +182,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "active": True,
                 "index$": 0,
               },
             ],
-            "input": "data",
             "key$": "load",
           },
         },
@@ -192,36 +195,38 @@ def make_config():
       "metadata": {
         "fields": [
           {
+            "active": True,
             "name": "count",
             "req": False,
             "type": "`$INTEGER`",
-            "active": True,
             "index$": 0,
           },
           {
+            "active": True,
             "name": "mbid",
             "req": False,
             "type": "`$STRING`",
-            "active": True,
             "index$": 1,
           },
         ],
         "name": "metadata",
         "op": {
           "load": {
+            "input": "data",
             "name": "load",
             "points": [
               {
+                "active": True,
                 "args": {
                   "params": [
                     {
+                      "active": True,
                       "example": "0dad432b-16cc-4bf0-8961-fd31d124b01b",
                       "kind": "param",
                       "name": "mbid",
                       "orig": "mbid",
                       "reqd": True,
                       "type": "`$STRING`",
-                      "active": True,
                     },
                   ],
                 },
@@ -240,11 +245,9 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
-                "active": True,
                 "index$": 0,
               },
             ],
-            "input": "data",
             "key$": "load",
           },
         },

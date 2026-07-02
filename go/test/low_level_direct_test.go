@@ -110,12 +110,14 @@ func low_levelDirectSetup(mockres any) *low_levelDirectSetupResult {
 	env := envOverride(map[string]any{
 		"ACOUSTICBRAINZ_TEST_LOW_LEVEL_ENTID": map[string]any{},
 		"ACOUSTICBRAINZ_TEST_LIVE":    "FALSE",
+		"ACOUSTICBRAINZ_APIKEY":       "NONE",
 	})
 
 	live := env["ACOUSTICBRAINZ_TEST_LIVE"] == "TRUE"
 
 	if live {
 		mergedOpts := map[string]any{
+			"apikey": env["ACOUSTICBRAINZ_APIKEY"],
 		}
 		client := sdk.NewAcousticbrainzSDK(mergedOpts)
 

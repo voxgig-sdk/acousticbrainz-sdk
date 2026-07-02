@@ -1,42 +1,13 @@
 {
-  "name": "acousticbrainz",
-  "origin": "voxgig-sdk",
   "def": "acousticbrainz_0.1.0.json",
   "main": {
+    "def": {
+      "desc": ""
+    },
     "kit": {
-      "info": {
-        "contact": {
-          "name": "AcousticBrainz",
-          "url": "https://acousticbrainz.org"
-        },
-        "description": "The AcousticBrainz API provides access to music feature data, including low-level and high-level semantic descriptors derived from audio files. It allows users to retrieve information about musical characteristics such as rhythm, tonality, and mood, which can be utilized in music analysis and classification tasks.",
-        "servers": [
-          {
-            "description": "Production server",
-            "url": "https://acousticbrainz.org/api/v1"
-          }
-        ],
-        "title": "AcousticBrainz API",
-        "version": "1.0.0",
-        "tagline": "Query crowdsourced acoustic and semantic descriptors for music recordings, indexed by MusicBrainz ID",
-        "homepage": "https://acousticbrainz.org/",
-        "docs_url": "https://acousticbrainz.readthedocs.io/",
-        "license_short": "Data released under CC0 (public domain)",
-        "license_md": "- All AcousticBrainz data is released under the [CC0 1.0 Universal](https://creativecommons.org/publicdomain/zero/1.0/) public-domain dedication\n- Recordings are identified by [MusicBrainz](https://musicbrainz.org/) IDs (MBIDs); MusicBrainz metadata has its own licensing terms\n- The project ran from 2015 to 2022 and is no longer accepting new submissions, but the existing dataset and API remain accessible\n- No attribution is legally required, though crediting AcousticBrainz and the MusicBrainz/MTG-UPF collaboration is encouraged",
-        "about_md": "[AcousticBrainz](https://acousticbrainz.org/) is a crowdsourced database of acoustic descriptors extracted from music recordings. It was a joint project between the [Music Technology Group](https://www.upf.edu/web/mtg) at Universitat Pompeu Fabra (Barcelona) and the [MusicBrainz](https://musicbrainz.org/) project, with audio analysis performed by the open-source [Essentia](https://essentia.upf.edu/) toolkit. New submissions stopped in 2022, but the API at `https://acousticbrainz.org/api/v1` continues to serve the accumulated dataset.\n\nWhat you get from the API:\n\n- **Low-level descriptors** — spectral features (centroid, rolloff, entropy, MFCC, mel-band, bark-band), loudness and dynamics, zero-crossing rate, rhythm (BPM, onsets, beat positions), and tonal analysis (key, scale, chord progressions), with statistical summaries (mean, median, variance, min, max)\n- **High-level descriptors** — semantic classifier outputs for genre, mood, danceability, and other music-understanding tasks, derived from the low-level features\n- **Lookups by MusicBrainz recording ID (MBID)** so results join cleanly with MusicBrainz catalog metadata\n\nThe API is read-only and unauthenticated. Because the project is in archival mode, expect some endpoints to be intermittently slow or to return errors for recordings that were never analysed; client code should tolerate missing data.",
-        "entity_desc": {
-          "high_level": "Semantic, classifier-derived descriptors for a recording (genre, mood, danceability, etc.), looked up by MusicBrainz recording ID under the `/api/v1` high-level endpoint",
-          "low_level": "Raw acoustic features extracted by Essentia — spectral, rhythm, tonal, loudness and MFCC/mel/bark-band statistics — looked up by MusicBrainz recording ID under the `/api/v1` low-level endpoint",
-          "metadata": "Recording-level metadata associated with an analysis submission, used to resolve and describe the MusicBrainz recordings backing each acoustic data document"
-        },
-        "auth": false
-      },
       "config": {
         "auth": {
           "prefix": "Bearer"
-        },
-        "headers": {
-          "content-type": "application/json"
         },
         "docs_order": [
           "ts",
@@ -45,54 +16,60 @@
           "go",
           "rb",
           "lua"
-        ]
+        ],
+        "headers": {
+          "content-type": "application/json"
+        }
       },
       "entity": {
         "high_level": {
+          "active": true,
           "alias": {
             "field": {}
           },
           "fields": [
             {
+              "active": true,
               "name": "highlevel",
               "req": false,
-              "type": "`$OBJECT`",
-              "active": true
+              "type": "`$OBJECT`"
             },
             {
+              "active": true,
               "name": "metadata",
               "req": false,
-              "type": "`$OBJECT`",
-              "active": true
+              "type": "`$OBJECT`"
             }
           ],
           "name": "high_level",
           "op": {
             "load": {
+              "input": "data",
               "name": "load",
               "points": [
                 {
+                  "active": true,
                   "args": {
                     "params": [
                       {
+                        "active": true,
                         "example": "0dad432b-16cc-4bf0-8961-fd31d124b01b",
                         "kind": "param",
                         "name": "mbid",
                         "orig": "mbid",
                         "reqd": true,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       }
                     ],
                     "query": [
                       {
+                        "active": true,
                         "example": 0,
                         "kind": "query",
                         "name": "n",
                         "orig": "n",
                         "reqd": false,
-                        "type": "`$INTEGER`",
-                        "active": true
+                        "type": "`$INTEGER`"
                       }
                     ]
                   },
@@ -111,75 +88,75 @@
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true
+                  }
                 }
-              ],
-              "input": "data"
+              ]
             }
           },
-          "active": true,
           "relations": {
             "ancestors": []
           }
         },
         "low_level": {
+          "active": true,
           "alias": {
             "field": {}
           },
           "fields": [
             {
+              "active": true,
               "name": "lowlevel",
               "req": false,
-              "type": "`$OBJECT`",
-              "active": true
+              "type": "`$OBJECT`"
             },
             {
+              "active": true,
               "name": "metadata",
               "req": false,
-              "type": "`$OBJECT`",
-              "active": true
+              "type": "`$OBJECT`"
             },
             {
+              "active": true,
               "name": "rhythm",
               "req": false,
-              "type": "`$OBJECT`",
-              "active": true
+              "type": "`$OBJECT`"
             },
             {
+              "active": true,
               "name": "tonal",
               "req": false,
-              "type": "`$OBJECT`",
-              "active": true
+              "type": "`$OBJECT`"
             }
           ],
           "name": "low_level",
           "op": {
             "load": {
+              "input": "data",
               "name": "load",
               "points": [
                 {
+                  "active": true,
                   "args": {
                     "params": [
                       {
+                        "active": true,
                         "example": "0dad432b-16cc-4bf0-8961-fd31d124b01b",
                         "kind": "param",
                         "name": "mbid",
                         "orig": "mbid",
                         "reqd": true,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       }
                     ],
                     "query": [
                       {
+                        "active": true,
                         "example": 0,
                         "kind": "query",
                         "name": "n",
                         "orig": "n",
                         "reqd": false,
-                        "type": "`$INTEGER`",
-                        "active": true
+                        "type": "`$INTEGER`"
                       }
                     ]
                   },
@@ -198,52 +175,52 @@
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true
+                  }
                 }
-              ],
-              "input": "data"
+              ]
             }
           },
-          "active": true,
           "relations": {
             "ancestors": []
           }
         },
         "metadata": {
+          "active": true,
           "alias": {
             "field": {}
           },
           "fields": [
             {
+              "active": true,
               "name": "count",
               "req": false,
-              "type": "`$INTEGER`",
-              "active": true
+              "type": "`$INTEGER`"
             },
             {
+              "active": true,
               "name": "mbid",
               "req": false,
-              "type": "`$STRING`",
-              "active": true
+              "type": "`$STRING`"
             }
           ],
           "name": "metadata",
           "op": {
             "load": {
+              "input": "data",
               "name": "load",
               "points": [
                 {
+                  "active": true,
                   "args": {
                     "params": [
                       {
+                        "active": true,
                         "example": "0dad432b-16cc-4bf0-8961-fd31d124b01b",
                         "kind": "param",
                         "name": "mbid",
                         "orig": "mbid",
                         "reqd": true,
-                        "type": "`$STRING`",
-                        "active": true
+                        "type": "`$STRING`"
                       }
                     ]
                   },
@@ -261,14 +238,11 @@
                   "transform": {
                     "req": "`reqdata`",
                     "res": "`body`"
-                  },
-                  "active": true
+                  }
                 }
-              ],
-              "input": "data"
+              ]
             }
           },
-          "active": true,
           "relations": {
             "ancestors": []
           }
@@ -276,9 +250,6 @@
       },
       "feature": {
         "test": {
-          "name": "test",
-          "title": "In-memory mock transport for testing without a live server",
-          "version": "0.0.1",
           "active": true,
           "config": {
             "options": {
@@ -286,6 +257,14 @@
             }
           },
           "hook": {
+            "GetData": {
+              "active": true,
+              "await": false
+            },
+            "GetMatch": {
+              "active": true,
+              "await": false
+            },
             "PostConstruct": {
               "active": true,
               "await": false
@@ -294,25 +273,11 @@
               "active": true,
               "await": false
             },
-            "SetData": {
-              "active": true,
-              "await": false
-            },
-            "GetData": {
-              "active": true,
-              "await": false
-            },
-            "SetMatch": {
-              "active": true
-            },
-            "GetMatch": {
-              "active": true,
+            "PostOperation": {
+              "active": false,
               "await": false
             },
             "PrePoint": {
-              "active": true
-            },
-            "PreSpec": {
               "active": true,
               "await": false
             },
@@ -328,20 +293,32 @@
               "active": true,
               "await": false
             },
+            "PreSpec": {
+              "active": true,
+              "await": false
+            },
             "PreTarget": {
               "active": false,
               "await": false
             },
-            "PostOperation": {
-              "active": false,
+            "SetData": {
+              "active": true,
+              "await": false
+            },
+            "SetMatch": {
+              "active": true,
               "await": false
             }
           },
+          "name": "test",
           "target": {
-            "ts": {
+            "go": {
               "deps": {}
             },
-            "go": {
+            "go-cli": {
+              "deps": {}
+            },
+            "go-mcp": {
               "deps": {}
             },
             "lua": {
@@ -356,22 +333,26 @@
             "rb": {
               "deps": {}
             },
-            "go-cli": {
-              "deps": {}
-            },
-            "go-mcp": {
+            "ts": {
               "deps": {}
             }
-          }
+          },
+          "title": "In-memory mock transport for testing without a live server",
+          "version": "0.0.1"
         }
       },
       "flow": {
         "BasicHighLevelFlow": {
+          "active": true,
           "entity": "high_level",
+          "key$": "BasicHighLevelFlow",
           "kind": "basic",
           "name": "BasicHighLevelFlow",
+          "param": {},
           "step": [
             {
+              "active": true,
+              "data": {},
               "input": {
                 "ref": "high_level_ref01",
                 "srcdatavar": "high_level_ref01_data",
@@ -381,6 +362,7 @@
                 "id": "high_level01"
               },
               "op": "load",
+              "spec": [],
               "valid": [
                 {
                   "apply": "TextFieldMark",
@@ -388,22 +370,21 @@
                     "mark": "Mark01-high_level_ref01"
                   }
                 }
-              ],
-              "active": true,
-              "data": {},
-              "spec": []
+              ]
             }
-          ],
-          "key$": "BasicHighLevelFlow",
-          "active": true,
-          "param": {}
+          ]
         },
         "BasicLowLevelFlow": {
+          "active": true,
           "entity": "low_level",
+          "key$": "BasicLowLevelFlow",
           "kind": "basic",
           "name": "BasicLowLevelFlow",
+          "param": {},
           "step": [
             {
+              "active": true,
+              "data": {},
               "input": {
                 "ref": "low_level_ref01",
                 "srcdatavar": "low_level_ref01_data",
@@ -413,6 +394,7 @@
                 "id": "low_level01"
               },
               "op": "load",
+              "spec": [],
               "valid": [
                 {
                   "apply": "TextFieldMark",
@@ -420,22 +402,21 @@
                     "mark": "Mark01-low_level_ref01"
                   }
                 }
-              ],
-              "active": true,
-              "data": {},
-              "spec": []
+              ]
             }
-          ],
-          "key$": "BasicLowLevelFlow",
-          "active": true,
-          "param": {}
+          ]
         },
         "BasicMetadataFlow": {
+          "active": true,
           "entity": "metadata",
+          "key$": "BasicMetadataFlow",
           "kind": "basic",
           "name": "BasicMetadataFlow",
+          "param": {},
           "step": [
             {
+              "active": true,
+              "data": {},
               "input": {
                 "ref": "metadata_ref01",
                 "srcdatavar": "metadata_ref01_data",
@@ -445,6 +426,7 @@
                 "id": "metadata01"
               },
               "op": "load",
+              "spec": [],
               "valid": [
                 {
                   "apply": "TextFieldMark",
@@ -452,27 +434,53 @@
                     "mark": "Mark01-metadata_ref01"
                   }
                 }
-              ],
-              "active": true,
-              "data": {},
-              "spec": []
+              ]
             }
-          ],
-          "key$": "BasicMetadataFlow",
-          "active": true,
-          "param": {}
+          ]
         }
       },
+      "info": {
+        "contact": {
+          "name": "AcousticBrainz",
+          "url": "https://acousticbrainz.org"
+        },
+        "description": "The AcousticBrainz API provides access to music feature data, including low-level and high-level semantic descriptors derived from audio files. It allows users to retrieve information about musical characteristics such as rhythm, tonality, and mood, which can be utilized in music analysis and classification tasks.",
+        "servers": [
+          {
+            "description": "Production server",
+            "url": "https://acousticbrainz.org/api/v1"
+          }
+        ],
+        "title": "AcousticBrainz API",
+        "version": "1.0.0"
+      },
+      "option": {},
       "target": {
-        "go-cli": {
-          "title": "Go CLI",
-          "ext": "go",
+        "go": {
+          "active": true,
           "comment": {
             "line": "//"
           },
+          "deps": {},
+          "ext": "go",
           "module": {
             "name": "acousticbrainz"
           },
+          "name": "go",
+          "srcfeature": false,
+          "title": "Golang"
+        },
+        "go-cli": {
+          "active": true,
+          "comment": {
+            "line": "//"
+          },
+          "deps": {},
+          "ext": "go",
+          "module": {
+            "name": "acousticbrainz"
+          },
+          "name": "go-cli",
           "phase": {
             "entity": {
               "active": false
@@ -487,19 +495,19 @@
               "active": false
             }
           },
-          "deps": {},
-          "name": "go-cli",
-          "active": true
+          "title": "Go CLI"
         },
         "go-mcp": {
-          "title": "Go MCP server",
-          "ext": "go",
+          "active": true,
           "comment": {
             "line": "//"
           },
+          "deps": {},
+          "ext": "go",
           "module": {
             "name": "acousticbrainz"
           },
+          "name": "go-mcp",
           "phase": {
             "entity": {
               "active": false
@@ -514,138 +522,120 @@
               "active": false
             }
           },
-          "deps": {},
-          "name": "go-mcp",
-          "active": true
-        },
-        "ts": {
-          "title": "TypeScript",
-          "ext": "ts",
-          "comment": {
-            "line": "//"
-          },
-          "module": {
-            "name": "acousticbrainz"
-          },
-          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
-          "deps": {
-            "dotenv": {
-              "active": true,
-              "version": "^17.4.2",
-              "kind": "dev"
-            },
-            "typescript": {
-              "active": true,
-              "version": "^5.9.3",
-              "kind": "dev"
-            },
-            "@types/node": {
-              "active": true,
-              "version": "^25.6.0",
-              "kind": "dev"
-            }
-          },
-          "name": "ts",
-          "active": true
-        },
-        "go": {
-          "title": "Golang",
-          "ext": "go",
-          "comment": {
-            "line": "//"
-          },
-          "module": {
-            "name": "acousticbrainz"
-          },
-          "srcfeature": false,
-          "deps": {},
-          "name": "go",
-          "active": true
+          "title": "Go MCP server"
         },
         "lua": {
-          "title": "Lua",
-          "ext": "lua",
+          "active": true,
           "comment": {
             "line": "--"
           },
-          "module": {
-            "name": "acousticbrainz"
-          },
-          "srcfeature": false,
           "deps": {
             "dkjson": {
               "active": true,
-              "version": "2.5",
-              "kind": "prod"
+              "kind": "prod",
+              "version": "2.5"
             }
           },
+          "ext": "lua",
+          "module": {
+            "name": "acousticbrainz"
+          },
           "name": "lua",
-          "active": true
+          "srcfeature": false,
+          "title": "Lua"
         },
         "php": {
-          "title": "PHP",
-          "ext": "php",
+          "active": true,
           "comment": {
             "line": "//"
           },
+          "deps": {},
+          "ext": "php",
           "module": {
             "name": "acousticbrainz"
           },
-          "srcfeature": false,
-          "deps": {},
           "name": "php",
-          "active": true
+          "srcfeature": false,
+          "title": "PHP"
         },
         "py": {
-          "title": "Python",
-          "ext": "py",
+          "active": true,
           "comment": {
             "line": "#"
           },
-          "module": {
-            "name": "acousticbrainz"
-          },
-          "srcfeature": false,
           "deps": {
             "requests": {
               "active": true,
-              "version": "2.33",
-              "kind": "prod"
+              "kind": "prod",
+              "version": "2.33"
             }
           },
-          "name": "py",
-          "active": true
-        },
-        "rb": {
-          "title": "Ruby",
-          "ext": "rb",
-          "comment": {
-            "line": "#"
-          },
+          "ext": "py",
           "module": {
             "name": "acousticbrainz"
           },
+          "name": "py",
           "srcfeature": false,
+          "title": "Python"
+        },
+        "rb": {
+          "active": true,
+          "comment": {
+            "line": "#"
+          },
           "deps": {
-            "voxgig-struct": {
-              "active": true,
-              "version": "0.0.10",
-              "kind": "prod"
-            },
             "json": {
               "active": true,
-              "version": "0",
-              "kind": "prod"
+              "kind": "prod",
+              "version": "0"
+            },
+            "voxgig-struct": {
+              "active": true,
+              "kind": "prod",
+              "version": "0.0.10"
             }
           },
+          "ext": "rb",
+          "module": {
+            "name": "acousticbrainz"
+          },
           "name": "rb",
-          "active": true
+          "srcfeature": false,
+          "title": "Ruby"
+        },
+        "ts": {
+          "active": true,
+          "base": "node_modules/@voxgig/sdkgen/project/.sdk",
+          "comment": {
+            "line": "//"
+          },
+          "deps": {
+            "@types/node": {
+              "active": true,
+              "kind": "dev",
+              "version": "^25.6.0"
+            },
+            "dotenv": {
+              "active": true,
+              "kind": "dev",
+              "version": "^17.4.2"
+            },
+            "typescript": {
+              "active": true,
+              "kind": "dev",
+              "version": "^5.9.3"
+            }
+          },
+          "ext": "ts",
+          "module": {
+            "name": "acousticbrainz"
+          },
+          "name": "ts",
+          "title": "TypeScript"
         }
-      },
-      "option": {}
-    },
-    "def": {
-      "desc": ""
+      }
     }
-  }
+  },
+  "name": "acousticbrainz",
+  "origin": "voxgig-sdk"
 }

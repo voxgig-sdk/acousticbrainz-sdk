@@ -91,6 +91,7 @@ function low_level_basic_setup(extra)
     ["ACOUSTICBRAINZ_TEST_LOW_LEVEL_ENTID"] = idmap,
     ["ACOUSTICBRAINZ_TEST_LIVE"] = "FALSE",
     ["ACOUSTICBRAINZ_TEST_EXPLAIN"] = "FALSE",
+    ["ACOUSTICBRAINZ_APIKEY"] = "NONE",
   })
 
   local idmap_resolved = helpers.to_map(
@@ -102,6 +103,7 @@ function low_level_basic_setup(extra)
   if env["ACOUSTICBRAINZ_TEST_LIVE"] == "TRUE" then
     local merged_opts = vs.merge({
       {
+        apikey = env["ACOUSTICBRAINZ_APIKEY"],
       },
       extra or {},
     })

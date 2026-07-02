@@ -111,6 +111,7 @@ function basicSetup(extra?: any) {
     'ACOUSTICBRAINZ_TEST_LOW_LEVEL_ENTID': idmap,
     'ACOUSTICBRAINZ_TEST_LIVE': 'FALSE',
     'ACOUSTICBRAINZ_TEST_EXPLAIN': 'FALSE',
+    'ACOUSTICBRAINZ_APIKEY': 'NONE',
   })
 
   idmap = env['ACOUSTICBRAINZ_TEST_LOW_LEVEL_ENTID']
@@ -120,6 +121,7 @@ function basicSetup(extra?: any) {
   if (live) {
     client = new AcousticbrainzSDK(merge([
       {
+        apikey: env.ACOUSTICBRAINZ_APIKEY,
       },
       extra
     ]))

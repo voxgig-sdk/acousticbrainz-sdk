@@ -20,6 +20,9 @@ class AcousticbrainzConfig
             ],
             "options" => [
                 "base" => "https://acousticbrainz.org/api/v1",
+                "auth" => [
+                    "prefix" => "Bearer",
+                ],
                 "headers" => [
           'content-type' => 'application/json',
         ],
@@ -33,47 +36,49 @@ class AcousticbrainzConfig
         'high_level' => [
           'fields' => [
             [
+              'active' => true,
               'name' => 'highlevel',
               'req' => false,
               'type' => '`$OBJECT`',
-              'active' => true,
               'index$' => 0,
             ],
             [
+              'active' => true,
               'name' => 'metadata',
               'req' => false,
               'type' => '`$OBJECT`',
-              'active' => true,
               'index$' => 1,
             ],
           ],
           'name' => 'high_level',
           'op' => [
             'load' => [
+              'input' => 'data',
               'name' => 'load',
               'points' => [
                 [
+                  'active' => true,
                   'args' => [
                     'params' => [
                       [
+                        'active' => true,
                         'example' => '0dad432b-16cc-4bf0-8961-fd31d124b01b',
                         'kind' => 'param',
                         'name' => 'mbid',
                         'orig' => 'mbid',
                         'reqd' => true,
                         'type' => '`$STRING`',
-                        'active' => true,
                       ],
                     ],
                     'query' => [
                       [
+                        'active' => true,
                         'example' => 0,
                         'kind' => 'query',
                         'name' => 'n',
                         'orig' => 'n',
                         'reqd' => false,
                         'type' => '`$INTEGER`',
-                        'active' => true,
                       ],
                     ],
                   ],
@@ -93,11 +98,9 @@ class AcousticbrainzConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'active' => true,
                   'index$' => 0,
                 ],
               ],
-              'input' => 'data',
               'key$' => 'load',
             ],
           ],
@@ -108,61 +111,63 @@ class AcousticbrainzConfig
         'low_level' => [
           'fields' => [
             [
+              'active' => true,
               'name' => 'lowlevel',
               'req' => false,
               'type' => '`$OBJECT`',
-              'active' => true,
               'index$' => 0,
             ],
             [
+              'active' => true,
               'name' => 'metadata',
               'req' => false,
               'type' => '`$OBJECT`',
-              'active' => true,
               'index$' => 1,
             ],
             [
+              'active' => true,
               'name' => 'rhythm',
               'req' => false,
               'type' => '`$OBJECT`',
-              'active' => true,
               'index$' => 2,
             ],
             [
+              'active' => true,
               'name' => 'tonal',
               'req' => false,
               'type' => '`$OBJECT`',
-              'active' => true,
               'index$' => 3,
             ],
           ],
           'name' => 'low_level',
           'op' => [
             'load' => [
+              'input' => 'data',
               'name' => 'load',
               'points' => [
                 [
+                  'active' => true,
                   'args' => [
                     'params' => [
                       [
+                        'active' => true,
                         'example' => '0dad432b-16cc-4bf0-8961-fd31d124b01b',
                         'kind' => 'param',
                         'name' => 'mbid',
                         'orig' => 'mbid',
                         'reqd' => true,
                         'type' => '`$STRING`',
-                        'active' => true,
                       ],
                     ],
                     'query' => [
                       [
+                        'active' => true,
                         'example' => 0,
                         'kind' => 'query',
                         'name' => 'n',
                         'orig' => 'n',
                         'reqd' => false,
                         'type' => '`$INTEGER`',
-                        'active' => true,
                       ],
                     ],
                   ],
@@ -182,11 +187,9 @@ class AcousticbrainzConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'active' => true,
                   'index$' => 0,
                 ],
               ],
-              'input' => 'data',
               'key$' => 'load',
             ],
           ],
@@ -197,36 +200,38 @@ class AcousticbrainzConfig
         'metadata' => [
           'fields' => [
             [
+              'active' => true,
               'name' => 'count',
               'req' => false,
               'type' => '`$INTEGER`',
-              'active' => true,
               'index$' => 0,
             ],
             [
+              'active' => true,
               'name' => 'mbid',
               'req' => false,
               'type' => '`$STRING`',
-              'active' => true,
               'index$' => 1,
             ],
           ],
           'name' => 'metadata',
           'op' => [
             'load' => [
+              'input' => 'data',
               'name' => 'load',
               'points' => [
                 [
+                  'active' => true,
                   'args' => [
                     'params' => [
                       [
+                        'active' => true,
                         'example' => '0dad432b-16cc-4bf0-8961-fd31d124b01b',
                         'kind' => 'param',
                         'name' => 'mbid',
                         'orig' => 'mbid',
                         'reqd' => true,
                         'type' => '`$STRING`',
-                        'active' => true,
                       ],
                     ],
                   ],
@@ -245,11 +250,9 @@ class AcousticbrainzConfig
                     'req' => '`reqdata`',
                     'res' => '`body`',
                   ],
-                  'active' => true,
                   'index$' => 0,
                 ],
               ],
-              'input' => 'data',
               'key$' => 'load',
             ],
           ],

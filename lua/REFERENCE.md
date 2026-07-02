@@ -30,12 +30,12 @@ Create a new SDK client instance.
 
 ### Static Methods
 
-#### `sdk.test(testopts, sdkopts)`
+#### `sdk.test(testopts?, sdkopts?)`
 
-Create a test client with mock features active. Both arguments may be `nil`.
+Create a test client with mock features active. Both arguments are optional.
 
 ```lua
-local client = sdk.test(nil, nil)
+local client = sdk.test()
 ```
 
 
@@ -109,7 +109,7 @@ local high_level = client:HighLevel(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:HighLevel(nil):load({ id = "high_level_id" }, nil)
+local result, err = client:HighLevel():load({ id = "high_level_id" })
 ```
 
 ### Common Methods
@@ -164,7 +164,7 @@ local low_level = client:LowLevel(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:LowLevel(nil):load({ id = "low_level_id" }, nil)
+local result, err = client:LowLevel():load({ id = "low_level_id" })
 ```
 
 ### Common Methods
@@ -217,7 +217,7 @@ local metadata = client:Metadata(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Metadata(nil):load({ id = "metadata_id" }, nil)
+local result, err = client:Metadata():load({ id = "metadata_id" })
 ```
 
 ### Common Methods

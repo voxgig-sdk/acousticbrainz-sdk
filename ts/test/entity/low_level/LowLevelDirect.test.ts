@@ -79,12 +79,14 @@ function directSetup(mockres?: any) {
   const env = envOverride({
     'ACOUSTICBRAINZ_TEST_LOW_LEVEL_ENTID': {},
     'ACOUSTICBRAINZ_TEST_LIVE': 'FALSE',
+    'ACOUSTICBRAINZ_APIKEY': 'NONE',
   })
 
   const live = 'TRUE' === env.ACOUSTICBRAINZ_TEST_LIVE
 
   if (live) {
     const client = new AcousticbrainzSDK({
+      apikey: env.ACOUSTICBRAINZ_APIKEY,
     })
 
     let idmap: any = env['ACOUSTICBRAINZ_TEST_LOW_LEVEL_ENTID']
