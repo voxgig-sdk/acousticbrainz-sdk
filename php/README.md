@@ -10,7 +10,7 @@ The PHP SDK for the Acousticbrainz API — an entity-oriented client using PHP c
 
 ## Install
 ```bash
-composer require voxgig/acousticbrainz-sdk
+composer require voxgig-sdk/acousticbrainz
 ```
 
 

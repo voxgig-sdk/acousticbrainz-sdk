@@ -10,7 +10,7 @@ The Python SDK for the Acousticbrainz API — an entity-oriented client followin
 
 ## Install
 ```bash
-pip install acousticbrainz-sdk
+pip install voxgig-sdk-acousticbrainz
 ```
 
 Or install from source:

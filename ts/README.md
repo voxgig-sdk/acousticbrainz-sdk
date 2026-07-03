@@ -10,7 +10,7 @@ The TypeScript SDK for the Acousticbrainz API — a type-safe, entity-oriented c
 
 ## Install
 ```bash
-npm install acousticbrainz
+npm install @voxgig-sdk/acousticbrainz
 ```
 ## Tutorial: your first API call
 

@@ -10,7 +10,7 @@ The Lua SDK for the Acousticbrainz API — an entity-oriented client using Lua c
 
 ## Install
 ```bash
-luarocks install acousticbrainz-sdk
+luarocks install voxgig-sdk-acousticbrainz
 ```
 
 If the module is not yet published, add the source directory to

@@ -10,13 +10,13 @@ The Ruby SDK for the Acousticbrainz API — an entity-oriented client using idio
 
 ## Install
 ```bash
-gem install acousticbrainz-sdk
+gem install voxgig-sdk-acousticbrainz
 ```
 
 Or add to your `Gemfile`:
 
 ```ruby
-gem "acousticbrainz-sdk"
+gem "voxgig-sdk-acousticbrainz"
 ```
 
 Then run:
