@@ -93,7 +93,7 @@ Prepare a fetch definition without sending the request. Returns the
 ## HighLevelEntity
 
 ```php
-$high_level = $client->high_level();
+$high_level = $client->HighLevel();
 ```
 
 ### Fields
@@ -110,7 +110,7 @@ $high_level = $client->high_level();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->high_level()->load(["id" => "high_level_id"]);
+$result = $client->HighLevel()->load(["id" => "high_level_id"]);
 ```
 
 ### Common Methods
@@ -146,7 +146,7 @@ Return the entity name.
 ## LowLevelEntity
 
 ```php
-$low_level = $client->low_level();
+$low_level = $client->LowLevel();
 ```
 
 ### Fields
@@ -165,7 +165,7 @@ $low_level = $client->low_level();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->low_level()->load(["id" => "low_level_id"]);
+$result = $client->LowLevel()->load(["id" => "low_level_id"]);
 ```
 
 ### Common Methods
@@ -201,7 +201,7 @@ Return the entity name.
 ## MetadataEntity
 
 ```php
-$metadata = $client->metadata();
+$metadata = $client->Metadata();
 ```
 
 ### Fields
@@ -218,7 +218,7 @@ $metadata = $client->metadata();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->metadata()->load(["id" => "metadata_id"]);
+$result = $client->Metadata()->load(["id" => "metadata_id"]);
 ```
 
 ### Common Methods

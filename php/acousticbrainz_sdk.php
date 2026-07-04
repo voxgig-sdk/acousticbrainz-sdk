@@ -233,10 +233,10 @@ class AcousticbrainzSDK
 
     private $_high_level = null;
 
-    // Idiomatic facade: $client->high_level()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias HighLevel() (PHP method
-    // names are case-insensitive).
-    public function high_level($data = null)
+    // Canonical facade: $client->HighLevel()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->high_level()
+    // resolves here too.
+    public function HighLevel($data = null)
     {
         require_once __DIR__ . '/entity/high_level_entity.php';
         if ($data === null) {
@@ -251,10 +251,10 @@ class AcousticbrainzSDK
 
     private $_low_level = null;
 
-    // Idiomatic facade: $client->low_level()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias LowLevel() (PHP method
-    // names are case-insensitive).
-    public function low_level($data = null)
+    // Canonical facade: $client->LowLevel()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->low_level()
+    // resolves here too.
+    public function LowLevel($data = null)
     {
         require_once __DIR__ . '/entity/low_level_entity.php';
         if ($data === null) {
@@ -269,10 +269,10 @@ class AcousticbrainzSDK
 
     private $_metadata = null;
 
-    // Idiomatic facade: $client->metadata()->list() / ->load(["id" => ...]).
-    // Also serves the deprecated PascalCase alias Metadata() (PHP method
-    // names are case-insensitive).
-    public function metadata($data = null)
+    // Canonical facade: $client->Metadata()->list() / ->load(["id" => ...]).
+    // PHP method names are case-insensitive, so lowercase $client->metadata()
+    // resolves here too.
+    public function Metadata($data = null)
     {
         require_once __DIR__ . '/entity/metadata_entity.php';
         if ($data === null) {

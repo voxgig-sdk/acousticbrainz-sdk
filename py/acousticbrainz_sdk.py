@@ -220,57 +220,27 @@ class AcousticbrainzSDK:
         }
 
 
-    @property
-    def high_level(self):
-        """Idiomatic facade: client.high_level.list() / client.high_level.load({"id": ...})."""
-        from entity.high_level_entity import HighLevelEntity
-        cached = getattr(self, "_high_level", None)
-        if cached is None:
-            cached = HighLevelEntity(self, None)
-            self._high_level = cached
-        return cached
-
-    def HighLevel(self, data=None):
-        # Deprecated: use client.high_level instead.
+    def HighLevel(self, data=None) -> "HighLevelEntity":
+        """Entity factory: client.HighLevel().list({}) / client.HighLevel().load({"id": ...})."""
         from entity.high_level_entity import HighLevelEntity
         return HighLevelEntity(self, data)
 
 
-    @property
-    def low_level(self):
-        """Idiomatic facade: client.low_level.list() / client.low_level.load({"id": ...})."""
-        from entity.low_level_entity import LowLevelEntity
-        cached = getattr(self, "_low_level", None)
-        if cached is None:
-            cached = LowLevelEntity(self, None)
-            self._low_level = cached
-        return cached
-
-    def LowLevel(self, data=None):
-        # Deprecated: use client.low_level instead.
+    def LowLevel(self, data=None) -> "LowLevelEntity":
+        """Entity factory: client.LowLevel().list({}) / client.LowLevel().load({"id": ...})."""
         from entity.low_level_entity import LowLevelEntity
         return LowLevelEntity(self, data)
 
 
-    @property
-    def metadata(self):
-        """Idiomatic facade: client.metadata.list() / client.metadata.load({"id": ...})."""
-        from entity.metadata_entity import MetadataEntity
-        cached = getattr(self, "_metadata", None)
-        if cached is None:
-            cached = MetadataEntity(self, None)
-            self._metadata = cached
-        return cached
-
-    def Metadata(self, data=None):
-        # Deprecated: use client.metadata instead.
+    def Metadata(self, data=None) -> "MetadataEntity":
+        """Entity factory: client.Metadata().list({}) / client.Metadata().load({"id": ...})."""
         from entity.metadata_entity import MetadataEntity
         return MetadataEntity(self, data)
 
 
 
     @classmethod
-    def test(cls, testopts=None, sdkopts=None):
+    def test(cls, testopts=None, sdkopts=None) -> "AcousticbrainzSDK":
         if sdkopts is None:
             sdkopts = {}
         sdkopts = vs.clone(sdkopts)
@@ -290,3 +260,11 @@ class AcousticbrainzSDK:
         sdk.mode = "test"
 
         return sdk
+
+
+from typing import TYPE_CHECKING
+
+if TYPE_CHECKING:
+    from entity.high_level_entity import HighLevelEntity
+    from entity.low_level_entity import LowLevelEntity
+    from entity.metadata_entity import MetadataEntity

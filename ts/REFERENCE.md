@@ -133,7 +133,7 @@ Alias for `AcousticbrainzSDK.test()`.
 ## HighLevelEntity
 
 ```ts
-const high_level = client.high_level
+const high_level = client.HighLevel()
 ```
 
 ### Fields
@@ -150,7 +150,7 @@ const high_level = client.high_level
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.high_level.load({ id: 'high_level_id' })
+const result = await client.HighLevel().load({ id: 'high_level_id' })
 ```
 
 ### Common Methods
@@ -184,7 +184,7 @@ Return a copy of the entity options.
 ## LowLevelEntity
 
 ```ts
-const low_level = client.low_level
+const low_level = client.LowLevel()
 ```
 
 ### Fields
@@ -203,7 +203,7 @@ const low_level = client.low_level
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.low_level.load({ id: 'low_level_id' })
+const result = await client.LowLevel().load({ id: 'low_level_id' })
 ```
 
 ### Common Methods
@@ -237,7 +237,7 @@ Return a copy of the entity options.
 ## MetadataEntity
 
 ```ts
-const metadata = client.metadata
+const metadata = client.Metadata()
 ```
 
 ### Fields
@@ -254,7 +254,7 @@ const metadata = client.metadata
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.metadata.load({ id: 'metadata_id' })
+const result = await client.Metadata().load({ id: 'metadata_id' })
 ```
 
 ### Common Methods

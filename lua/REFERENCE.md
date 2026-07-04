@@ -91,7 +91,7 @@ same parameters as `direct()`.
 ## HighLevelEntity
 
 ```lua
-local high_level = client:high_level(nil)
+local high_level = client:HighLevel(nil)
 ```
 
 ### Fields
@@ -108,7 +108,7 @@ local high_level = client:high_level(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:high_level():load({ id = "high_level_id" })
+local result, err = client:HighLevel():load({ id = "high_level_id" })
 ```
 
 ### Common Methods
@@ -144,7 +144,7 @@ Return the entity name.
 ## LowLevelEntity
 
 ```lua
-local low_level = client:low_level(nil)
+local low_level = client:LowLevel(nil)
 ```
 
 ### Fields
@@ -163,7 +163,7 @@ local low_level = client:low_level(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:low_level():load({ id = "low_level_id" })
+local result, err = client:LowLevel():load({ id = "low_level_id" })
 ```
 
 ### Common Methods
@@ -199,7 +199,7 @@ Return the entity name.
 ## MetadataEntity
 
 ```lua
-local metadata = client:metadata(nil)
+local metadata = client:Metadata(nil)
 ```
 
 ### Fields
@@ -216,7 +216,7 @@ local metadata = client:metadata(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:metadata():load({ id = "metadata_id" })
+local result, err = client:Metadata():load({ id = "metadata_id" })
 ```
 
 ### Common Methods

@@ -33,9 +33,10 @@ $client = new AcousticbrainzSDK();
 
 ```php
 try {
-    $result = $client->highlevel()->load(["id" => "example_id"]);
-    print_r($result);
-} catch (\Exception $err) {
+    // load() returns the bare HighLevel record (throws on error).
+    $highlevel = $client->HighLevel()->load(["id" => "example_id"]);
+    print_r($highlevel);
+} catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
 ```
@@ -81,13 +82,17 @@ print_r($fetchdef["headers"]);
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```php
-$client = AcousticbrainzSDK::test();
+$client = AcousticbrainzSDK::test([
+    "entity" => ["highlevel" => ["test01" => ["id" => "test01"]]],
+]);
 
-$result = $client->highlevel()->load(["id" => "test01"]);
-// $result contains mock response data
+// load() returns the bare mock record (throws on error).
+$highlevel = $client->HighLevel()->load(["id" => "test01"]);
+print_r($highlevel);
 ```
 
 ### Use a custom fetch function
@@ -250,7 +255,7 @@ API path: `/{mbid}/count`
 
 ### HighLevel
 
-Create an instance: `const high_level = client.high_level`
+Create an instance: `$high_level = $client->HighLevel();`
 
 #### Operations
 
@@ -267,14 +272,15 @@ Create an instance: `const high_level = client.high_level`
 
 #### Example: Load
 
-```ts
-const high_level = await client.high_level.load({ id: 'high_level_id' })
+```php
+// load() returns the bare HighLevel record (throws on error).
+$high_level = $client->HighLevel()->load(["id" => "high_level_id"]);
 ```
 
 
 ### LowLevel
 
-Create an instance: `const low_level = client.low_level`
+Create an instance: `$low_level = $client->LowLevel();`
 
 #### Operations
 
@@ -293,14 +299,15 @@ Create an instance: `const low_level = client.low_level`
 
 #### Example: Load
 
-```ts
-const low_level = await client.low_level.load({ id: 'low_level_id' })
+```php
+// load() returns the bare LowLevel record (throws on error).
+$low_level = $client->LowLevel()->load(["id" => "low_level_id"]);
 ```
 
 
 ### Metadata
 
-Create an instance: `const metadata = client.metadata`
+Create an instance: `$metadata = $client->Metadata();`
 
 #### Operations
 
@@ -317,8 +324,9 @@ Create an instance: `const metadata = client.metadata`
 
 #### Example: Load
 
-```ts
-const metadata = await client.metadata.load({ id: 'metadata_id' })
+```php
+// load() returns the bare Metadata record (throws on error).
+$metadata = $client->Metadata()->load(["id" => "metadata_id"]);
 ```
 
 
@@ -393,7 +401,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```php
-$highlevel = $client->highlevel();
+$highlevel = $client->HighLevel();
 $highlevel->load(["id" => "example_id"]);
 
 // $highlevel->dataGet() now returns the loaded highlevel data

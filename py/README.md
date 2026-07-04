@@ -33,10 +33,12 @@ client = AcousticbrainzSDK()
 
 ### 3. Load a highlevel
 
+`load()` returns the bare record (a `dict`) and raises on error.
+
 ```python
 try:
-    result = client.highlevel.load({"id": "example_id"})
-    print(result)
+    highlevel = client.HighLevel().load({"id": "example_id"})
+    print(highlevel)
 except Exception as err:
     print(f"load failed: {err}")
 ```
@@ -84,8 +86,9 @@ Create a mock client for unit testing — no server required:
 ```python
 client = AcousticbrainzSDK.test()
 
-result = client.highlevel.load({"id": "test01"})
-# result contains mock response data
+# Entity ops return the bare record and raise on error.
+highlevel = client.HighLevel().load({"id": "test01"})
+# highlevel contains the mock response record
 ```
 
 ### Use a custom fetch function
@@ -245,7 +248,7 @@ API path: `/{mbid}/count`
 
 ### HighLevel
 
-Create an instance: `const high_level = client.high_level`
+Create an instance: `high_level = client.HighLevel()`
 
 #### Operations
 
@@ -262,14 +265,14 @@ Create an instance: `const high_level = client.high_level`
 
 #### Example: Load
 
-```ts
-const high_level = await client.high_level.load({ id: 'high_level_id' })
+```python
+high_level = client.HighLevel().load({"id": "high_level_id"})
 ```
 
 
 ### LowLevel
 
-Create an instance: `const low_level = client.low_level`
+Create an instance: `low_level = client.LowLevel()`
 
 #### Operations
 
@@ -288,14 +291,14 @@ Create an instance: `const low_level = client.low_level`
 
 #### Example: Load
 
-```ts
-const low_level = await client.low_level.load({ id: 'low_level_id' })
+```python
+low_level = client.LowLevel().load({"id": "low_level_id"})
 ```
 
 
 ### Metadata
 
-Create an instance: `const metadata = client.metadata`
+Create an instance: `metadata = client.Metadata()`
 
 #### Operations
 
@@ -312,8 +315,8 @@ Create an instance: `const metadata = client.metadata`
 
 #### Example: Load
 
-```ts
-const metadata = await client.metadata.load({ id: 'metadata_id' })
+```python
+metadata = client.Metadata().load({"id": "metadata_id"})
 ```
 
 
@@ -387,7 +390,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```python
-highlevel = client.highlevel
+highlevel = client.HighLevel()
 highlevel.load({"id": "example_id"})
 
 # highlevel.data_get() now returns the loaded highlevel data

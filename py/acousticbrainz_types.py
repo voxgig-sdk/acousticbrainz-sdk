@@ -4,44 +4,42 @@
 # params (op.<name>.points[].args.params[]). Field/param types come from the
 # canonical type sentinels via @voxgig/sdkgen canonToType (source of truth:
 # @voxgig/apidef VALID_CANON). Do not edit by hand.
+#
+# These are TypedDicts, not dataclasses: the SDK ops return/accept plain dicts
+# at runtime, and a TypedDict IS a dict shape, so the types match the runtime.
+# Optional (req:false) keys are modelled as TypedDict key-optionality
+# (total=False), split into a required base + total=False subclass when a type
+# has both required and optional keys.
 
 from __future__ import annotations
 
-from dataclasses import dataclass
-from typing import Optional, Any
+from typing import TypedDict, Any
 
 
-@dataclass
-class HighLevel:
-    highlevel: Optional[dict] = None
-    metadata: Optional[dict] = None
+class HighLevel(TypedDict, total=False):
+    highlevel: dict
+    metadata: dict
 
 
-@dataclass
-class HighLevelLoadMatch:
+class HighLevelLoadMatch(TypedDict):
     mbid: str
 
 
-@dataclass
-class LowLevel:
-    lowlevel: Optional[dict] = None
-    metadata: Optional[dict] = None
-    rhythm: Optional[dict] = None
-    tonal: Optional[dict] = None
+class LowLevel(TypedDict, total=False):
+    lowlevel: dict
+    metadata: dict
+    rhythm: dict
+    tonal: dict
 
 
-@dataclass
-class LowLevelLoadMatch:
+class LowLevelLoadMatch(TypedDict):
     mbid: str
 
 
-@dataclass
-class Metadata:
-    count: Optional[int] = None
-    mbid: Optional[str] = None
-
-
-@dataclass
-class MetadataLoadMatch:
+class Metadata(TypedDict, total=False):
+    count: int
     mbid: str
 
+
+class MetadataLoadMatch(TypedDict):
+    mbid: str

@@ -94,7 +94,7 @@ same parameters as `direct()`. Raises on error.
 ## HighLevelEntity
 
 ```ruby
-high_level = client.high_level
+high_level = client.HighLevel
 ```
 
 ### Fields
@@ -111,7 +111,7 @@ high_level = client.high_level
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.high_level.load({ "id" => "high_level_id" })
+result = client.HighLevel.load({ "id" => "high_level_id" })
 ```
 
 ### Common Methods
@@ -147,7 +147,7 @@ Return the entity name.
 ## LowLevelEntity
 
 ```ruby
-low_level = client.low_level
+low_level = client.LowLevel
 ```
 
 ### Fields
@@ -166,7 +166,7 @@ low_level = client.low_level
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.low_level.load({ "id" => "low_level_id" })
+result = client.LowLevel.load({ "id" => "low_level_id" })
 ```
 
 ### Common Methods
@@ -202,7 +202,7 @@ Return the entity name.
 ## MetadataEntity
 
 ```ruby
-metadata = client.metadata
+metadata = client.Metadata
 ```
 
 ### Fields
@@ -219,7 +219,7 @@ metadata = client.metadata
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.metadata.load({ "id" => "metadata_id" })
+result = client.Metadata.load({ "id" => "metadata_id" })
 ```
 
 ### Common Methods

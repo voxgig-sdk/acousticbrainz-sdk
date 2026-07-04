@@ -26,9 +26,9 @@ import { AcousticbrainzSDK } from '@voxgig-sdk/acousticbrainz'
 
 const client = new AcousticbrainzSDK()
 
-// Load highlevel data
-const highlevel = await client.highlevel.load({})
-console.log(highlevel.data)
+// Load highlevel data (returns a HighLevel)
+const highlevel = await client.HighLevel().load()
+console.log(highlevel)
 ```
 
 See the [TypeScript README](ts/README.md) for the full guide.
@@ -86,8 +86,8 @@ from acousticbrainz_sdk import AcousticbrainzSDK
 client = AcousticbrainzSDK()
 
 
-# Load a specific highlevel
-highlevel = client.highlevel.load({"id": "example_id"})
+# Load a specific highlevel (returns the record, raises on error)
+highlevel = client.HighLevel().load({"id": "example_id"})
 print(highlevel)
 ```
 
@@ -100,8 +100,8 @@ require_once 'acousticbrainz_sdk.php';
 $client = new AcousticbrainzSDK();
 
 
-// Load a specific highlevel
-$highlevel = $client->highlevel()->load(["id" => "example_id"]);
+// Load a specific highlevel (returns the bare record; throws on error)
+$highlevel = $client->HighLevel()->load(["id" => "example_id"]);
 print_r($highlevel);
 ```
 
@@ -125,8 +125,8 @@ require_relative "Acousticbrainz_sdk"
 client = AcousticbrainzSDK.new
 
 
-# Load a specific highlevel
-highlevel = client.highlevel.load({ "id" => "example_id" })
+# Load a specific highlevel (returns the bare record; raises on error)
+highlevel = client.HighLevel.load({ "id" => "example_id" })
 puts highlevel
 ```
 
@@ -139,7 +139,7 @@ local client = sdk.new()
 
 
 -- Load a specific highlevel
-local highlevel, err = client:highlevel():load({ id = "example_id" })
+local highlevel, err = client:HighLevel():load({ id = "example_id" })
 print(highlevel)
 ```
 
@@ -152,22 +152,27 @@ in-memory mock, so unit tests run offline.
 
 ```ts
 const client = AcousticbrainzSDK.test()
-const result = await client.highlevel.load({ id: 'test01' })
-// result.ok === true, result.data contains mock data
+const highlevel = await client.HighLevel().load({ id: 'test01' })
+// highlevel is a bare HighLevel populated with mock data
+console.log(highlevel)
 ```
 
 ### Python
 
 ```python
 client = AcousticbrainzSDK.test()
-result = client.highlevel.load({"id": "test01"})
+highlevel = client.HighLevel().load({"id": "test01"})
+print(highlevel)
 ```
 
 ### PHP
 
 ```php
-$client = AcousticbrainzSDK::test();
-$result = $client->highlevel()->load(["id" => "test01"]);
+// Seed fixture data so offline calls resolve without a live server.
+$client = AcousticbrainzSDK::test([
+    "entity" => ["highlevel" => ["test01" => ["id" => "test01"]]],
+]);
+$highlevel = $client->HighLevel()->load(["id" => "test01"]);
 ```
 
 ### Golang
@@ -182,15 +187,18 @@ result, err := client.HighLevel(nil).Load(
 ### Ruby
 
 ```ruby
-client = AcousticbrainzSDK.test
-result = client.highlevel.load({ "id" => "test01" })
+# Seed fixture data so offline calls resolve without a live server.
+client = AcousticbrainzSDK.test({
+  "entity" => { "highlevel" => { "test01" => { "id" => "test01" } } },
+})
+highlevel = client.HighLevel.load({ "id" => "test01" })
 ```
 
 ### Lua
 
 ```lua
 local client = sdk.test()
-local result, err = client:highlevel():load({ id = "test01" })
+local result, err = client:HighLevel():load({ id = "test01" })
 ```
 
 ## How it works
@@ -238,6 +246,9 @@ const result = await client.direct({
   method: 'GET',
   params: { id: 'example' },
 })
+if (result instanceof Error) {
+  throw result
+}
 console.log(result.data)
 ```
 

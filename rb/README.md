@@ -32,8 +32,9 @@ client = AcousticbrainzSDK.new
 
 ```ruby
 begin
-  result = client.highlevel.load({ "id" => "example_id" })
-  puts result
+  # load returns the bare HighLevel record (raises on error).
+  highlevel = client.HighLevel.load({ "id" => "example_id" })
+  puts highlevel
 rescue => err
   warn "load failed: #{err}"
 end
@@ -80,13 +81,17 @@ end
 
 ### Use test mode
 
-Create a mock client for unit testing — no server required:
+Create a mock client for unit testing — no server required. Seed fixture
+data via the `entity` option so offline calls resolve without a live server:
 
 ```ruby
-client = AcousticbrainzSDK.test
+client = AcousticbrainzSDK.test({
+  "entity" => { "highlevel" => { "test01" => { "id" => "test01" } } },
+})
 
-result = client.highlevel.load({ "id" => "test01" })
-# result contains mock response data
+# load returns the bare mock record (raises on error).
+highlevel = client.HighLevel.load({ "id" => "test01" })
+puts highlevel
 ```
 
 ### Use a custom fetch function
@@ -245,7 +250,7 @@ API path: `/{mbid}/count`
 
 ### HighLevel
 
-Create an instance: `const high_level = client.high_level`
+Create an instance: `high_level = client.HighLevel`
 
 #### Operations
 
@@ -262,14 +267,15 @@ Create an instance: `const high_level = client.high_level`
 
 #### Example: Load
 
-```ts
-const high_level = await client.high_level.load({ id: 'high_level_id' })
+```ruby
+# load returns the bare HighLevel record (raises on error).
+high_level = client.HighLevel.load({ "id" => "high_level_id" })
 ```
 
 
 ### LowLevel
 
-Create an instance: `const low_level = client.low_level`
+Create an instance: `low_level = client.LowLevel`
 
 #### Operations
 
@@ -288,14 +294,15 @@ Create an instance: `const low_level = client.low_level`
 
 #### Example: Load
 
-```ts
-const low_level = await client.low_level.load({ id: 'low_level_id' })
+```ruby
+# load returns the bare LowLevel record (raises on error).
+low_level = client.LowLevel.load({ "id" => "low_level_id" })
 ```
 
 
 ### Metadata
 
-Create an instance: `const metadata = client.metadata`
+Create an instance: `metadata = client.Metadata`
 
 #### Operations
 
@@ -312,8 +319,9 @@ Create an instance: `const metadata = client.metadata`
 
 #### Example: Load
 
-```ts
-const metadata = await client.metadata.load({ id: 'metadata_id' })
+```ruby
+# load returns the bare Metadata record (raises on error).
+metadata = client.Metadata.load({ "id" => "metadata_id" })
 ```
 
 
@@ -388,7 +396,7 @@ Entity instances are stateful. After a successful `load`, the entity
 stores the returned data and match criteria internally.
 
 ```ruby
-highlevel = client.highlevel
+highlevel = client.HighLevel
 highlevel.load({ "id" => "example_id" })
 
 # highlevel.data_get now returns the loaded highlevel data

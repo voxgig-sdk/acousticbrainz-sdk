@@ -208,39 +208,21 @@ class AcousticbrainzSDK
   end
 
 
-  # Idiomatic facade: client.high_level.list / client.high_level.load({ "id" => ... })
-  def high_level
-    require_relative 'entity/high_level_entity'
-    @high_level ||= HighLevelEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.high_level instead.
+  # Canonical facade: client.HighLevel.list / client.HighLevel.load({ "id" => ... })
   def HighLevel(data = nil)
     require_relative 'entity/high_level_entity'
     HighLevelEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.low_level.list / client.low_level.load({ "id" => ... })
-  def low_level
-    require_relative 'entity/low_level_entity'
-    @low_level ||= LowLevelEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.low_level instead.
+  # Canonical facade: client.LowLevel.list / client.LowLevel.load({ "id" => ... })
   def LowLevel(data = nil)
     require_relative 'entity/low_level_entity'
     LowLevelEntity.new(self, data)
   end
 
 
-  # Idiomatic facade: client.metadata.list / client.metadata.load({ "id" => ... })
-  def metadata
-    require_relative 'entity/metadata_entity'
-    @metadata ||= MetadataEntity.new(self, nil)
-  end
-
-  # Deprecated: use client.metadata instead.
+  # Canonical facade: client.Metadata.list / client.Metadata.load({ "id" => ... })
   def Metadata(data = nil)
     require_relative 'entity/metadata_entity'
     MetadataEntity.new(self, data)
