@@ -42,8 +42,7 @@ class LowLevelEntityTest < Minitest::Test
     # LOAD
     low_level_ref01_ent = client.LowLevel(nil)
     low_level_ref01_match_dt0 = {}
-    low_level_ref01_data_dt0_loaded, err = low_level_ref01_ent.load(low_level_ref01_match_dt0, nil)
-    assert_nil err
+    low_level_ref01_data_dt0_loaded = low_level_ref01_ent.load(low_level_ref01_match_dt0, nil)
     assert !low_level_ref01_data_dt0_loaded.nil?
 
   end
@@ -82,7 +81,6 @@ def low_level_basic_setup(extra)
     "ACOUSTICBRAINZ_TEST_LOW_LEVEL_ENTID" => idmap,
     "ACOUSTICBRAINZ_TEST_LIVE" => "FALSE",
     "ACOUSTICBRAINZ_TEST_EXPLAIN" => "FALSE",
-    "ACOUSTICBRAINZ_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -94,7 +92,6 @@ def low_level_basic_setup(extra)
   if env["ACOUSTICBRAINZ_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["ACOUSTICBRAINZ_APIKEY"],
       },
       extra || {},
     ])

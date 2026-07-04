@@ -244,18 +244,57 @@ end
 
 
 
+-- Idiomatic facade: client:high_level():list() / client:high_level():load({ id = ... })
+function AcousticbrainzSDK:high_level(data)
+  local EntityMod = require("entity.high_level_entity")
+  if data == nil then
+    if self._high_level == nil then
+      self._high_level = EntityMod.new(self, nil)
+    end
+    return self._high_level
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:high_level() instead.
 function AcousticbrainzSDK:HighLevel(data)
   local EntityMod = require("entity.high_level_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:low_level():list() / client:low_level():load({ id = ... })
+function AcousticbrainzSDK:low_level(data)
+  local EntityMod = require("entity.low_level_entity")
+  if data == nil then
+    if self._low_level == nil then
+      self._low_level = EntityMod.new(self, nil)
+    end
+    return self._low_level
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:low_level() instead.
 function AcousticbrainzSDK:LowLevel(data)
   local EntityMod = require("entity.low_level_entity")
   return EntityMod.new(self, data)
 end
 
 
+-- Idiomatic facade: client:metadata():list() / client:metadata():load({ id = ... })
+function AcousticbrainzSDK:metadata(data)
+  local EntityMod = require("entity.metadata_entity")
+  if data == nil then
+    if self._metadata == nil then
+      self._metadata = EntityMod.new(self, nil)
+    end
+    return self._metadata
+  end
+  return EntityMod.new(self, data)
+end
+
+-- Deprecated: use client:metadata() instead.
 function AcousticbrainzSDK:Metadata(data)
   local EntityMod = require("entity.metadata_entity")
   return EntityMod.new(self, data)

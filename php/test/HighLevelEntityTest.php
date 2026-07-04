@@ -49,8 +49,7 @@ class HighLevelEntityTest extends TestCase
         // LOAD
         $high_level_ref01_ent = $client->HighLevel(null);
         $high_level_ref01_match_dt0 = [];
-        [$high_level_ref01_data_dt0_loaded, $err] = $high_level_ref01_ent->load($high_level_ref01_match_dt0, null);
-        $this->assertNull($err);
+        $high_level_ref01_data_dt0_loaded = $high_level_ref01_ent->load($high_level_ref01_match_dt0, null);
         $this->assertNotNull($high_level_ref01_data_dt0_loaded);
 
     }
@@ -85,7 +84,6 @@ function high_level_basic_setup($extra)
         "ACOUSTICBRAINZ_TEST_HIGH_LEVEL_ENTID" => $idmap,
         "ACOUSTICBRAINZ_TEST_LIVE" => "FALSE",
         "ACOUSTICBRAINZ_TEST_EXPLAIN" => "FALSE",
-        "ACOUSTICBRAINZ_APIKEY" => "NONE",
     ]);
 
     $idmap_resolved = Helpers::to_map(
@@ -97,7 +95,6 @@ function high_level_basic_setup($extra)
     if ($env["ACOUSTICBRAINZ_TEST_LIVE"] === "TRUE") {
         $merged_opts = Vs::merge([
             [
-                "apikey" => $env["ACOUSTICBRAINZ_APIKEY"],
             ],
             $extra ?? [],
         ]);

@@ -144,16 +144,23 @@ class AcousticbrainzSDK:
 
         _, err = utility.prepare_auth(ctx)
         if err is not None:
-            return None, err
+            raise err
 
-        return utility.make_fetch_def(ctx)
+        fetchdef, err = utility.make_fetch_def(ctx)
+        if err is not None:
+            raise err
+
+        return fetchdef
 
     def direct(self, fetchargs=None):
         utility = self._utility
 
-        fetchdef, err = self.prepare(fetchargs)
-        if err is not None:
-            return {"ok": False, "err": err}, None
+        try:
+            fetchdef = self.prepare(fetchargs)
+        except Exception as err:
+            # direct() is the raw-HTTP escape hatch: it never raises, it
+            # returns a result object callers branch on via result["ok"].
+            return {"ok": False, "err": err}
 
         if fetchargs is None:
             fetchargs = {}
@@ -170,13 +177,13 @@ class AcousticbrainzSDK:
         fetched, fetch_err = utility.fetcher(ctx, url, fetchdef)
 
         if fetch_err is not None:
-            return {"ok": False, "err": fetch_err}, None
+            return {"ok": False, "err": fetch_err}
 
         if fetched is None:
             return {
                 "ok": False,
                 "err": ctx.make_error("direct_no_response", "response: undefined"),
-            }, None
+            }
 
         if isinstance(fetched, dict):
             status = helpers.to_int(vs.getprop(fetched, "status"))
@@ -205,25 +212,58 @@ class AcousticbrainzSDK:
                 "status": status,
                 "headers": headers,
                 "data": json_data,
-            }, None
+            }
 
         return {
             "ok": False,
             "err": ctx.make_error("direct_invalid", "invalid response type"),
-        }, None
+        }
 
+
+    @property
+    def high_level(self):
+        """Idiomatic facade: client.high_level.list() / client.high_level.load({"id": ...})."""
+        from entity.high_level_entity import HighLevelEntity
+        cached = getattr(self, "_high_level", None)
+        if cached is None:
+            cached = HighLevelEntity(self, None)
+            self._high_level = cached
+        return cached
 
     def HighLevel(self, data=None):
+        # Deprecated: use client.high_level instead.
         from entity.high_level_entity import HighLevelEntity
         return HighLevelEntity(self, data)
 
 
+    @property
+    def low_level(self):
+        """Idiomatic facade: client.low_level.list() / client.low_level.load({"id": ...})."""
+        from entity.low_level_entity import LowLevelEntity
+        cached = getattr(self, "_low_level", None)
+        if cached is None:
+            cached = LowLevelEntity(self, None)
+            self._low_level = cached
+        return cached
+
     def LowLevel(self, data=None):
+        # Deprecated: use client.low_level instead.
         from entity.low_level_entity import LowLevelEntity
         return LowLevelEntity(self, data)
 
 
+    @property
+    def metadata(self):
+        """Idiomatic facade: client.metadata.list() / client.metadata.load({"id": ...})."""
+        from entity.metadata_entity import MetadataEntity
+        cached = getattr(self, "_metadata", None)
+        if cached is None:
+            cached = MetadataEntity(self, None)
+            self._metadata = cached
+        return cached
+
     def Metadata(self, data=None):
+        # Deprecated: use client.metadata instead.
         from entity.metadata_entity import MetadataEntity
         return MetadataEntity(self, data)
 

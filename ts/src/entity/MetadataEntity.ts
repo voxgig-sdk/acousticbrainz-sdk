@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  Metadata,
+  MetadataLoadMatch,
+} from '../AcousticbrainzTypes'
 
 // TODO: needs Entity superclass
-class MetadataEntity extends AcousticbrainzEntityBase {
+class MetadataEntity extends AcousticbrainzEntityBase<Metadata> {
 
   constructor(client: AcousticbrainzSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +36,7 @@ class MetadataEntity extends AcousticbrainzEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: MetadataLoadMatch, ctrl?: Control): Promise<Metadata> {
 
     const utility = this._utility
 
@@ -136,7 +140,9 @@ class MetadataEntity extends AcousticbrainzEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<Metadata> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

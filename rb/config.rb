@@ -15,9 +15,6 @@ module AcousticbrainzConfig
       },
       "options" => {
         "base" => "https://acousticbrainz.org/api/v1",
-        "auth" => {
-          "prefix" => "Bearer",
-        },
         "headers" => {
           "content-type" => "application/json",
         },
@@ -63,6 +60,7 @@ module AcousticbrainzConfig
                         "orig" => "mbid",
                         "reqd" => true,
                         "type" => "`$STRING`",
+                        "index$" => 0,
                       },
                     ],
                     "query" => [
@@ -152,6 +150,7 @@ module AcousticbrainzConfig
                         "orig" => "mbid",
                         "reqd" => true,
                         "type" => "`$STRING`",
+                        "index$" => 0,
                       },
                     ],
                     "query" => [
@@ -227,6 +226,7 @@ module AcousticbrainzConfig
                         "orig" => "mbid",
                         "reqd" => true,
                         "type" => "`$STRING`",
+                        "index$" => 0,
                       },
                     ],
                   },

@@ -49,8 +49,7 @@ class TestHighLevelEntity:
         # LOAD
         high_level_ref01_ent = client.HighLevel(None)
         high_level_ref01_match_dt0 = {}
-        high_level_ref01_data_dt0_loaded, err = high_level_ref01_ent.load(high_level_ref01_match_dt0, None)
-        assert err is None
+        high_level_ref01_data_dt0_loaded = high_level_ref01_ent.load(high_level_ref01_match_dt0, None)
         assert high_level_ref01_data_dt0_loaded is not None
 
 
@@ -91,7 +90,6 @@ def _high_level_basic_setup(extra):
         "ACOUSTICBRAINZ_TEST_HIGH_LEVEL_ENTID": idmap,
         "ACOUSTICBRAINZ_TEST_LIVE": "FALSE",
         "ACOUSTICBRAINZ_TEST_EXPLAIN": "FALSE",
-        "ACOUSTICBRAINZ_APIKEY": "NONE",
     })
 
     idmap_resolved = helpers.to_map(
@@ -102,7 +100,6 @@ def _high_level_basic_setup(extra):
     if env.get("ACOUSTICBRAINZ_TEST_LIVE") == "TRUE":
         merged_opts = vs.merge([
             {
-                "apikey": env.get("ACOUSTICBRAINZ_APIKEY"),
             },
             extra or {},
         ])

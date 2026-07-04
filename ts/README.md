@@ -9,9 +9,12 @@ The TypeScript SDK for the Acousticbrainz API — a type-safe, entity-oriented c
 
 
 ## Install
-```bash
-npm install @voxgig-sdk/acousticbrainz
-```
+This package is not yet published to npm. Install it from the GitHub
+release tag (`ts/vX.Y.Z`):
+
+- Releases: [https://github.com/voxgig-sdk/acousticbrainz-sdk/releases](https://github.com/voxgig-sdk/acousticbrainz-sdk/releases)
+
+
 ## Tutorial: your first API call
 
 This tutorial walks through creating a client, listing entities, and
@@ -20,17 +23,15 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { AcousticbrainzSDK } from 'acousticbrainz'
+import { AcousticbrainzSDK } from '@voxgig-sdk/acousticbrainz'
 
-const client = new AcousticbrainzSDK({
-  apikey: process.env.ACOUSTICBRAINZ_APIKEY,
-})
+const client = new AcousticbrainzSDK()
 ```
 
 ### 3. Load a highlevel
 
 ```ts
-const result = await client.HighLevel().load({ id: 'example_id' })
+const result = await client.highlevel.load({ id: 'example_id' })
 
 if (result.ok) {
   console.log(result.data)
@@ -79,7 +80,7 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = AcousticbrainzSDK.test()
 
-const result = await client.Planet().load({ id: 'test01' })
+const result = await client.highlevel.load({ id: 'test01' })
 // result.ok === true
 // result.data contains mock response data
 ```
@@ -87,7 +88,7 @@ const result = await client.Planet().load({ id: 'test01' })
 You can also use the instance method:
 
 ```ts
-const client = new AcousticbrainzSDK({ apikey: '...' })
+const client = new AcousticbrainzSDK()
 const testClient = client.tester()
 ```
 
@@ -96,7 +97,7 @@ const testClient = client.tester()
 Entity instances remember their last match and data:
 
 ```ts
-const entity = client.Planet()
+const entity = client.highlevel
 
 // First call sets internal match
 await entity.load({ id: 'example' })
@@ -123,7 +124,6 @@ const logger = {
 }
 
 const client = new AcousticbrainzSDK({
-  apikey: '...',
   extend: [logger],
 })
 ```
@@ -134,7 +134,6 @@ Create a `.env.local` file at the project root:
 
 ```
 ACOUSTICBRAINZ_TEST_LIVE=TRUE
-ACOUSTICBRAINZ_APIKEY=<your-key>
 ```
 
 Then run:
@@ -152,7 +151,6 @@ cd ts && npm test
 
 ```ts
 new AcousticbrainzSDK(options?: {
-  apikey?: string
   base?: string
   prefix?: string
   suffix?: string
@@ -163,7 +161,6 @@ new AcousticbrainzSDK(options?: {
 
 | Option | Type | Description |
 | --- | --- | --- |
-| `apikey` | `string` | API key for authentication. |
 | `base` | `string` | Base URL of the API server. |
 | `prefix` | `string` | URL path prefix prepended to all requests. |
 | `suffix` | `string` | URL path suffix appended to all requests. |
@@ -293,7 +290,7 @@ API path: `/{mbid}/count`
 
 ### HighLevel
 
-Create an instance: `const high_level = client.HighLevel()`
+Create an instance: `const high_level = client.high_level`
 
 #### Operations
 
@@ -311,13 +308,13 @@ Create an instance: `const high_level = client.HighLevel()`
 #### Example: Load
 
 ```ts
-const high_level = await client.HighLevel().load({ id: 'high_level_id' })
+const high_level = await client.high_level.load({ id: 'high_level_id' })
 ```
 
 
 ### LowLevel
 
-Create an instance: `const low_level = client.LowLevel()`
+Create an instance: `const low_level = client.low_level`
 
 #### Operations
 
@@ -337,13 +334,13 @@ Create an instance: `const low_level = client.LowLevel()`
 #### Example: Load
 
 ```ts
-const low_level = await client.LowLevel().load({ id: 'low_level_id' })
+const low_level = await client.low_level.load({ id: 'low_level_id' })
 ```
 
 
 ### Metadata
 
-Create an instance: `const metadata = client.Metadata()`
+Create an instance: `const metadata = client.metadata`
 
 #### Operations
 
@@ -361,7 +358,7 @@ Create an instance: `const metadata = client.Metadata()`
 #### Example: Load
 
 ```ts
-const metadata = await client.Metadata().load({ id: 'metadata_id' })
+const metadata = await client.metadata.load({ id: 'metadata_id' })
 ```
 
 
@@ -422,7 +419,7 @@ acousticbrainz/
 Import the SDK from the package root:
 
 ```ts
-import { AcousticbrainzSDK } from 'acousticbrainz'
+import { AcousticbrainzSDK } from '@voxgig-sdk/acousticbrainz'
 ```
 
 ### Entity state
@@ -432,11 +429,11 @@ stores the returned data and match criteria internally. Subsequent
 calls on the same instance can rely on this state.
 
 ```ts
-const moon = client.Moon()
-await moon.load({ planet_id: 'earth', id: 'luna' })
+const highlevel = client.highlevel
+await highlevel.load({ id: "example_id" })
 
-// moon.data() now returns the loaded moon data
-// moon.match() returns { planet_id: 'earth', id: 'luna' }
+// highlevel.data() now returns the loaded highlevel data
+// highlevel.match() returns { id: "example_id" }
 ```
 
 Call `make()` to create a fresh instance with the same configuration

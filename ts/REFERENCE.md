@@ -18,7 +18,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `object` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -134,7 +133,7 @@ Alias for `AcousticbrainzSDK.test()`.
 ## HighLevelEntity
 
 ```ts
-const high_level = client.HighLevel()
+const high_level = client.high_level
 ```
 
 ### Fields
@@ -151,7 +150,7 @@ const high_level = client.HighLevel()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.HighLevel().load({ id: 'high_level_id' })
+const result = await client.high_level.load({ id: 'high_level_id' })
 ```
 
 ### Common Methods
@@ -185,7 +184,7 @@ Return a copy of the entity options.
 ## LowLevelEntity
 
 ```ts
-const low_level = client.LowLevel()
+const low_level = client.low_level
 ```
 
 ### Fields
@@ -204,7 +203,7 @@ const low_level = client.LowLevel()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.LowLevel().load({ id: 'low_level_id' })
+const result = await client.low_level.load({ id: 'low_level_id' })
 ```
 
 ### Common Methods
@@ -238,7 +237,7 @@ Return a copy of the entity options.
 ## MetadataEntity
 
 ```ts
-const metadata = client.Metadata()
+const metadata = client.metadata
 ```
 
 ### Fields
@@ -255,7 +254,7 @@ const metadata = client.Metadata()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Metadata().load({ id: 'metadata_id' })
+const result = await client.metadata.load({ id: 'metadata_id' })
 ```
 
 ### Common Methods

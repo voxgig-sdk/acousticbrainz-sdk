@@ -14,9 +14,13 @@ import type {
   Control,
 } from '../types'
 
+import type {
+  LowLevel,
+  LowLevelLoadMatch,
+} from '../AcousticbrainzTypes'
 
 // TODO: needs Entity superclass
-class LowLevelEntity extends AcousticbrainzEntityBase {
+class LowLevelEntity extends AcousticbrainzEntityBase<LowLevel> {
 
   constructor(client: AcousticbrainzSDK, entopts: any) {
     super(client, entopts)
@@ -32,7 +36,7 @@ class LowLevelEntity extends AcousticbrainzEntityBase {
 
 
 
-  async load(this: any, reqmatch?: any, ctrl?: Control) {
+  async load(this: any, reqmatch?: LowLevelLoadMatch, ctrl?: Control): Promise<LowLevel> {
 
     const utility = this._utility
 
@@ -136,7 +140,9 @@ class LowLevelEntity extends AcousticbrainzEntityBase {
         throw err
       }
       else {
-        return undefined
+        // Off-happy-path (throw disabled): typed as any so the method's
+        // Promise<LowLevel> return stays clean under strict null checks.
+        return undefined as any
       }
     }
   }

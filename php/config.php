@@ -20,9 +20,6 @@ class AcousticbrainzConfig
             ],
             "options" => [
                 "base" => "https://acousticbrainz.org/api/v1",
-                "auth" => [
-                    "prefix" => "Bearer",
-                ],
                 "headers" => [
           'content-type' => 'application/json',
         ],
@@ -68,6 +65,7 @@ class AcousticbrainzConfig
                         'orig' => 'mbid',
                         'reqd' => true,
                         'type' => '`$STRING`',
+                        'index$' => 0,
                       ],
                     ],
                     'query' => [
@@ -157,6 +155,7 @@ class AcousticbrainzConfig
                         'orig' => 'mbid',
                         'reqd' => true,
                         'type' => '`$STRING`',
+                        'index$' => 0,
                       ],
                     ],
                     'query' => [
@@ -232,6 +231,7 @@ class AcousticbrainzConfig
                         'orig' => 'mbid',
                         'reqd' => true,
                         'type' => '`$STRING`',
+                        'index$' => 0,
                       ],
                     ],
                   ],

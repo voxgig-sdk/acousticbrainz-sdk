@@ -42,8 +42,7 @@ class MetadataEntityTest < Minitest::Test
     # LOAD
     metadata_ref01_ent = client.Metadata(nil)
     metadata_ref01_match_dt0 = {}
-    metadata_ref01_data_dt0_loaded, err = metadata_ref01_ent.load(metadata_ref01_match_dt0, nil)
-    assert_nil err
+    metadata_ref01_data_dt0_loaded = metadata_ref01_ent.load(metadata_ref01_match_dt0, nil)
     assert !metadata_ref01_data_dt0_loaded.nil?
 
   end
@@ -82,7 +81,6 @@ def metadata_basic_setup(extra)
     "ACOUSTICBRAINZ_TEST_METADATA_ENTID" => idmap,
     "ACOUSTICBRAINZ_TEST_LIVE" => "FALSE",
     "ACOUSTICBRAINZ_TEST_EXPLAIN" => "FALSE",
-    "ACOUSTICBRAINZ_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -94,7 +92,6 @@ def metadata_basic_setup(extra)
   if env["ACOUSTICBRAINZ_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["ACOUSTICBRAINZ_APIKEY"],
       },
       extra || {},
     ])

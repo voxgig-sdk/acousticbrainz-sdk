@@ -79,6 +79,10 @@ end
 
 
 
+---@param reqmatch HighLevelLoadMatch
+---@param ctrl? table
+---@return HighLevel
+---@return string? err
 function HighLevelEntity:load(reqmatch, ctrl)
   local utility = self._utility
   local ctx = utility.make_context({

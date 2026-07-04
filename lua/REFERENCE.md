@@ -19,7 +19,6 @@ Create a new SDK client instance.
 | Name | Type | Description |
 | --- | --- | --- |
 | `options` | `table` | SDK configuration options. |
-| `options.apikey` | `string` | API key for authentication. |
 | `options.base` | `string` | Base URL for API requests. |
 | `options.prefix` | `string` | URL prefix appended after base. |
 | `options.suffix` | `string` | URL suffix appended after path. |
@@ -92,7 +91,7 @@ same parameters as `direct()`.
 ## HighLevelEntity
 
 ```lua
-local high_level = client:HighLevel(nil)
+local high_level = client:high_level(nil)
 ```
 
 ### Fields
@@ -109,7 +108,7 @@ local high_level = client:HighLevel(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:HighLevel():load({ id = "high_level_id" })
+local result, err = client:high_level():load({ id = "high_level_id" })
 ```
 
 ### Common Methods
@@ -145,7 +144,7 @@ Return the entity name.
 ## LowLevelEntity
 
 ```lua
-local low_level = client:LowLevel(nil)
+local low_level = client:low_level(nil)
 ```
 
 ### Fields
@@ -164,7 +163,7 @@ local low_level = client:LowLevel(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:LowLevel():load({ id = "low_level_id" })
+local result, err = client:low_level():load({ id = "low_level_id" })
 ```
 
 ### Common Methods
@@ -200,7 +199,7 @@ Return the entity name.
 ## MetadataEntity
 
 ```lua
-local metadata = client:Metadata(nil)
+local metadata = client:metadata(nil)
 ```
 
 ### Fields
@@ -217,7 +216,7 @@ local metadata = client:Metadata(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Metadata():load({ id = "metadata_id" })
+local result, err = client:metadata():load({ id = "metadata_id" })
 ```
 
 ### Common Methods

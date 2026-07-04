@@ -245,16 +245,25 @@ func (sdk *AcousticbrainzSDK) Direct(fetchargs map[string]any) (map[string]any, 
 }
 
 
+// HighLevel returns a HighLevel entity bound to this client.
+// Idiomatic usage: client.HighLevel(nil).List(nil, nil) or
+// client.HighLevel(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *AcousticbrainzSDK) HighLevel(data map[string]any) AcousticbrainzEntity {
 	return NewHighLevelEntityFunc(sdk, data)
 }
 
 
+// LowLevel returns a LowLevel entity bound to this client.
+// Idiomatic usage: client.LowLevel(nil).List(nil, nil) or
+// client.LowLevel(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *AcousticbrainzSDK) LowLevel(data map[string]any) AcousticbrainzEntity {
 	return NewLowLevelEntityFunc(sdk, data)
 }
 
 
+// Metadata returns a Metadata entity bound to this client.
+// Idiomatic usage: client.Metadata(nil).List(nil, nil) or
+// client.Metadata(nil).Load(map[string]any{"id": ...}, nil).
 func (sdk *AcousticbrainzSDK) Metadata(data map[string]any) AcousticbrainzEntity {
 	return NewMetadataEntityFunc(sdk, data)
 }

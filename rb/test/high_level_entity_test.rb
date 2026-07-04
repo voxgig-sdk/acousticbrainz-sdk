@@ -42,8 +42,7 @@ class HighLevelEntityTest < Minitest::Test
     # LOAD
     high_level_ref01_ent = client.HighLevel(nil)
     high_level_ref01_match_dt0 = {}
-    high_level_ref01_data_dt0_loaded, err = high_level_ref01_ent.load(high_level_ref01_match_dt0, nil)
-    assert_nil err
+    high_level_ref01_data_dt0_loaded = high_level_ref01_ent.load(high_level_ref01_match_dt0, nil)
     assert !high_level_ref01_data_dt0_loaded.nil?
 
   end
@@ -82,7 +81,6 @@ def high_level_basic_setup(extra)
     "ACOUSTICBRAINZ_TEST_HIGH_LEVEL_ENTID" => idmap,
     "ACOUSTICBRAINZ_TEST_LIVE" => "FALSE",
     "ACOUSTICBRAINZ_TEST_EXPLAIN" => "FALSE",
-    "ACOUSTICBRAINZ_APIKEY" => "NONE",
   })
 
   idmap_resolved = Helpers.to_map(
@@ -94,7 +92,6 @@ def high_level_basic_setup(extra)
   if env["ACOUSTICBRAINZ_TEST_LIVE"] == "TRUE"
     merged_opts = Vs.merge([
       {
-        "apikey" => env["ACOUSTICBRAINZ_APIKEY"],
       },
       extra || {},
     ])

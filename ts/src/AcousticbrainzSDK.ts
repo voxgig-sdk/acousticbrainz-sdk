@@ -4,6 +4,8 @@ import { HighLevelEntity } from './entity/HighLevelEntity'
 import { LowLevelEntity } from './entity/LowLevelEntity'
 import { MetadataEntity } from './entity/MetadataEntity'
 
+export type * from './AcousticbrainzTypes'
+
 
 import { inspect } from 'node:util'
 
@@ -204,18 +206,42 @@ class AcousticbrainzSDK {
 
 
 
+  _high_level?: HighLevelEntity
+
+  // Idiomatic facade: `client.high_level.list()` / `client.high_level.load({ id })`.
+  get high_level(): HighLevelEntity {
+    return (this._high_level ??= new HighLevelEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.high_level` instead. */
   HighLevel(data?: any) {
     const self = this
     return new HighLevelEntity(self,data)
   }
 
 
+  _low_level?: LowLevelEntity
+
+  // Idiomatic facade: `client.low_level.list()` / `client.low_level.load({ id })`.
+  get low_level(): LowLevelEntity {
+    return (this._low_level ??= new LowLevelEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.low_level` instead. */
   LowLevel(data?: any) {
     const self = this
     return new LowLevelEntity(self,data)
   }
 
 
+  _metadata?: MetadataEntity
+
+  // Idiomatic facade: `client.metadata.list()` / `client.metadata.load({ id })`.
+  get metadata(): MetadataEntity {
+    return (this._metadata ??= new MetadataEntity(this, undefined))
+  }
+
+  /** @deprecated Use `client.metadata` instead. */
   Metadata(data?: any) {
     const self = this
     return new MetadataEntity(self,data)

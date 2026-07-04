@@ -13,6 +13,9 @@ require_relative 'config'
 require_relative 'feature/base_feature'
 require_relative 'features'
 
+# Load typed models (Struct value objects).
+require_relative 'Acousticbrainz_types'
+
 
 class AcousticbrainzSDK
   attr_accessor :mode, :features, :options
@@ -131,7 +134,7 @@ class AcousticbrainzSDK
     end
 
     _, err = utility.prepare_auth.call(ctx)
-    return nil, err if err
+    raise err if err
 
     utility.make_fetch_def.call(ctx)
   end
@@ -139,8 +142,14 @@ class AcousticbrainzSDK
   def direct(fetchargs = {})
     utility = @_utility
 
-    fetchdef, err = prepare(fetchargs)
-    return { "ok" => false, "err" => err }, nil if err
+    # direct() is the raw-HTTP escape hatch: it always returns a result hash
+    # ({ "ok" => ..., ... }) and never raises. prepare() raises on error, so
+    # trap that and surface it in the hash.
+    begin
+      fetchdef = prepare(fetchargs)
+    rescue AcousticbrainzError => err
+      return { "ok" => false, "err" => err }
+    end
 
     fetchargs ||= {}
     ctrl = AcousticbrainzHelpers.to_map(VoxgigStruct.getprop(fetchargs, "ctrl")) || {}
@@ -153,13 +162,13 @@ class AcousticbrainzSDK
     url = fetchdef["url"] || ""
     fetched, fetch_err = utility.fetcher.call(ctx, url, fetchdef)
 
-    return { "ok" => false, "err" => fetch_err }, nil if fetch_err
+    return { "ok" => false, "err" => fetch_err } if fetch_err
 
     if fetched.nil?
       return {
         "ok" => false,
         "err" => ctx.make_error("direct_no_response", "response: undefined"),
-      }, nil
+      }
     end
 
     if fetched.is_a?(Hash)
@@ -189,28 +198,49 @@ class AcousticbrainzSDK
         "status" => status,
         "headers" => headers,
         "data" => json_data,
-      }, nil
+      }
     end
 
     return {
       "ok" => false,
       "err" => ctx.make_error("direct_invalid", "invalid response type"),
-    }, nil
+    }
   end
 
 
+  # Idiomatic facade: client.high_level.list / client.high_level.load({ "id" => ... })
+  def high_level
+    require_relative 'entity/high_level_entity'
+    @high_level ||= HighLevelEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.high_level instead.
   def HighLevel(data = nil)
     require_relative 'entity/high_level_entity'
     HighLevelEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.low_level.list / client.low_level.load({ "id" => ... })
+  def low_level
+    require_relative 'entity/low_level_entity'
+    @low_level ||= LowLevelEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.low_level instead.
   def LowLevel(data = nil)
     require_relative 'entity/low_level_entity'
     LowLevelEntity.new(self, data)
   end
 
 
+  # Idiomatic facade: client.metadata.list / client.metadata.load({ "id" => ... })
+  def metadata
+    require_relative 'entity/metadata_entity'
+    @metadata ||= MetadataEntity.new(self, nil)
+  end
+
+  # Deprecated: use client.metadata instead.
   def Metadata(data = nil)
     require_relative 'entity/metadata_entity'
     MetadataEntity.new(self, data)
