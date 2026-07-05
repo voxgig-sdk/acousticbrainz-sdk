@@ -53,11 +53,11 @@ Create a new `LowLevelEntity` instance. Pass `null` for no initial data.
 
 Create a new `MetadataEntity` instance. Pass `null` for no initial data.
 
-#### `optionsMap(): array`
+#### `options_map(): array`
 
 Return a deep copy of the current SDK options.
 
-#### `getUtility(): ProjectNameUtility`
+#### `get_utility(): AcousticbrainzUtility`
 
 Return a copy of the SDK utility object.
 
@@ -100,8 +100,8 @@ $high_level = $client->HighLevel();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `highlevel` | ``$OBJECT`` | No |  |
-| `metadata` | ``$OBJECT`` | No |  |
+| `highlevel` | `array` | No |  |
+| `metadata` | `array` | No |  |
 
 ### Operations
 
@@ -110,24 +110,24 @@ $high_level = $client->HighLevel();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->HighLevel()->load(["id" => "high_level_id"]);
+$result = $client->HighLevel()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -136,7 +136,7 @@ Set the entity match criteria.
 Create a new `HighLevelEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -153,10 +153,10 @@ $low_level = $client->LowLevel();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `lowlevel` | ``$OBJECT`` | No |  |
-| `metadata` | ``$OBJECT`` | No |  |
-| `rhythm` | ``$OBJECT`` | No |  |
-| `tonal` | ``$OBJECT`` | No |  |
+| `lowlevel` | `array` | No |  |
+| `metadata` | `array` | No |  |
+| `rhythm` | `array` | No |  |
+| `tonal` | `array` | No |  |
 
 ### Operations
 
@@ -165,24 +165,24 @@ $low_level = $client->LowLevel();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->LowLevel()->load(["id" => "low_level_id"]);
+$result = $client->LowLevel()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -191,7 +191,7 @@ Set the entity match criteria.
 Create a new `LowLevelEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 
@@ -208,8 +208,8 @@ $metadata = $client->Metadata();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | ``$INTEGER`` | No |  |
-| `mbid` | ``$STRING`` | No |  |
+| `count` | `int` | No |  |
+| `mbid` | `string` | No |  |
 
 ### Operations
 
@@ -218,24 +218,24 @@ $metadata = $client->Metadata();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->Metadata()->load(["id" => "metadata_id"]);
+$result = $client->Metadata()->load();
 ```
 
 ### Common Methods
 
-#### `dataGet(): array`
+#### `data_get(): array`
 
 Get the entity data. Returns a copy of the current data.
 
-#### `dataSet($data): void`
+#### `data_set($data): void`
 
 Set the entity data.
 
-#### `matchGet(): array`
+#### `match_get(): array`
 
 Get the entity match criteria.
 
-#### `matchSet($match): void`
+#### `match_set($match): void`
 
 Set the entity match criteria.
 
@@ -244,7 +244,7 @@ Set the entity match criteria.
 Create a new `MetadataEntity` instance with the same client and
 options.
 
-#### `getName(): string`
+#### `get_name(): string`
 
 Return the entity name.
 

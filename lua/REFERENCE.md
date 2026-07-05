@@ -98,8 +98,8 @@ local high_level = client:HighLevel(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `highlevel` | ``$OBJECT`` | No |  |
-| `metadata` | ``$OBJECT`` | No |  |
+| `highlevel` | `table` | No |  |
+| `metadata` | `table` | No |  |
 
 ### Operations
 
@@ -108,7 +108,7 @@ local high_level = client:HighLevel(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:HighLevel():load({ id = "high_level_id" })
+local result, err = client:HighLevel():load()
 ```
 
 ### Common Methods
@@ -151,10 +151,10 @@ local low_level = client:LowLevel(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `lowlevel` | ``$OBJECT`` | No |  |
-| `metadata` | ``$OBJECT`` | No |  |
-| `rhythm` | ``$OBJECT`` | No |  |
-| `tonal` | ``$OBJECT`` | No |  |
+| `lowlevel` | `table` | No |  |
+| `metadata` | `table` | No |  |
+| `rhythm` | `table` | No |  |
+| `tonal` | `table` | No |  |
 
 ### Operations
 
@@ -163,7 +163,7 @@ local low_level = client:LowLevel(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:LowLevel():load({ id = "low_level_id" })
+local result, err = client:LowLevel():load()
 ```
 
 ### Common Methods
@@ -206,8 +206,8 @@ local metadata = client:Metadata(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | ``$INTEGER`` | No |  |
-| `mbid` | ``$STRING`` | No |  |
+| `count` | `number` | No |  |
+| `mbid` | `string` | No |  |
 
 ### Operations
 
@@ -216,7 +216,7 @@ local metadata = client:Metadata(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Metadata():load({ id = "metadata_id" })
+local result, err = client:Metadata():load()
 ```
 
 ### Common Methods

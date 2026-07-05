@@ -95,8 +95,8 @@ high_level = client.HighLevel()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `highlevel` | ``$OBJECT`` | No |  |
-| `metadata` | ``$OBJECT`` | No |  |
+| `highlevel` | `dict` | No |  |
+| `metadata` | `dict` | No |  |
 
 ### Operations
 
@@ -105,7 +105,7 @@ high_level = client.HighLevel()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.HighLevel().load({"id": "high_level_id"})
+result = client.HighLevel().load()
 ```
 
 ### Common Methods
@@ -147,10 +147,10 @@ low_level = client.LowLevel()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `lowlevel` | ``$OBJECT`` | No |  |
-| `metadata` | ``$OBJECT`` | No |  |
-| `rhythm` | ``$OBJECT`` | No |  |
-| `tonal` | ``$OBJECT`` | No |  |
+| `lowlevel` | `dict` | No |  |
+| `metadata` | `dict` | No |  |
+| `rhythm` | `dict` | No |  |
+| `tonal` | `dict` | No |  |
 
 ### Operations
 
@@ -159,7 +159,7 @@ low_level = client.LowLevel()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.LowLevel().load({"id": "low_level_id"})
+result = client.LowLevel().load()
 ```
 
 ### Common Methods
@@ -201,8 +201,8 @@ metadata = client.Metadata()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | ``$INTEGER`` | No |  |
-| `mbid` | ``$STRING`` | No |  |
+| `count` | `int` | No |  |
+| `mbid` | `str` | No |  |
 
 ### Operations
 
@@ -211,7 +211,7 @@ metadata = client.Metadata()
 Load a single entity matching the given criteria. Returns the entity data and raises on error.
 
 ```python
-result = client.Metadata().load({"id": "metadata_id"})
+result = client.Metadata().load()
 ```
 
 ### Common Methods

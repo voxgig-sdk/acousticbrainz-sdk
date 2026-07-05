@@ -140,8 +140,8 @@ const high_level = client.HighLevel()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `highlevel` | ``$OBJECT`` | No |  |
-| `metadata` | ``$OBJECT`` | No |  |
+| `highlevel` | `Record<string, any>` | No |  |
+| `metadata` | `Record<string, any>` | No |  |
 
 ### Operations
 
@@ -150,7 +150,7 @@ const high_level = client.HighLevel()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.HighLevel().load({ id: 'high_level_id' })
+const result = await client.HighLevel().load()
 ```
 
 ### Common Methods
@@ -191,10 +191,10 @@ const low_level = client.LowLevel()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `lowlevel` | ``$OBJECT`` | No |  |
-| `metadata` | ``$OBJECT`` | No |  |
-| `rhythm` | ``$OBJECT`` | No |  |
-| `tonal` | ``$OBJECT`` | No |  |
+| `lowlevel` | `Record<string, any>` | No |  |
+| `metadata` | `Record<string, any>` | No |  |
+| `rhythm` | `Record<string, any>` | No |  |
+| `tonal` | `Record<string, any>` | No |  |
 
 ### Operations
 
@@ -203,7 +203,7 @@ const low_level = client.LowLevel()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.LowLevel().load({ id: 'low_level_id' })
+const result = await client.LowLevel().load()
 ```
 
 ### Common Methods
@@ -244,8 +244,8 @@ const metadata = client.Metadata()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | ``$INTEGER`` | No |  |
-| `mbid` | ``$STRING`` | No |  |
+| `count` | `number` | No |  |
+| `mbid` | `string` | No |  |
 
 ### Operations
 
@@ -254,7 +254,7 @@ const metadata = client.Metadata()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Metadata().load({ id: 'metadata_id' })
+const result = await client.Metadata().load()
 ```
 
 ### Common Methods

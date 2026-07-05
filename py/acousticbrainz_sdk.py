@@ -221,19 +221,19 @@ class AcousticbrainzSDK:
 
 
     def HighLevel(self, data=None) -> "HighLevelEntity":
-        """Entity factory: client.HighLevel().list({}) / client.HighLevel().load({"id": ...})."""
+        """Entity factory: client.HighLevel().list() / client.HighLevel().load({"id": ...})."""
         from entity.high_level_entity import HighLevelEntity
         return HighLevelEntity(self, data)
 
 
     def LowLevel(self, data=None) -> "LowLevelEntity":
-        """Entity factory: client.LowLevel().list({}) / client.LowLevel().load({"id": ...})."""
+        """Entity factory: client.LowLevel().list() / client.LowLevel().load({"id": ...})."""
         from entity.low_level_entity import LowLevelEntity
         return LowLevelEntity(self, data)
 
 
     def Metadata(self, data=None) -> "MetadataEntity":
-        """Entity factory: client.Metadata().list({}) / client.Metadata().load({"id": ...})."""
+        """Entity factory: client.Metadata().list() / client.Metadata().load({"id": ...})."""
         from entity.metadata_entity import MetadataEntity
         return MetadataEntity(self, data)
 

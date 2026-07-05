@@ -8,7 +8,7 @@ Complete API reference for the Acousticbrainz Ruby SDK.
 ### Constructor
 
 ```ruby
-require_relative 'acousticbrainz_sdk'
+require_relative 'Acousticbrainz_sdk'
 
 client = AcousticbrainzSDK.new(options)
 ```
@@ -101,8 +101,8 @@ high_level = client.HighLevel
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `highlevel` | ``$OBJECT`` | No |  |
-| `metadata` | ``$OBJECT`` | No |  |
+| `highlevel` | `Hash` | No |  |
+| `metadata` | `Hash` | No |  |
 
 ### Operations
 
@@ -111,7 +111,7 @@ high_level = client.HighLevel
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.HighLevel.load({ "id" => "high_level_id" })
+result = client.HighLevel.load()
 ```
 
 ### Common Methods
@@ -154,10 +154,10 @@ low_level = client.LowLevel
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `lowlevel` | ``$OBJECT`` | No |  |
-| `metadata` | ``$OBJECT`` | No |  |
-| `rhythm` | ``$OBJECT`` | No |  |
-| `tonal` | ``$OBJECT`` | No |  |
+| `lowlevel` | `Hash` | No |  |
+| `metadata` | `Hash` | No |  |
+| `rhythm` | `Hash` | No |  |
+| `tonal` | `Hash` | No |  |
 
 ### Operations
 
@@ -166,7 +166,7 @@ low_level = client.LowLevel
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.LowLevel.load({ "id" => "low_level_id" })
+result = client.LowLevel.load()
 ```
 
 ### Common Methods
@@ -209,8 +209,8 @@ metadata = client.Metadata
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | ``$INTEGER`` | No |  |
-| `mbid` | ``$STRING`` | No |  |
+| `count` | `Integer` | No |  |
+| `mbid` | `String` | No |  |
 
 ### Operations
 
@@ -219,7 +219,7 @@ metadata = client.Metadata
 Load a single entity matching the given criteria. Raises on error.
 
 ```ruby
-result = client.Metadata.load({ "id" => "metadata_id" })
+result = client.Metadata.load()
 ```
 
 ### Common Methods

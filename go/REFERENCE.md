@@ -105,8 +105,8 @@ high_level := client.HighLevel(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `highlevel` | ``$OBJECT`` | No |  |
-| `metadata` | ``$OBJECT`` | No |  |
+| `highlevel` | `map[string]any` | No |  |
+| `metadata` | `map[string]any` | No |  |
 
 ### Operations
 
@@ -115,7 +115,7 @@ high_level := client.HighLevel(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.HighLevel(nil).Load(map[string]any{"id": "high_level_id"}, nil)
+result, err := client.HighLevel(nil).Load(nil, nil)
 ```
 
 ### Common Methods
@@ -152,10 +152,10 @@ low_level := client.LowLevel(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `lowlevel` | ``$OBJECT`` | No |  |
-| `metadata` | ``$OBJECT`` | No |  |
-| `rhythm` | ``$OBJECT`` | No |  |
-| `tonal` | ``$OBJECT`` | No |  |
+| `lowlevel` | `map[string]any` | No |  |
+| `metadata` | `map[string]any` | No |  |
+| `rhythm` | `map[string]any` | No |  |
+| `tonal` | `map[string]any` | No |  |
 
 ### Operations
 
@@ -164,7 +164,7 @@ low_level := client.LowLevel(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.LowLevel(nil).Load(map[string]any{"id": "low_level_id"}, nil)
+result, err := client.LowLevel(nil).Load(nil, nil)
 ```
 
 ### Common Methods
@@ -201,8 +201,8 @@ metadata := client.Metadata(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | ``$INTEGER`` | No |  |
-| `mbid` | ``$STRING`` | No |  |
+| `count` | `int` | No |  |
+| `mbid` | `string` | No |  |
 
 ### Operations
 
@@ -211,7 +211,7 @@ metadata := client.Metadata(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.Metadata(nil).Load(map[string]any{"id": "metadata_id"}, nil)
+result, err := client.Metadata(nil).Load(nil, nil)
 ```
 
 ### Common Methods
