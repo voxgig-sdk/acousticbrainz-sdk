@@ -35,7 +35,7 @@ client = AcousticbrainzSDK.new
 ```ruby
 begin
   # load returns the bare HighLevel record (raises on error).
-  highlevel = client.HighLevel.load()
+  highlevel = client.HighLevel.load({ "mbid" => "example_mbid" })
   puts highlevel
 rescue => err
   warn "load failed: #{err}"
@@ -293,7 +293,7 @@ Create an instance: `high_level = client.HighLevel`
 
 ```ruby
 # load returns the bare HighLevel record (raises on error).
-high_level = client.HighLevel.load()
+high_level = client.HighLevel.load({ "mbid" => "mbid" })
 ```
 
 
@@ -320,7 +320,7 @@ Create an instance: `low_level = client.LowLevel`
 
 ```ruby
 # load returns the bare LowLevel record (raises on error).
-low_level = client.LowLevel.load()
+low_level = client.LowLevel.load({ "mbid" => "mbid" })
 ```
 
 
@@ -345,7 +345,7 @@ Create an instance: `metadata = client.Metadata`
 
 ```ruby
 # load returns the bare Metadata record (raises on error).
-metadata = client.Metadata.load()
+metadata = client.Metadata.load({ "mbid" => "mbid" })
 ```
 
 

@@ -6,9 +6,6 @@
     },
     "kit": {
       "config": {
-        "auth": {
-          "prefix": "Bearer"
-        },
         "docs_order": [
           "ts",
           "py",
@@ -446,14 +443,17 @@
           "url": "https://acousticbrainz.org"
         },
         "description": "The AcousticBrainz API provides access to music feature data, including low-level and high-level semantic descriptors derived from audio files. It allows users to retrieve information about musical characteristics such as rhythm, tonality, and mood, which can be utilized in music analysis and classification tasks.",
+        "meta_source": "https://www.freepublicapis.com",
         "servers": [
           {
             "description": "Production server",
             "url": "https://acousticbrainz.org/api/v1"
           }
         ],
+        "summary": "The AcousticBrainz API provides access to music feature data, including low-level and high-level semantic descriptors derived from audio files.",
         "title": "AcousticBrainz API",
-        "version": "1.0.0"
+        "version": "1.0.0",
+        "website": "https://acousticbrainz.org"
       },
       "option": {},
       "target": {
@@ -506,6 +506,9 @@
           },
           "name": "go-cli",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },
@@ -556,6 +559,9 @@
           },
           "name": "go-mcp",
           "phase": {
+            "agentguide": {
+              "active": false
+            },
             "entity": {
               "active": false
             },

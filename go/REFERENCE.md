@@ -98,7 +98,8 @@ same parameters as `Direct()`.
 ## HighLevelEntity
 
 ```go
-high_level := client.HighLevel(nil)
+highLevel := client.HighLevel(nil)
+fmt.Println(highLevel.GetName()) // "high_level"
 ```
 
 ### Fields
@@ -115,7 +116,11 @@ high_level := client.HighLevel(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.HighLevel(nil).Load(nil, nil)
+result, err := client.HighLevel(nil).Load(map[string]any{"mbid": "mbid"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -145,7 +150,8 @@ Return the entity name.
 ## LowLevelEntity
 
 ```go
-low_level := client.LowLevel(nil)
+lowLevel := client.LowLevel(nil)
+fmt.Println(lowLevel.GetName()) // "low_level"
 ```
 
 ### Fields
@@ -164,7 +170,11 @@ low_level := client.LowLevel(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.LowLevel(nil).Load(nil, nil)
+result, err := client.LowLevel(nil).Load(map[string]any{"mbid": "mbid"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods
@@ -195,6 +205,7 @@ Return the entity name.
 
 ```go
 metadata := client.Metadata(nil)
+fmt.Println(metadata.GetName()) // "metadata"
 ```
 
 ### Fields
@@ -211,7 +222,11 @@ metadata := client.Metadata(nil)
 Load a single entity matching the given criteria.
 
 ```go
-result, err := client.Metadata(nil).Load(nil, nil)
+result, err := client.Metadata(nil).Load(map[string]any{"mbid": "mbid"}, nil)
+if err != nil {
+    panic(err)
+}
+fmt.Println(result)
 ```
 
 ### Common Methods

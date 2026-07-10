@@ -36,7 +36,7 @@ $client = new AcousticbrainzSDK();
 ```php
 try {
     // load() returns the bare HighLevel record (throws on error).
-    $highlevel = $client->HighLevel()->load();
+    $highlevel = $client->HighLevel()->load(["mbid" => "example_mbid"]);
     print_r($highlevel);
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
@@ -303,7 +303,7 @@ Create an instance: `$high_level = $client->HighLevel();`
 
 ```php
 // load() returns the bare HighLevel record (throws on error).
-$high_level = $client->HighLevel()->load();
+$high_level = $client->HighLevel()->load(["mbid" => "mbid"]);
 ```
 
 
@@ -330,7 +330,7 @@ Create an instance: `$low_level = $client->LowLevel();`
 
 ```php
 // load() returns the bare LowLevel record (throws on error).
-$low_level = $client->LowLevel()->load();
+$low_level = $client->LowLevel()->load(["mbid" => "mbid"]);
 ```
 
 
@@ -355,7 +355,7 @@ Create an instance: `$metadata = $client->Metadata();`
 
 ```php
 // load() returns the bare Metadata record (throws on error).
-$metadata = $client->Metadata()->load();
+$metadata = $client->Metadata()->load(["mbid" => "mbid"]);
 ```
 
 

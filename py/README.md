@@ -42,7 +42,7 @@ client = AcousticbrainzSDK()
 
 ```python
 try:
-    highlevel = client.HighLevel().load()
+    highlevel = client.HighLevel().load({"mbid": "example_mbid"})
     print(highlevel)
 except Exception as err:
     print(f"load failed: {err}")
@@ -298,7 +298,7 @@ Create an instance: `high_level = client.HighLevel()`
 #### Example: Load
 
 ```python
-high_level = client.HighLevel().load()
+high_level = client.HighLevel().load({"mbid": "mbid"})
 ```
 
 
@@ -324,7 +324,7 @@ Create an instance: `low_level = client.LowLevel()`
 #### Example: Load
 
 ```python
-low_level = client.LowLevel().load()
+low_level = client.LowLevel().load({"mbid": "mbid"})
 ```
 
 
@@ -348,7 +348,7 @@ Create an instance: `metadata = client.Metadata()`
 #### Example: Load
 
 ```python
-metadata = client.Metadata().load()
+metadata = client.Metadata().load({"mbid": "mbid"})
 ```
 
 

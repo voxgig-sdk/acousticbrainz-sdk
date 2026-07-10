@@ -36,7 +36,7 @@ local client = sdk.new()
 ### 3. Load a highlevel
 
 ```lua
-local highlevel, err = client:HighLevel():load()
+local highlevel, err = client:HighLevel():load({ mbid = "example_mbid" })
 if err then error(err) end
 print(highlevel)
 ```
@@ -283,7 +283,7 @@ Create an instance: `local high_level = client:HighLevel(nil)`
 #### Example: Load
 
 ```lua
-local high_level, err = client:HighLevel():load()
+local high_level, err = client:HighLevel():load({ mbid = "mbid" })
 ```
 
 
@@ -309,7 +309,7 @@ Create an instance: `local low_level = client:LowLevel(nil)`
 #### Example: Load
 
 ```lua
-local low_level, err = client:LowLevel():load()
+local low_level, err = client:LowLevel():load({ mbid = "mbid" })
 ```
 
 
@@ -333,7 +333,7 @@ Create an instance: `local metadata = client:Metadata(nil)`
 #### Example: Load
 
 ```lua
-local metadata, err = client:Metadata():load()
+local metadata, err = client:Metadata():load({ mbid = "mbid" })
 ```
 
 

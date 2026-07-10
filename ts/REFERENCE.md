@@ -150,7 +150,7 @@ const high_level = client.HighLevel()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.HighLevel().load()
+const result = await client.HighLevel().load({ mbid: 'mbid' })
 ```
 
 ### Common Methods
@@ -203,7 +203,7 @@ const low_level = client.LowLevel()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.LowLevel().load()
+const result = await client.LowLevel().load({ mbid: 'mbid' })
 ```
 
 ### Common Methods
@@ -254,7 +254,7 @@ const metadata = client.Metadata()
 Load a single entity matching the given criteria.
 
 ```ts
-const result = await client.Metadata().load()
+const result = await client.Metadata().load({ mbid: 'mbid' })
 ```
 
 ### Common Methods

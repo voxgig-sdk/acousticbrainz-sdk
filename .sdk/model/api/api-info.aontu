@@ -16,9 +16,9 @@ main: {
           url: "https://acousticbrainz.org/api/v1"
         }
       ]
+      summary: "The AcousticBrainz API provides access to music feature data, including low-level and high-level semantic descriptors derived from audio files."
       title: "AcousticBrainz API"
       version: "1.0.0"
+      website: "https://acousticbrainz.org"
     }
   }
-}
-

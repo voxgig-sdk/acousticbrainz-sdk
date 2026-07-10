@@ -108,7 +108,7 @@ local high_level = client:HighLevel(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:HighLevel():load()
+local result, err = client:HighLevel():load({ mbid = "mbid" })
 ```
 
 ### Common Methods
@@ -163,7 +163,7 @@ local low_level = client:LowLevel(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:LowLevel():load()
+local result, err = client:LowLevel():load({ mbid = "mbid" })
 ```
 
 ### Common Methods
@@ -216,7 +216,7 @@ local metadata = client:Metadata(nil)
 Load a single entity matching the given criteria.
 
 ```lua
-local result, err = client:Metadata():load()
+local result, err = client:Metadata():load({ mbid = "mbid" })
 ```
 
 ### Common Methods

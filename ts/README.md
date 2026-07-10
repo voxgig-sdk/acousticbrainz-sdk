@@ -39,7 +39,7 @@ const client = new AcousticbrainzSDK()
 
 ```ts
 try {
-  const highlevel = await client.HighLevel().load()
+  const highlevel = await client.HighLevel().load({ mbid: 'example_mbid' })
   console.log(highlevel)
 } catch (err) {
   console.error('load failed:', err)
@@ -342,7 +342,7 @@ Create an instance: `const high_level = client.HighLevel()`
 #### Example: Load
 
 ```ts
-const high_level = await client.HighLevel().load()
+const high_level = await client.HighLevel().load({ mbid: 'mbid' })
 ```
 
 
@@ -368,7 +368,7 @@ Create an instance: `const low_level = client.LowLevel()`
 #### Example: Load
 
 ```ts
-const low_level = await client.LowLevel().load()
+const low_level = await client.LowLevel().load({ mbid: 'mbid' })
 ```
 
 
@@ -392,7 +392,7 @@ Create an instance: `const metadata = client.Metadata()`
 #### Example: Load
 
 ```ts
-const metadata = await client.Metadata().load()
+const metadata = await client.Metadata().load({ mbid: 'mbid' })
 ```
 
 

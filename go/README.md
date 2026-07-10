@@ -50,12 +50,12 @@ import (
 func main() {
     client := sdk.New()
 
-    // Load a single highlevel — the value is the loaded record.
-    highlevel, err := client.HighLevel(nil).Load(nil, nil)
+    // Load a single highLevel — the value is the loaded record.
+    highLevel, err := client.HighLevel(nil).Load(map[string]any{"mbid": "example_mbid"}, nil)
     if err != nil {
         panic(err)
     }
-    fmt.Println(highlevel)
+    fmt.Println(highLevel)
 }
 ```
 
@@ -135,13 +135,13 @@ Create a mock client for unit testing — no server required:
 ```go
 client := sdk.Test()
 
-highlevel, err := client.HighLevel(nil).Load(
+highLevel, err := client.HighLevel(nil).Load(
     nil, nil,
 )
 if err != nil {
     panic(err)
 }
-fmt.Println(highlevel) // the returned mock data
+fmt.Println(highLevel) // the returned mock data
 ```
 
 ### Use a custom fetch function
@@ -247,9 +247,9 @@ Check `err` first, then use the value directly (or the typed
 `...Typed` variants, which return the entity's model struct and a typed
 slice):
 
-    highlevel, err := client.HighLevel(nil).Load(nil, nil)
+    highLevel, err := client.HighLevel(nil).Load(nil, nil)
     if err != nil { /* handle */ }
-    // highlevel is the returned record
+    // highLevel is the returned record
 
 Only `Direct()` returns a response envelope — a `map[string]any` with
 `"ok"`, `"status"`, `"headers"`, and `"data"` keys.
@@ -298,7 +298,7 @@ API path: `/{mbid}/count`
 
 ### HighLevel
 
-Create an instance: `high_level := client.HighLevel(nil)`
+Create an instance: `highLevel := client.HighLevel(nil)`
 
 #### Operations
 
@@ -316,17 +316,17 @@ Create an instance: `high_level := client.HighLevel(nil)`
 #### Example: Load
 
 ```go
-high_level, err := client.HighLevel(nil).Load(nil, nil)
+highLevel, err := client.HighLevel(nil).Load(map[string]any{"mbid": "mbid"}, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(high_level) // the loaded record
+fmt.Println(highLevel) // the loaded record
 ```
 
 
 ### LowLevel
 
-Create an instance: `low_level := client.LowLevel(nil)`
+Create an instance: `lowLevel := client.LowLevel(nil)`
 
 #### Operations
 
@@ -346,11 +346,11 @@ Create an instance: `low_level := client.LowLevel(nil)`
 #### Example: Load
 
 ```go
-low_level, err := client.LowLevel(nil).Load(nil, nil)
+lowLevel, err := client.LowLevel(nil).Load(map[string]any{"mbid": "mbid"}, nil)
 if err != nil {
     panic(err)
 }
-fmt.Println(low_level) // the loaded record
+fmt.Println(lowLevel) // the loaded record
 ```
 
 
@@ -374,7 +374,7 @@ Create an instance: `metadata := client.Metadata(nil)`
 #### Example: Load
 
 ```go
-metadata, err := client.Metadata(nil).Load(nil, nil)
+metadata, err := client.Metadata(nil).Load(map[string]any{"mbid": "mbid"}, nil)
 if err != nil {
     panic(err)
 }

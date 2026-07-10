@@ -110,7 +110,7 @@ $high_level = $client->HighLevel();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->HighLevel()->load();
+$result = $client->HighLevel()->load(["mbid" => "mbid"]);
 ```
 
 ### Common Methods
@@ -165,7 +165,7 @@ $low_level = $client->LowLevel();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->LowLevel()->load();
+$result = $client->LowLevel()->load(["mbid" => "mbid"]);
 ```
 
 ### Common Methods
@@ -218,7 +218,7 @@ $metadata = $client->Metadata();
 Load a single entity matching the given criteria. Throws on error.
 
 ```php
-$result = $client->Metadata()->load();
+$result = $client->Metadata()->load(["mbid" => "mbid"]);
 ```
 
 ### Common Methods
