@@ -1,4 +1,4 @@
--- ProjectName SDK exists test
+-- Acousticbrainz SDK exists test
 
 local sdk = require("acousticbrainz_sdk")
 
