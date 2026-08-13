@@ -23,6 +23,7 @@ require_once __DIR__ . '/MakeUrl.php';
 require_once __DIR__ . '/Param.php';
 require_once __DIR__ . '/PrepareAuth.php';
 require_once __DIR__ . '/PrepareBody.php';
+require_once __DIR__ . '/Graphql.php';
 require_once __DIR__ . '/PrepareHeaders.php';
 require_once __DIR__ . '/PrepareMethod.php';
 require_once __DIR__ . '/PrepareParams.php';
@@ -59,6 +60,8 @@ AcousticbrainzUtility::setRegistrar(function (AcousticbrainzUtility $u): void {
     $u->prepare_params = [AcousticbrainzPrepareParams::class, 'call'];
     $u->prepare_path = [AcousticbrainzPreparePath::class, 'call'];
     $u->prepare_query = [AcousticbrainzPrepareQuery::class, 'call'];
+    $u->graphql_body = [AcousticbrainzGraphql::class, 'body'];
+    $u->graphql_errors = [AcousticbrainzGraphql::class, 'errors'];
     $u->result_basic = [AcousticbrainzResultBasic::class, 'call'];
     $u->result_body = [AcousticbrainzResultBody::class, 'call'];
     $u->result_headers = [AcousticbrainzResultHeaders::class, 'call'];

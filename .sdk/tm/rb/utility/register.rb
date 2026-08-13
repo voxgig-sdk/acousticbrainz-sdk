@@ -24,6 +24,7 @@ require_relative 'prepare_method'
 require_relative 'prepare_params'
 require_relative 'prepare_path'
 require_relative 'prepare_query'
+require_relative 'graphql'
 require_relative 'result_basic'
 require_relative 'result_body'
 require_relative 'result_headers'
@@ -55,6 +56,8 @@ AcousticbrainzUtility.registrar = ->(u) {
   u.prepare_params = AcousticbrainzUtilities::PrepareParams
   u.prepare_path = AcousticbrainzUtilities::PreparePath
   u.prepare_query = AcousticbrainzUtilities::PrepareQuery
+  u.graphql_body = AcousticbrainzUtilities::GraphqlBody
+  u.graphql_errors = AcousticbrainzUtilities::GraphqlErrors
   u.result_basic = AcousticbrainzUtilities::ResultBasic
   u.result_body = AcousticbrainzUtilities::ResultBody
   u.result_headers = AcousticbrainzUtilities::ResultHeaders

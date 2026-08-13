@@ -53,7 +53,7 @@ Entity operations reject on failure, so wrap them in `try` / `catch`:
 
 ```ts
 try {
-  const highlevel = await client.HighLevel().load()
+  const highlevel = await client.HighLevel().load({ mbid: "example" })
   console.log(highlevel)
 } catch (err) {
   console.error('load failed:', err)
@@ -120,8 +120,9 @@ Create a mock client for unit testing — no server required:
 ```ts
 const client = AcousticbrainzSDK.test()
 
-const highlevel = await client.HighLevel().load()
-// highlevel is a bare entity populated with mock response data
+const highlevel = await client.HighLevel().load({ mbid: 'example_mbid' })
+// highlevel is the entity, populated with mock response data
+// — call highlevel.data() for the record itself
 console.log(highlevel)
 ```
 
@@ -140,7 +141,7 @@ Entity instances remember their last match and data:
 const entity = client.HighLevel()
 
 // First call runs the operation and stores its result
-await entity.load()
+await entity.load({ mbid: 'example_mbid' })
 
 // Subsequent calls reuse the stored state
 const data = entity.data()
@@ -466,7 +467,7 @@ calls on the same instance can rely on this state.
 
 ```ts
 const highlevel = client.HighLevel()
-await highlevel.load()
+await highlevel.load({ mbid: "example" })
 
 // highlevel.data() now returns the highlevel data from the last `load`
 // highlevel.match() returns the last match criteria

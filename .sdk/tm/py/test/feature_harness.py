@@ -14,12 +14,12 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from config import make_config
-from features import _make_feature
-from core.control import AcousticbrainzControl
-from core.error import AcousticbrainzError
-from core.result import AcousticbrainzResult
-from core.spec import AcousticbrainzSpec
+from projectname_sdk.config import make_config
+from projectname_sdk.features import _make_feature
+from projectname_sdk.core.control import AcousticbrainzControl
+from projectname_sdk.core.error import AcousticbrainzError
+from projectname_sdk.core.result import AcousticbrainzResult
+from projectname_sdk.core.spec import AcousticbrainzSpec
 
 
 # True when this SDK was generated with the named feature.

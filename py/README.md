@@ -38,7 +38,7 @@ client = AcousticbrainzSDK()
 
 ### 3. Load a highlevel
 
-`load()` returns the bare record (a `dict`) and raises on error.
+`load()` returns the ENTITY — call data_get() for the record — and raises on error.
 
 ```python
 try:
@@ -55,7 +55,7 @@ Entity operations raise on failure, so wrap them in `try` / `except`:
 
 ```python
 try:
-    highlevel = client.HighLevel().load()
+    highlevel = client.HighLevel().load({"mbid": "example"})
     print(highlevel)
 except Exception as err:
     print(f"load failed: {err}")
@@ -122,8 +122,9 @@ Create a mock client for unit testing — no server required:
 ```python
 client = AcousticbrainzSDK.test()
 
-# Entity ops return the bare record and raise on error.
-highlevel = client.HighLevel().load()
+# Entity ops return the ENTITY and raises on error;
+# call data_get() for the record.
+highlevel = client.HighLevel().load({"mbid": "example"})
 # highlevel contains the mock response record
 ```
 
@@ -220,7 +221,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (a `dict` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (a `dict` for single-entity
 ops, a `list` for `list`) and raise on error. Wrap calls in
 `try`/`except` to handle failures.
 
@@ -428,7 +429,7 @@ stores the returned data and match criteria internally.
 
 ```python
 highlevel = client.HighLevel()
-highlevel.load()
+highlevel.load({"mbid": "example"})
 
 # highlevel.data_get() now returns the highlevel data from the last load
 # highlevel.match_get() returns the last match criteria

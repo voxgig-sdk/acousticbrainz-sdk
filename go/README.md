@@ -66,7 +66,7 @@ Every entity operation returns `(value, error)`. Check `err` before
 using the value — there is no exception to catch:
 
 ```go
-highlevel, err := client.HighLevel(nil).Load(nil, nil)
+highlevel, err := client.HighLevel(nil).Load(map[string]any{"mbid": "example"}, nil)
 if err != nil {
     // handle err
     return
@@ -136,7 +136,7 @@ Create a mock client for unit testing — no server required:
 client := sdk.Test()
 
 highLevel, err := client.HighLevel(nil).Load(
-    nil, nil,
+    map[string]any{"mbid": "example"}, nil,
 )
 if err != nil {
     panic(err)
@@ -456,7 +456,7 @@ stores the returned data and match criteria internally.
 
 ```go
 highlevel := client.HighLevel(nil)
-highlevel.Load(nil, nil)
+highlevel.Load(map[string]any{"mbid": "example"}, nil)
 
 // highlevel.Data() now returns the highlevel data from the last load
 // highlevel.Match() returns the last match criteria

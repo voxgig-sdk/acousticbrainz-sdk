@@ -1,4 +1,4 @@
-# ProjectName SDK exists test
+# Acousticbrainz SDK exists test
 
 import pytest
 from acousticbrainz_sdk import AcousticbrainzSDK

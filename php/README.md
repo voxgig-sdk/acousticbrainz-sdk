@@ -35,7 +35,7 @@ $client = new AcousticbrainzSDK();
 
 ```php
 try {
-    // load() returns the bare HighLevel record (throws on error).
+    // load() returns the ENTITY — call data_get() for the HighLevel record (throws on error).
     $highlevel = $client->HighLevel()->load(["mbid" => "example_mbid"]);
     print_r($highlevel);
 } catch (\Throwable $err) {
@@ -51,7 +51,7 @@ Entity operations throw a `\Throwable` on failure, so wrap them in
 
 ```php
 try {
-    $highlevel = $client->HighLevel()->load();
+    $highlevel = $client->HighLevel()->load(["mbid" => "example"]);
 } catch (\Throwable $err) {
     echo "Error: " . $err->getMessage();
 }
@@ -123,8 +123,9 @@ Create a mock client for unit testing — no server required:
 ```php
 $client = AcousticbrainzSDK::test();
 
-// Entity ops return the bare mock record (throws on error).
-$highlevel = $client->HighLevel()->load();
+// Entity ops return the ENTITY (throws on error);
+// call data_get() for the mock record.
+$highlevel = $client->HighLevel()->load(["mbid" => "example"]);
 print_r($highlevel);
 ```
 
@@ -224,7 +225,7 @@ All entities share the same interface.
 
 ### Result shape
 
-Entity operations return the bare result data (an `array` for single-entity
+Entity operations return the ENTITY (call data_get() for the record) (an `array` for single-entity
 ops, a `list` for `list`) and throw on error. Wrap calls in
 `try`/`catch` to handle failures.
 
@@ -302,7 +303,7 @@ Create an instance: `$high_level = $client->HighLevel();`
 #### Example: Load
 
 ```php
-// load() returns the bare HighLevel record (throws on error).
+// load() returns the ENTITY — call data_get() for the HighLevel record (throws on error).
 $high_level = $client->HighLevel()->load(["mbid" => "mbid"]);
 ```
 
@@ -329,7 +330,7 @@ Create an instance: `$low_level = $client->LowLevel();`
 #### Example: Load
 
 ```php
-// load() returns the bare LowLevel record (throws on error).
+// load() returns the ENTITY — call data_get() for the LowLevel record (throws on error).
 $low_level = $client->LowLevel()->load(["mbid" => "mbid"]);
 ```
 
@@ -354,7 +355,7 @@ Create an instance: `$metadata = $client->Metadata();`
 #### Example: Load
 
 ```php
-// load() returns the bare Metadata record (throws on error).
+// load() returns the ENTITY — call data_get() for the Metadata record (throws on error).
 $metadata = $client->Metadata()->load(["mbid" => "mbid"]);
 ```
 
@@ -436,7 +437,7 @@ stores the returned data and match criteria internally.
 
 ```php
 $highlevel = $client->HighLevel();
-$highlevel->load();
+$highlevel->load(["mbid" => "example"]);
 
 // $highlevel->data_get() now returns the highlevel data from the last load
 // $highlevel->match_get() returns the last match criteria

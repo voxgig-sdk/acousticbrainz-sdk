@@ -48,7 +48,7 @@ Entity operations return `(value, err)`. Check `err` before using
 the value:
 
 ```lua
-local highlevel, err = client:HighLevel():load()
+local highlevel, err = client:HighLevel():load({ mbid = "example" })
 if err then error(err) end
 ```
 
@@ -106,7 +106,7 @@ Create a mock client for unit testing — no server required:
 ```lua
 local client = sdk.test()
 
-local result, err = client:HighLevel():load()
+local result, err = client:HighLevel():load({ mbid = "example" })
 -- result is the returned data; err is set on failure
 ```
 
@@ -414,7 +414,7 @@ stores the returned data and match criteria internally.
 
 ```lua
 local highlevel = client:HighLevel()
-highlevel:load()
+highlevel:load({ mbid = "example" })
 
 -- highlevel:data_get() now returns the highlevel data from the last load
 -- highlevel:match_get() returns the last match criteria

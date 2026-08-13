@@ -80,6 +80,7 @@ class AcousticbrainzConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/{mbid}/high-level',
                   'parts' => [
@@ -170,6 +171,7 @@ class AcousticbrainzConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/{mbid}/low-level',
                   'parts' => [
@@ -235,6 +237,7 @@ class AcousticbrainzConfig
                       ],
                     ],
                   ],
+                  'kind' => 'http',
                   'method' => 'GET',
                   'orig' => '/{mbid}/count',
                   'parts' => [

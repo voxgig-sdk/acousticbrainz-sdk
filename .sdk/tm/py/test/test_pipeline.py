@@ -16,11 +16,11 @@
 import pytest
 
 from projectname_sdk import AcousticbrainzSDK
-from core.error import AcousticbrainzError
-from core.result import AcousticbrainzResult
-from core.response import AcousticbrainzResponse
-from core.spec import AcousticbrainzSpec
-from feature.base_feature import AcousticbrainzBaseFeature
+from projectname_sdk.core.error import AcousticbrainzError
+from projectname_sdk.core.result import AcousticbrainzResult
+from projectname_sdk.core.response import AcousticbrainzResponse
+from projectname_sdk.core.spec import AcousticbrainzSpec
+from projectname_sdk.feature.base_feature import AcousticbrainzBaseFeature
 
 
 def _client():

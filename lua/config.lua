@@ -74,6 +74,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/{mbid}/high-level",
                 ["parts"] = {
@@ -164,6 +165,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/{mbid}/low-level",
                 ["parts"] = {
@@ -229,6 +231,7 @@ local function make_config()
                     },
                   },
                 },
+                ["kind"] = "http",
                 ["method"] = "GET",
                 ["orig"] = "/{mbid}/count",
                 ["parts"] = {

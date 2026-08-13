@@ -34,7 +34,7 @@ client = AcousticbrainzSDK.new
 
 ```ruby
 begin
-  # load returns the bare HighLevel record (raises on error).
+  # load returns the ENTITY — call data_get for the HighLevel record (raises on error).
   highlevel = client.HighLevel.load({ "mbid" => "example_mbid" })
   puts highlevel
 rescue => err
@@ -49,7 +49,7 @@ Entity operations raise on failure, so rescue them:
 
 ```ruby
 begin
-  highlevel = client.HighLevel.load()
+  highlevel = client.HighLevel.load({ "mbid" => "example" })
 rescue => err
   warn "load failed: #{err}"
 end
@@ -117,8 +117,9 @@ Create a mock client for unit testing — no server required:
 ```ruby
 client = AcousticbrainzSDK.test
 
-# Entity ops return the bare mock record (raises on error).
-highlevel = client.HighLevel.load()
+# Entity ops return the ENTITY (raises on error);
+# call data_get for the mock record.
+highlevel = client.HighLevel.load({ "mbid" => "example" })
 puts highlevel
 ```
 
@@ -292,7 +293,7 @@ Create an instance: `high_level = client.HighLevel`
 #### Example: Load
 
 ```ruby
-# load returns the bare HighLevel record (raises on error).
+# load returns the ENTITY — call data_get for the HighLevel record (raises on error).
 high_level = client.HighLevel.load({ "mbid" => "mbid" })
 ```
 
@@ -319,7 +320,7 @@ Create an instance: `low_level = client.LowLevel`
 #### Example: Load
 
 ```ruby
-# load returns the bare LowLevel record (raises on error).
+# load returns the ENTITY — call data_get for the LowLevel record (raises on error).
 low_level = client.LowLevel.load({ "mbid" => "mbid" })
 ```
 
@@ -344,7 +345,7 @@ Create an instance: `metadata = client.Metadata`
 #### Example: Load
 
 ```ruby
-# load returns the bare Metadata record (raises on error).
+# load returns the ENTITY — call data_get for the Metadata record (raises on error).
 metadata = client.Metadata.load({ "mbid" => "mbid" })
 ```
 
@@ -426,7 +427,7 @@ stores the returned data and match criteria internally.
 
 ```ruby
 highlevel = client.HighLevel
-highlevel.load()
+highlevel.load({ "mbid" => "example" })
 
 # highlevel.data_get now returns the highlevel data from the last load
 # highlevel.match_get returns the last match criteria

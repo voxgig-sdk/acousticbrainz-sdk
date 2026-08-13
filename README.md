@@ -23,7 +23,7 @@ support (`load`):
 
 ```ts
 const client = new AcousticbrainzSDK()
-const highlevel = await client.HighLevel().load()
+const highlevel = await client.HighLevel().load({ mbid: "example" })
 ```
 
 Thinking in entities keeps the mental model small — for people and AI agents alike —
@@ -38,9 +38,18 @@ network, and no credentials:
 ### TypeScript
 
 ```ts
-const client = AcousticbrainzSDK.test()
+// The offline mock starts EMPTY — seed it with the records the test needs.
+// Shape: { entity: { <entity-name>: { <id>: <record> } } }
+const client = AcousticbrainzSDK.test({
+  entity: {
+    high_level: {
+      test01: { id: 'test01' },
+    },
+  },
+})
 const highlevel = await client.HighLevel().load({ mbid: 'example_mbid' })
-// highlevel is a bare HighLevel populated with mock data
+// highlevel is the HighLevel entity, populated with mock data
+// — call highlevel.data() for the record itself
 console.log(highlevel)
 ```
 
@@ -184,7 +193,7 @@ require_once 'acousticbrainz_sdk.php';
 $client = new AcousticbrainzSDK();
 
 
-// Load a specific highlevel (returns the bare record; throws on error)
+// Load a specific highlevel (returns the ENTITY; call data_get() for the record; throws on error)
 $highlevel = $client->HighLevel()->load(["mbid" => "example_mbid"]);
 print_r($highlevel);
 ```
@@ -212,7 +221,7 @@ require_relative "Acousticbrainz_sdk"
 client = AcousticbrainzSDK.new
 
 
-# Load a specific highlevel (returns the bare record; raises on error)
+# Load a specific highlevel (returns the ENTITY; call data_get for the record)
 highlevel = client.HighLevel.load({ "mbid" => "example_mbid" })
 puts highlevel
 ```
@@ -346,6 +355,9 @@ Pass custom features via the `extend` option at construction time.
 
 This SDK is generated from the upstream OpenAPI specification. It is an
 unofficial client and is not affiliated with the API provider.
+
+The OpenAPI spec(s) this SDK was generated from are kept in the
+[`.sdk/def/`](.sdk/def/) folder.
 
 - Upstream API: [https://acousticbrainz.org](https://acousticbrainz.org)
 

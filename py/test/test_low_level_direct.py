@@ -3,9 +3,9 @@
 import json
 import pytest
 
-from utility.voxgig_struct import voxgig_struct as vs
+from acousticbrainz_sdk.utility.voxgig_struct import voxgig_struct as vs
 from acousticbrainz_sdk import AcousticbrainzSDK
-from core import helpers
+from acousticbrainz_sdk.core import helpers
 from test import runner
 
 

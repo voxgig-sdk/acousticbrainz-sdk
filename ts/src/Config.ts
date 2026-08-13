@@ -21,7 +21,7 @@ class Config {
 
 
   main = {
-    name: 'ProjectName',
+    name: 'Acousticbrainz',
   }
 
 
@@ -108,6 +108,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/{mbid}/high-level",
               "parts": [
@@ -198,6 +199,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/{mbid}/low-level",
               "parts": [
@@ -263,6 +265,7 @@ class Config {
                   }
                 ]
               },
+              "kind": "http",
               "method": "GET",
               "orig": "/{mbid}/count",
               "parts": [
