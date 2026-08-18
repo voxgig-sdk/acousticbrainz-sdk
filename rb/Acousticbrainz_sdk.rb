@@ -28,7 +28,7 @@ class AcousticbrainzSDK
     utility = AcousticbrainzUtility.new
     @_utility = utility
 
-    config = AcousticbrainzConfig.make_config
+    config = AcousticbrainzConfig.shared_config
 
     @_rootctx = utility.make_context.call({
       "client" => self,

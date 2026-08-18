@@ -40,7 +40,7 @@ class AcousticbrainzSDK
         $utility = new AcousticbrainzUtility();
         $this->_utility = $utility;
 
-        $config = AcousticbrainzConfig::make_config();
+        $config = AcousticbrainzConfig::shared_config();
 
         $this->_rootctx = ($utility->make_context)([
             "client" => $this,

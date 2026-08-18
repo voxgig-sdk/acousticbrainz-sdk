@@ -36,7 +36,7 @@ class Config {
 
 
   options = {
-    base: 'https://acousticbrainz.org/api/v1',
+    base: "https://acousticbrainz.org/api/v1",
 
     headers: {
       "content-type": "application/json"
@@ -61,18 +61,12 @@ class Config {
     "high_level": {
       "fields": [
         {
-          "active": true,
           "name": "highlevel",
-          "req": false,
-          "type": "`$OBJECT`",
-          "index$": 0
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "metadata",
-          "req": false,
-          "type": "`$OBJECT`",
-          "index$": 1
+          "type": "`$OBJECT`"
         }
       ],
       "name": "high_level",
@@ -82,28 +76,23 @@ class Config {
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "example": "0dad432b-16cc-4bf0-8961-fd31d124b01b",
                     "kind": "param",
                     "name": "mbid",
                     "orig": "mbid",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   }
                 ],
                 "query": [
                   {
-                    "active": true,
                     "example": 0,
                     "kind": "query",
                     "name": "n",
                     "orig": "n",
-                    "reqd": false,
                     "type": "`$INTEGER`"
                   }
                 ]
@@ -124,11 +113,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {
@@ -138,32 +125,20 @@ class Config {
     "low_level": {
       "fields": [
         {
-          "active": true,
           "name": "lowlevel",
-          "req": false,
-          "type": "`$OBJECT`",
-          "index$": 0
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "metadata",
-          "req": false,
-          "type": "`$OBJECT`",
-          "index$": 1
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "rhythm",
-          "req": false,
-          "type": "`$OBJECT`",
-          "index$": 2
+          "type": "`$OBJECT`"
         },
         {
-          "active": true,
           "name": "tonal",
-          "req": false,
-          "type": "`$OBJECT`",
-          "index$": 3
+          "type": "`$OBJECT`"
         }
       ],
       "name": "low_level",
@@ -173,28 +148,23 @@ class Config {
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "example": "0dad432b-16cc-4bf0-8961-fd31d124b01b",
                     "kind": "param",
                     "name": "mbid",
                     "orig": "mbid",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   }
                 ],
                 "query": [
                   {
-                    "active": true,
                     "example": 0,
                     "kind": "query",
                     "name": "n",
                     "orig": "n",
-                    "reqd": false,
                     "type": "`$INTEGER`"
                   }
                 ]
@@ -215,11 +185,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {
@@ -229,18 +197,12 @@ class Config {
     "metadata": {
       "fields": [
         {
-          "active": true,
           "name": "count",
-          "req": false,
-          "type": "`$INTEGER`",
-          "index$": 0
+          "type": "`$INTEGER`"
         },
         {
-          "active": true,
           "name": "mbid",
-          "req": false,
-          "type": "`$STRING`",
-          "index$": 1
+          "type": "`$STRING`"
         }
       ],
       "name": "metadata",
@@ -250,18 +212,15 @@ class Config {
           "name": "load",
           "points": [
             {
-              "active": true,
               "args": {
                 "params": [
                   {
-                    "active": true,
                     "example": "0dad432b-16cc-4bf0-8961-fd31d124b01b",
                     "kind": "param",
                     "name": "mbid",
                     "orig": "mbid",
                     "reqd": true,
-                    "type": "`$STRING`",
-                    "index$": 0
+                    "type": "`$STRING`"
                   }
                 ]
               },
@@ -280,11 +239,9 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              },
-              "index$": 0
+              }
             }
-          ],
-          "key$": "load"
+          ]
         }
       },
       "relations": {

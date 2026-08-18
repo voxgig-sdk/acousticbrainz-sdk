@@ -1,6 +1,20 @@
 # Acousticbrainz SDK configuration
 
 module AcousticbrainzConfig
+  # Return the process-wide config, built once on first use. The SDK reads
+  # the config on every request and never writes to it, so one instance is
+  # shared by every client rather than rebuilt per client.
+  #
+  # The returned hash is shared: treat it as read-only. Callers that need to
+  # mutate should use make_config, which always returns a fresh copy.
+  def self.shared_config
+    @shared_config ||= make_config
+  end
+
+
+  # Build a fresh, fully materialised config hash. Every call rebuilds the
+  # whole structure, so prefer shared_config unless you need a private copy
+  # you intend to mutate.
   def self.make_config
     {
       "main" => {
@@ -28,18 +42,12 @@ module AcousticbrainzConfig
         "high_level" => {
           "fields" => [
             {
-              "active" => true,
               "name" => "highlevel",
-              "req" => false,
               "type" => "`$OBJECT`",
-              "index$" => 0,
             },
             {
-              "active" => true,
               "name" => "metadata",
-              "req" => false,
               "type" => "`$OBJECT`",
-              "index$" => 1,
             },
           ],
           "name" => "high_level",
@@ -49,28 +57,23 @@ module AcousticbrainzConfig
               "name" => "load",
               "points" => [
                 {
-                  "active" => true,
                   "args" => {
                     "params" => [
                       {
-                        "active" => true,
                         "example" => "0dad432b-16cc-4bf0-8961-fd31d124b01b",
                         "kind" => "param",
                         "name" => "mbid",
                         "orig" => "mbid",
                         "reqd" => true,
                         "type" => "`$STRING`",
-                        "index$" => 0,
                       },
                     ],
                     "query" => [
                       {
-                        "active" => true,
                         "example" => 0,
                         "kind" => "query",
                         "name" => "n",
                         "orig" => "n",
-                        "reqd" => false,
                         "type" => "`$INTEGER`",
                       },
                     ],
@@ -92,10 +95,8 @@ module AcousticbrainzConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "index$" => 0,
                 },
               ],
-              "key$" => "load",
             },
           },
           "relations" => {
@@ -105,32 +106,20 @@ module AcousticbrainzConfig
         "low_level" => {
           "fields" => [
             {
-              "active" => true,
               "name" => "lowlevel",
-              "req" => false,
               "type" => "`$OBJECT`",
-              "index$" => 0,
             },
             {
-              "active" => true,
               "name" => "metadata",
-              "req" => false,
               "type" => "`$OBJECT`",
-              "index$" => 1,
             },
             {
-              "active" => true,
               "name" => "rhythm",
-              "req" => false,
               "type" => "`$OBJECT`",
-              "index$" => 2,
             },
             {
-              "active" => true,
               "name" => "tonal",
-              "req" => false,
               "type" => "`$OBJECT`",
-              "index$" => 3,
             },
           ],
           "name" => "low_level",
@@ -140,28 +129,23 @@ module AcousticbrainzConfig
               "name" => "load",
               "points" => [
                 {
-                  "active" => true,
                   "args" => {
                     "params" => [
                       {
-                        "active" => true,
                         "example" => "0dad432b-16cc-4bf0-8961-fd31d124b01b",
                         "kind" => "param",
                         "name" => "mbid",
                         "orig" => "mbid",
                         "reqd" => true,
                         "type" => "`$STRING`",
-                        "index$" => 0,
                       },
                     ],
                     "query" => [
                       {
-                        "active" => true,
                         "example" => 0,
                         "kind" => "query",
                         "name" => "n",
                         "orig" => "n",
-                        "reqd" => false,
                         "type" => "`$INTEGER`",
                       },
                     ],
@@ -183,10 +167,8 @@ module AcousticbrainzConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "index$" => 0,
                 },
               ],
-              "key$" => "load",
             },
           },
           "relations" => {
@@ -196,18 +178,12 @@ module AcousticbrainzConfig
         "metadata" => {
           "fields" => [
             {
-              "active" => true,
               "name" => "count",
-              "req" => false,
               "type" => "`$INTEGER`",
-              "index$" => 0,
             },
             {
-              "active" => true,
               "name" => "mbid",
-              "req" => false,
               "type" => "`$STRING`",
-              "index$" => 1,
             },
           ],
           "name" => "metadata",
@@ -217,18 +193,15 @@ module AcousticbrainzConfig
               "name" => "load",
               "points" => [
                 {
-                  "active" => true,
                   "args" => {
                     "params" => [
                       {
-                        "active" => true,
                         "example" => "0dad432b-16cc-4bf0-8961-fd31d124b01b",
                         "kind" => "param",
                         "name" => "mbid",
                         "orig" => "mbid",
                         "reqd" => true,
                         "type" => "`$STRING`",
-                        "index$" => 0,
                       },
                     ],
                   },
@@ -248,10 +221,8 @@ module AcousticbrainzConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
-                  "index$" => 0,
                 },
               ],
-              "key$" => "load",
             },
           },
           "relations" => {

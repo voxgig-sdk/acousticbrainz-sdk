@@ -14,7 +14,7 @@ from __future__ import annotations
 
 from urllib.parse import quote
 
-from acousticbrainz_sdk.config import make_config
+from acousticbrainz_sdk.config import shared_config
 from acousticbrainz_sdk.features import _make_feature
 from acousticbrainz_sdk.core.control import AcousticbrainzControl
 from acousticbrainz_sdk.core.error import AcousticbrainzError
@@ -24,7 +24,7 @@ from acousticbrainz_sdk.core.spec import AcousticbrainzSpec
 
 # True when this SDK was generated with the named feature.
 def has_feature(name):
-    feature = make_config().get("feature")
+    feature = shared_config().get("feature")
     return isinstance(feature, dict) and feature.get(name) is not None
 
 
