@@ -36,6 +36,7 @@
               "active": true,
               "name": "highlevel",
               "req": false,
+              "short": "High-level semantic descriptors",
               "type": "`$OBJECT`"
             },
             {
@@ -112,24 +113,28 @@
               "active": true,
               "name": "lowlevel",
               "req": false,
+              "short": "Low-level spectral and temporal features",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "metadata",
               "req": false,
+              "short": "Metadata about the analysis",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "rhythm",
               "req": false,
+              "short": "Rhythm features including BPM, beats, and danceability",
               "type": "`$OBJECT`"
             },
             {
               "active": true,
               "name": "tonal",
               "req": false,
+              "short": "Tonal features including key, scale, chords, and harmonic characteristics",
               "type": "`$OBJECT`"
             }
           ],
@@ -200,12 +205,14 @@
               "active": true,
               "name": "count",
               "req": false,
+              "short": "Number of submissions for this recording",
               "type": "`$INTEGER`"
             },
             {
               "active": true,
               "name": "mbid",
               "req": false,
+              "short": "MusicBrainz ID",
               "type": "`$STRING`"
             }
           ],

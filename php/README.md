@@ -247,7 +247,7 @@ On error, `ok` is `false` and `$err` contains the error value.
 
 | Field | Description |
 | --- | --- |
-| `highlevel` |  |
+| `highlevel` | High-level semantic descriptors |
 | `metadata` |  |
 
 Operations: Load.
@@ -258,10 +258,10 @@ API path: `/{mbid}/high-level`
 
 | Field | Description |
 | --- | --- |
-| `lowlevel` |  |
-| `metadata` |  |
-| `rhythm` |  |
-| `tonal` |  |
+| `lowlevel` | Low-level spectral and temporal features |
+| `metadata` | Metadata about the analysis |
+| `rhythm` | Rhythm features including BPM, beats, and danceability |
+| `tonal` | Tonal features including key, scale, chords, and harmonic characteristics |
 
 Operations: Load.
 
@@ -271,8 +271,8 @@ API path: `/{mbid}/low-level`
 
 | Field | Description |
 | --- | --- |
-| `count` |  |
-| `mbid` |  |
+| `count` | Number of submissions for this recording |
+| `mbid` | MusicBrainz ID |
 
 Operations: Load.
 
@@ -297,7 +297,7 @@ Create an instance: `$high_level = $client->HighLevel();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `highlevel` | `array` |  |
+| `highlevel` | `array` | High-level semantic descriptors |
 | `metadata` | `array` |  |
 
 #### Example: Load
@@ -322,10 +322,10 @@ Create an instance: `$low_level = $client->LowLevel();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `lowlevel` | `array` |  |
-| `metadata` | `array` |  |
-| `rhythm` | `array` |  |
-| `tonal` | `array` |  |
+| `lowlevel` | `array` | Low-level spectral and temporal features |
+| `metadata` | `array` | Metadata about the analysis |
+| `rhythm` | `array` | Rhythm features including BPM, beats, and danceability |
+| `tonal` | `array` | Tonal features including key, scale, chords, and harmonic characteristics |
 
 #### Example: Load
 
@@ -349,8 +349,8 @@ Create an instance: `$metadata = $client->Metadata();`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `count` | `int` |  |
-| `mbid` | `string` |  |
+| `count` | `int` | Number of submissions for this recording |
+| `mbid` | `string` | MusicBrainz ID |
 
 #### Example: Load
 

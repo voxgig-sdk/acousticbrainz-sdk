@@ -140,7 +140,7 @@ const high_level = client.HighLevel()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `highlevel` | `Record<string, any>` | No |  |
+| `highlevel` | `Record<string, any>` | No | High-level semantic descriptors |
 | `metadata` | `Record<string, any>` | No |  |
 
 ### Operations
@@ -191,10 +191,10 @@ const low_level = client.LowLevel()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `lowlevel` | `Record<string, any>` | No |  |
-| `metadata` | `Record<string, any>` | No |  |
-| `rhythm` | `Record<string, any>` | No |  |
-| `tonal` | `Record<string, any>` | No |  |
+| `lowlevel` | `Record<string, any>` | No | Low-level spectral and temporal features |
+| `metadata` | `Record<string, any>` | No | Metadata about the analysis |
+| `rhythm` | `Record<string, any>` | No | Rhythm features including BPM, beats, and danceability |
+| `tonal` | `Record<string, any>` | No | Tonal features including key, scale, chords, and harmonic characteristics |
 
 ### Operations
 
@@ -244,8 +244,8 @@ const metadata = client.Metadata()
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | `number` | No |  |
-| `mbid` | `string` | No |  |
+| `count` | `number` | No | Number of submissions for this recording |
+| `mbid` | `string` | No | MusicBrainz ID |
 
 ### Operations
 

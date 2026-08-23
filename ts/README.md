@@ -9,7 +9,7 @@ The API is exposed as capitalised, semantic **Entities** — e.g.
 instead of raw URL paths and query parameters. This keeps the surface
 predictable and low-friction for both humans and AI agents.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go`, `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb` — see
 > the [top-level README](../README.md).
 
 
@@ -287,7 +287,7 @@ The `prepare()` method returns:
 
 | Field | Description |
 | --- | --- |
-| `highlevel` |  |
+| `highlevel` | High-level semantic descriptors |
 | `metadata` |  |
 
 Operations: load.
@@ -298,10 +298,10 @@ API path: `/{mbid}/high-level`
 
 | Field | Description |
 | --- | --- |
-| `lowlevel` |  |
-| `metadata` |  |
-| `rhythm` |  |
-| `tonal` |  |
+| `lowlevel` | Low-level spectral and temporal features |
+| `metadata` | Metadata about the analysis |
+| `rhythm` | Rhythm features including BPM, beats, and danceability |
+| `tonal` | Tonal features including key, scale, chords, and harmonic characteristics |
 
 Operations: load.
 
@@ -311,8 +311,8 @@ API path: `/{mbid}/low-level`
 
 | Field | Description |
 | --- | --- |
-| `count` |  |
-| `mbid` |  |
+| `count` | Number of submissions for this recording |
+| `mbid` | MusicBrainz ID |
 
 Operations: load.
 
@@ -337,7 +337,7 @@ Create an instance: `const high_level = client.HighLevel()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `highlevel` | `Record<string, any>` |  |
+| `highlevel` | `Record<string, any>` | High-level semantic descriptors |
 | `metadata` | `Record<string, any>` |  |
 
 #### Example: Load
@@ -361,10 +361,10 @@ Create an instance: `const low_level = client.LowLevel()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `lowlevel` | `Record<string, any>` |  |
-| `metadata` | `Record<string, any>` |  |
-| `rhythm` | `Record<string, any>` |  |
-| `tonal` | `Record<string, any>` |  |
+| `lowlevel` | `Record<string, any>` | Low-level spectral and temporal features |
+| `metadata` | `Record<string, any>` | Metadata about the analysis |
+| `rhythm` | `Record<string, any>` | Rhythm features including BPM, beats, and danceability |
+| `tonal` | `Record<string, any>` | Tonal features including key, scale, chords, and harmonic characteristics |
 
 #### Example: Load
 
@@ -387,8 +387,8 @@ Create an instance: `const metadata = client.Metadata()`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `count` | `number` |  |
-| `mbid` | `string` |  |
+| `count` | `number` | Number of submissions for this recording |
+| `mbid` | `string` | MusicBrainz ID |
 
 #### Example: Load
 

@@ -237,7 +237,7 @@ returns a result `Hash` with these keys:
 
 | Field | Description |
 | --- | --- |
-| `highlevel` |  |
+| `highlevel` | High-level semantic descriptors |
 | `metadata` |  |
 
 Operations: Load.
@@ -248,10 +248,10 @@ API path: `/{mbid}/high-level`
 
 | Field | Description |
 | --- | --- |
-| `lowlevel` |  |
-| `metadata` |  |
-| `rhythm` |  |
-| `tonal` |  |
+| `lowlevel` | Low-level spectral and temporal features |
+| `metadata` | Metadata about the analysis |
+| `rhythm` | Rhythm features including BPM, beats, and danceability |
+| `tonal` | Tonal features including key, scale, chords, and harmonic characteristics |
 
 Operations: Load.
 
@@ -261,8 +261,8 @@ API path: `/{mbid}/low-level`
 
 | Field | Description |
 | --- | --- |
-| `count` |  |
-| `mbid` |  |
+| `count` | Number of submissions for this recording |
+| `mbid` | MusicBrainz ID |
 
 Operations: Load.
 
@@ -287,7 +287,7 @@ Create an instance: `high_level = client.HighLevel`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `highlevel` | `Hash` |  |
+| `highlevel` | `Hash` | High-level semantic descriptors |
 | `metadata` | `Hash` |  |
 
 #### Example: Load
@@ -312,10 +312,10 @@ Create an instance: `low_level = client.LowLevel`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `lowlevel` | `Hash` |  |
-| `metadata` | `Hash` |  |
-| `rhythm` | `Hash` |  |
-| `tonal` | `Hash` |  |
+| `lowlevel` | `Hash` | Low-level spectral and temporal features |
+| `metadata` | `Hash` | Metadata about the analysis |
+| `rhythm` | `Hash` | Rhythm features including BPM, beats, and danceability |
+| `tonal` | `Hash` | Tonal features including key, scale, chords, and harmonic characteristics |
 
 #### Example: Load
 
@@ -339,8 +339,8 @@ Create an instance: `metadata = client.Metadata`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `count` | `Integer` |  |
-| `mbid` | `String` |  |
+| `count` | `Integer` | Number of submissions for this recording |
+| `mbid` | `String` | MusicBrainz ID |
 
 #### Example: Load
 

@@ -6,7 +6,7 @@ The Golang SDK for the Acousticbrainz API — an entity-oriented client using st
 
 It exposes the API as capitalised, semantic **Entities** — e.g. `client.HighLevel(nil)` — each with the same small set of operations (`Load`) instead of raw URL paths and query strings. You call meaning, not endpoints, which keeps the cognitive load low.
 
-> Other languages, the CLI, and MCP server live alongside this one — see
+> Also generated from this model: `go-cli`, `go-mcp`, `lua`, `php`, `py`, `rb`, `ts` — see
 > the [top-level README](../README.md).
 
 
@@ -260,7 +260,7 @@ Only `Direct()` returns a response envelope — a `map[string]any` with
 
 | Field | Description |
 | --- | --- |
-| `"highlevel"` |  |
+| `"highlevel"` | High-level semantic descriptors |
 | `"metadata"` |  |
 
 Operations: Load.
@@ -271,10 +271,10 @@ API path: `/{mbid}/high-level`
 
 | Field | Description |
 | --- | --- |
-| `"lowlevel"` |  |
-| `"metadata"` |  |
-| `"rhythm"` |  |
-| `"tonal"` |  |
+| `"lowlevel"` | Low-level spectral and temporal features |
+| `"metadata"` | Metadata about the analysis |
+| `"rhythm"` | Rhythm features including BPM, beats, and danceability |
+| `"tonal"` | Tonal features including key, scale, chords, and harmonic characteristics |
 
 Operations: Load.
 
@@ -284,8 +284,8 @@ API path: `/{mbid}/low-level`
 
 | Field | Description |
 | --- | --- |
-| `"count"` |  |
-| `"mbid"` |  |
+| `"count"` | Number of submissions for this recording |
+| `"mbid"` | MusicBrainz ID |
 
 Operations: Load.
 
@@ -310,7 +310,7 @@ Create an instance: `highLevel := client.HighLevel(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `highlevel` | `map[string]any` |  |
+| `highlevel` | `map[string]any` | High-level semantic descriptors |
 | `metadata` | `map[string]any` |  |
 
 #### Example: Load
@@ -338,10 +338,10 @@ Create an instance: `lowLevel := client.LowLevel(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `lowlevel` | `map[string]any` |  |
-| `metadata` | `map[string]any` |  |
-| `rhythm` | `map[string]any` |  |
-| `tonal` | `map[string]any` |  |
+| `lowlevel` | `map[string]any` | Low-level spectral and temporal features |
+| `metadata` | `map[string]any` | Metadata about the analysis |
+| `rhythm` | `map[string]any` | Rhythm features including BPM, beats, and danceability |
+| `tonal` | `map[string]any` | Tonal features including key, scale, chords, and harmonic characteristics |
 
 #### Example: Load
 
@@ -368,8 +368,8 @@ Create an instance: `metadata := client.Metadata(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `count` | `int` |  |
-| `mbid` | `string` |  |
+| `count` | `int` | Number of submissions for this recording |
+| `mbid` | `string` | MusicBrainz ID |
 
 #### Example: Load
 

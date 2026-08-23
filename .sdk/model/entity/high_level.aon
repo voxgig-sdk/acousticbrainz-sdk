@@ -8,6 +8,7 @@ main: kit: entity: high_level: {
     {
       name: "highlevel"
       req: false
+      short: "High-level semantic descriptors"
       type: "`$OBJECT`"
     }
     {

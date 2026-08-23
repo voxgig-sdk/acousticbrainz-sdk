@@ -19,9 +19,20 @@ class Config {
     return fi
   }
 
+  // False for a feature added at runtime via options.extend (station's
+  // adopt path) - the constructor uses this to skip makeFeature for names
+  // no generated class backs.
+  hasFeature(this: any, fn: string) {
+    return null != FEATURE_CLASS[fn]
+  }
+
 
   main = {
     name: 'Acousticbrainz',
+        slug: "acousticbrainz",
+    version: "0.0.1",
+    target: "ts",
+
   }
 
 
@@ -62,6 +73,7 @@ class Config {
       "fields": [
         {
           "name": "highlevel",
+          "short": "High-level semantic descriptors",
           "type": "`$OBJECT`"
         },
         {
@@ -126,18 +138,22 @@ class Config {
       "fields": [
         {
           "name": "lowlevel",
+          "short": "Low-level spectral and temporal features",
           "type": "`$OBJECT`"
         },
         {
           "name": "metadata",
+          "short": "Metadata about the analysis",
           "type": "`$OBJECT`"
         },
         {
           "name": "rhythm",
+          "short": "Rhythm features including BPM, beats, and danceability",
           "type": "`$OBJECT`"
         },
         {
           "name": "tonal",
+          "short": "Tonal features including key, scale, chords, and harmonic characteristics",
           "type": "`$OBJECT`"
         }
       ],
@@ -198,10 +214,12 @@ class Config {
       "fields": [
         {
           "name": "count",
+          "short": "Number of submissions for this recording",
           "type": "`$INTEGER`"
         },
         {
           "name": "mbid",
+          "short": "MusicBrainz ID",
           "type": "`$STRING`"
         }
       ],

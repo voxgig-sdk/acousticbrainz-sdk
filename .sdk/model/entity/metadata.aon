@@ -8,11 +8,13 @@ main: kit: entity: metadata: {
     {
       name: "count"
       req: false
+      short: "Number of submissions for this recording"
       type: "`$INTEGER`"
     }
     {
       name: "mbid"
       req: false
+      short: "MusicBrainz ID"
       type: "`$STRING`"
     }
   ]

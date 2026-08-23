@@ -11,6 +11,9 @@ func MakeConfig() map[string]any {
 	return map[string]any{
 		"main": map[string]any{
 			"name": "Acousticbrainz",
+			"slug": "acousticbrainz",
+			"version": "0.0.1",
+			"target": "go",
 		},
 		"feature": map[string]any{
 			"test": map[string]any{
@@ -35,6 +38,7 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "highlevel",
+						"short": "High-level semantic descriptors",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
@@ -99,18 +103,22 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "lowlevel",
+						"short": "Low-level spectral and temporal features",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "metadata",
+						"short": "Metadata about the analysis",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "rhythm",
+						"short": "Rhythm features including BPM, beats, and danceability",
 						"type": "`$OBJECT`",
 					},
 					map[string]any{
 						"name": "tonal",
+						"short": "Tonal features including key, scale, chords, and harmonic characteristics",
 						"type": "`$OBJECT`",
 					},
 				},
@@ -171,10 +179,12 @@ func MakeConfig() map[string]any {
 				"fields": []any{
 					map[string]any{
 						"name": "count",
+						"short": "Number of submissions for this recording",
 						"type": "`$INTEGER`",
 					},
 					map[string]any{
 						"name": "mbid",
+						"short": "MusicBrainz ID",
 						"type": "`$STRING`",
 					},
 				},

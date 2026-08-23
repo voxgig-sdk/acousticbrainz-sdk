@@ -19,6 +19,9 @@ module AcousticbrainzConfig
     {
       "main" => {
         "name" => "Acousticbrainz",
+        "slug" => "acousticbrainz",
+        "version" => "0.0.1",
+        "target" => "rb",
       },
       "feature" => {
         "test" => {
@@ -43,6 +46,7 @@ module AcousticbrainzConfig
           "fields" => [
             {
               "name" => "highlevel",
+              "short" => "High-level semantic descriptors",
               "type" => "`$OBJECT`",
             },
             {
@@ -107,18 +111,22 @@ module AcousticbrainzConfig
           "fields" => [
             {
               "name" => "lowlevel",
+              "short" => "Low-level spectral and temporal features",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "metadata",
+              "short" => "Metadata about the analysis",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "rhythm",
+              "short" => "Rhythm features including BPM, beats, and danceability",
               "type" => "`$OBJECT`",
             },
             {
               "name" => "tonal",
+              "short" => "Tonal features including key, scale, chords, and harmonic characteristics",
               "type" => "`$OBJECT`",
             },
           ],
@@ -179,10 +187,12 @@ module AcousticbrainzConfig
           "fields" => [
             {
               "name" => "count",
+              "short" => "Number of submissions for this recording",
               "type" => "`$INTEGER`",
             },
             {
               "name" => "mbid",
+              "short" => "MusicBrainz ID",
               "type" => "`$STRING`",
             },
           ],

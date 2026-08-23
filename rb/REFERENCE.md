@@ -101,7 +101,7 @@ high_level = client.HighLevel
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `highlevel` | `Hash` | No |  |
+| `highlevel` | `Hash` | No | High-level semantic descriptors |
 | `metadata` | `Hash` | No |  |
 
 ### Operations
@@ -154,10 +154,10 @@ low_level = client.LowLevel
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `lowlevel` | `Hash` | No |  |
-| `metadata` | `Hash` | No |  |
-| `rhythm` | `Hash` | No |  |
-| `tonal` | `Hash` | No |  |
+| `lowlevel` | `Hash` | No | Low-level spectral and temporal features |
+| `metadata` | `Hash` | No | Metadata about the analysis |
+| `rhythm` | `Hash` | No | Rhythm features including BPM, beats, and danceability |
+| `tonal` | `Hash` | No | Tonal features including key, scale, chords, and harmonic characteristics |
 
 ### Operations
 
@@ -209,8 +209,8 @@ metadata = client.Metadata
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | `Integer` | No |  |
-| `mbid` | `String` | No |  |
+| `count` | `Integer` | No | Number of submissions for this recording |
+| `mbid` | `String` | No | MusicBrainz ID |
 
 ### Operations
 

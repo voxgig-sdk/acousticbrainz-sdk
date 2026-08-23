@@ -100,7 +100,7 @@ $high_level = $client->HighLevel();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `highlevel` | `array` | No |  |
+| `highlevel` | `array` | No | High-level semantic descriptors |
 | `metadata` | `array` | No |  |
 
 ### Operations
@@ -153,10 +153,10 @@ $low_level = $client->LowLevel();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `lowlevel` | `array` | No |  |
-| `metadata` | `array` | No |  |
-| `rhythm` | `array` | No |  |
-| `tonal` | `array` | No |  |
+| `lowlevel` | `array` | No | Low-level spectral and temporal features |
+| `metadata` | `array` | No | Metadata about the analysis |
+| `rhythm` | `array` | No | Rhythm features including BPM, beats, and danceability |
+| `tonal` | `array` | No | Tonal features including key, scale, chords, and harmonic characteristics |
 
 ### Operations
 
@@ -208,8 +208,8 @@ $metadata = $client->Metadata();
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | `int` | No |  |
-| `mbid` | `string` | No |  |
+| `count` | `int` | No | Number of submissions for this recording |
+| `mbid` | `string` | No | MusicBrainz ID |
 
 ### Operations
 

@@ -106,7 +106,7 @@ fmt.Println(highLevel.GetName()) // "high_level"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `highlevel` | `map[string]any` | No |  |
+| `highlevel` | `map[string]any` | No | High-level semantic descriptors |
 | `metadata` | `map[string]any` | No |  |
 
 ### Operations
@@ -158,10 +158,10 @@ fmt.Println(lowLevel.GetName()) // "low_level"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `lowlevel` | `map[string]any` | No |  |
-| `metadata` | `map[string]any` | No |  |
-| `rhythm` | `map[string]any` | No |  |
-| `tonal` | `map[string]any` | No |  |
+| `lowlevel` | `map[string]any` | No | Low-level spectral and temporal features |
+| `metadata` | `map[string]any` | No | Metadata about the analysis |
+| `rhythm` | `map[string]any` | No | Rhythm features including BPM, beats, and danceability |
+| `tonal` | `map[string]any` | No | Tonal features including key, scale, chords, and harmonic characteristics |
 
 ### Operations
 
@@ -212,8 +212,8 @@ fmt.Println(metadata.GetName()) // "metadata"
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | `int` | No |  |
-| `mbid` | `string` | No |  |
+| `count` | `int` | No | Number of submissions for this recording |
+| `mbid` | `string` | No | MusicBrainz ID |
 
 ### Operations
 

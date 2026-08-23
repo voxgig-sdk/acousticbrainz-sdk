@@ -98,7 +98,7 @@ local high_level = client:HighLevel(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `highlevel` | `table` | No |  |
+| `highlevel` | `table` | No | High-level semantic descriptors |
 | `metadata` | `table` | No |  |
 
 ### Operations
@@ -151,10 +151,10 @@ local low_level = client:LowLevel(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `lowlevel` | `table` | No |  |
-| `metadata` | `table` | No |  |
-| `rhythm` | `table` | No |  |
-| `tonal` | `table` | No |  |
+| `lowlevel` | `table` | No | Low-level spectral and temporal features |
+| `metadata` | `table` | No | Metadata about the analysis |
+| `rhythm` | `table` | No | Rhythm features including BPM, beats, and danceability |
+| `tonal` | `table` | No | Tonal features including key, scale, chords, and harmonic characteristics |
 
 ### Operations
 
@@ -206,8 +206,8 @@ local metadata = client:Metadata(nil)
 
 | Field | Type | Required | Description |
 | --- | --- | --- | --- |
-| `count` | `number` | No |  |
-| `mbid` | `string` | No |  |
+| `count` | `number` | No | Number of submissions for this recording |
+| `mbid` | `string` | No | MusicBrainz ID |
 
 ### Operations
 

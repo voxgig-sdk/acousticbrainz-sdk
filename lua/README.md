@@ -227,7 +227,7 @@ Only `direct()` returns a response envelope — a `table` with `ok`,
 
 | Field | Description |
 | --- | --- |
-| `highlevel` |  |
+| `highlevel` | High-level semantic descriptors |
 | `metadata` |  |
 
 Operations: Load.
@@ -238,10 +238,10 @@ API path: `/{mbid}/high-level`
 
 | Field | Description |
 | --- | --- |
-| `lowlevel` |  |
-| `metadata` |  |
-| `rhythm` |  |
-| `tonal` |  |
+| `lowlevel` | Low-level spectral and temporal features |
+| `metadata` | Metadata about the analysis |
+| `rhythm` | Rhythm features including BPM, beats, and danceability |
+| `tonal` | Tonal features including key, scale, chords, and harmonic characteristics |
 
 Operations: Load.
 
@@ -251,8 +251,8 @@ API path: `/{mbid}/low-level`
 
 | Field | Description |
 | --- | --- |
-| `count` |  |
-| `mbid` |  |
+| `count` | Number of submissions for this recording |
+| `mbid` | MusicBrainz ID |
 
 Operations: Load.
 
@@ -277,7 +277,7 @@ Create an instance: `local high_level = client:HighLevel(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `highlevel` | `table` |  |
+| `highlevel` | `table` | High-level semantic descriptors |
 | `metadata` | `table` |  |
 
 #### Example: Load
@@ -301,10 +301,10 @@ Create an instance: `local low_level = client:LowLevel(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `lowlevel` | `table` |  |
-| `metadata` | `table` |  |
-| `rhythm` | `table` |  |
-| `tonal` | `table` |  |
+| `lowlevel` | `table` | Low-level spectral and temporal features |
+| `metadata` | `table` | Metadata about the analysis |
+| `rhythm` | `table` | Rhythm features including BPM, beats, and danceability |
+| `tonal` | `table` | Tonal features including key, scale, chords, and harmonic characteristics |
 
 #### Example: Load
 
@@ -327,8 +327,8 @@ Create an instance: `local metadata = client:Metadata(nil)`
 
 | Field | Type | Description |
 | --- | --- | --- |
-| `count` | `number` |  |
-| `mbid` | `string` |  |
+| `count` | `number` | Number of submissions for this recording |
+| `mbid` | `string` | MusicBrainz ID |
 
 #### Example: Load
 

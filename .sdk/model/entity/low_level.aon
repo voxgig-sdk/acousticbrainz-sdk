@@ -8,21 +8,25 @@ main: kit: entity: low_level: {
     {
       name: "lowlevel"
       req: false
+      short: "Low-level spectral and temporal features"
       type: "`$OBJECT`"
     }
     {
       name: "metadata"
       req: false
+      short: "Metadata about the analysis"
       type: "`$OBJECT`"
     }
     {
       name: "rhythm"
       req: false
+      short: "Rhythm features including BPM, beats, and danceability"
       type: "`$OBJECT`"
     }
     {
       name: "tonal"
       req: false
+      short: "Tonal features including key, scale, chords, and harmonic characteristics"
       type: "`$OBJECT`"
     }
   ]
