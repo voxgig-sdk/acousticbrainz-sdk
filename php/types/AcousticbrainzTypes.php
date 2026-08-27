@@ -23,6 +23,7 @@ class HighLevel
 class HighLevelLoadMatch
 {
     public string $mbid;
+    public ?int $n = null;
 }
 
 /** LowLevel entity data model. */
@@ -38,6 +39,7 @@ class LowLevel
 class LowLevelLoadMatch
 {
     public string $mbid;
+    public ?int $n = null;
 }
 
 /** Metadata entity data model. */

@@ -21,6 +21,7 @@ type HighLevel struct {
 // HighLevelLoadMatch is the typed request payload for HighLevel.LoadTyped.
 type HighLevelLoadMatch struct {
 	Mbid string `json:"mbid"`
+	N *int `json:"n,omitempty"`
 }
 
 // LowLevel is the typed data model for the low_level entity.
@@ -34,6 +35,7 @@ type LowLevel struct {
 // LowLevelLoadMatch is the typed request payload for LowLevel.LoadTyped.
 type LowLevelLoadMatch struct {
 	Mbid string `json:"mbid"`
+	N *int `json:"n,omitempty"`
 }
 
 // Metadata is the typed data model for the metadata entity.

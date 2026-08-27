@@ -21,8 +21,12 @@ class HighLevel(TypedDict, total=False):
     metadata: dict
 
 
-class HighLevelLoadMatch(TypedDict):
+class HighLevelLoadMatchRequired(TypedDict):
     mbid: str
+
+
+class HighLevelLoadMatch(HighLevelLoadMatchRequired, total=False):
+    n: int
 
 
 class LowLevel(TypedDict, total=False):
@@ -32,8 +36,12 @@ class LowLevel(TypedDict, total=False):
     tonal: dict
 
 
-class LowLevelLoadMatch(TypedDict):
+class LowLevelLoadMatchRequired(TypedDict):
     mbid: str
+
+
+class LowLevelLoadMatch(LowLevelLoadMatchRequired, total=False):
+    n: int
 
 
 class Metadata(TypedDict, total=False):

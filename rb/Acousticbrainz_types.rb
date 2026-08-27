@@ -25,8 +25,12 @@ HighLevel = Struct.new(
 #
 # @!attribute [rw] mbid
 #   @return [String]
+#
+# @!attribute [rw] n
+#   @return [Integer, nil]
 HighLevelLoadMatch = Struct.new(
   :mbid,
+  :n,
   keyword_init: true
 )
 
@@ -55,8 +59,12 @@ LowLevel = Struct.new(
 #
 # @!attribute [rw] mbid
 #   @return [String]
+#
+# @!attribute [rw] n
+#   @return [Integer, nil]
 LowLevelLoadMatch = Struct.new(
   :mbid,
+  :n,
   keyword_init: true
 )
 

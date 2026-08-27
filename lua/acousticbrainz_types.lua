@@ -12,6 +12,7 @@
 
 ---@class HighLevelLoadMatch
 ---@field mbid string
+---@field n? number
 
 ---@class LowLevel
 ---@field lowlevel? table
@@ -21,6 +22,7 @@
 
 ---@class LowLevelLoadMatch
 ---@field mbid string
+---@field n? number
 
 ---@class Metadata
 ---@field count? number

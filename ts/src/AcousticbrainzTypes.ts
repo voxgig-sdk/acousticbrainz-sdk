@@ -12,6 +12,7 @@ export interface HighLevel {
 
 export interface HighLevelLoadMatch {
   mbid: string
+  n?: number
 }
 
 export interface LowLevel {
@@ -23,6 +24,7 @@ export interface LowLevel {
 
 export interface LowLevelLoadMatch {
   mbid: string
+  n?: number
 }
 
 export interface Metadata {
