@@ -1,6 +1,14 @@
 # Acousticbrainz SDK configuration
 
 
+# The sekreto plugin DEFINITIONS the model selected per feature, imported
+# above by name from the modules the catalogue's active `plugin.def`
+# entries declare. Handed to each feature (secrets builds its Sekreto
+# with them): a provider kind not listed here is unknown to that SDK.
+FEATURE_PLUGINS = {
+}
+
+
 _shared_config = None
 
 
@@ -95,9 +103,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/{mbid}/high-level",
-                "parts": [
-                  "{mbid}",
-                  "high-level",
+                "segments": [
+                  {
+                    "var": "mbid",
+                  },
+                  {
+                    "lit": "high-level",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -109,6 +121,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "{mbid}",
+                  "high-level",
+                ],
               },
             ],
           },
@@ -171,9 +187,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/{mbid}/low-level",
-                "parts": [
-                  "{mbid}",
-                  "low-level",
+                "segments": [
+                  {
+                    "var": "mbid",
+                  },
+                  {
+                    "lit": "low-level",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -185,6 +205,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "{mbid}",
+                  "low-level",
+                ],
               },
             ],
           },
@@ -201,6 +225,7 @@ def make_config():
             "type": "`$INTEGER`",
           },
           {
+            "format": "uuid",
             "name": "mbid",
             "short": "MusicBrainz ID",
             "type": "`$STRING`",
@@ -228,9 +253,13 @@ def make_config():
                 "kind": "http",
                 "method": "GET",
                 "orig": "/{mbid}/count",
-                "parts": [
-                  "{mbid}",
-                  "count",
+                "segments": [
+                  {
+                    "var": "mbid",
+                  },
+                  {
+                    "lit": "count",
+                  },
                 ],
                 "select": {
                   "exist": [
@@ -241,6 +270,10 @@ def make_config():
                   "req": "`reqdata`",
                   "res": "`body`",
                 },
+                "parts": [
+                  "{mbid}",
+                  "count",
+                ],
               },
             ],
           },

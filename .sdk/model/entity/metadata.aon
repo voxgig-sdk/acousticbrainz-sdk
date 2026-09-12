@@ -12,6 +12,7 @@ main: kit: entity: metadata: {
       type: "`$INTEGER`"
     }
     {
+      format: "uuid"
       name: "mbid"
       req: false
       short: "MusicBrainz ID"
@@ -39,9 +40,13 @@ main: kit: entity: metadata: {
           }
           method: "GET"
           orig: "/{mbid}/count"
-          parts: [
-            "{mbid}"
-            "count"
+          segments: [
+            {
+              var: "mbid"
+            }
+            {
+              lit: "count"
+            }
           ]
           select: {
             exist: [

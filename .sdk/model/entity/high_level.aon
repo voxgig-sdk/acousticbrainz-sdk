@@ -48,9 +48,13 @@ main: kit: entity: high_level: {
           }
           method: "GET"
           orig: "/{mbid}/high-level"
-          parts: [
-            "{mbid}"
-            "high-level"
+          segments: [
+            {
+              var: "mbid"
+            }
+            {
+              lit: "high-level"
+            }
           ]
           select: {
             exist: [

@@ -61,9 +61,13 @@ main: kit: entity: low_level: {
           }
           method: "GET"
           orig: "/{mbid}/low-level"
-          parts: [
-            "{mbid}"
-            "low-level"
+          segments: [
+            {
+              var: "mbid"
+            }
+            {
+              lit: "low-level"
+            }
           ]
           select: {
             exist: [

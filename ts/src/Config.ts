@@ -10,6 +10,17 @@ const FEATURE_CLASS: Record<string, typeof BaseFeature> = {
 }
 
 
+// Per-feature plugin DEFINITIONS (voxgig/plugin `Definition` values), from
+// the model's active plugin groups. A feature that takes a `plugins` option
+// (secrets over sekreto) reads its own entry; a feature with no plugins has
+// none. Named imports above make each definition statically reachable, so
+// an SDK carries exactly the plugin modules its model selects — the same
+// leanness the old side-effect registry imports bought, without a registry.
+const FEATURE_PLUGINS: Record<string, any[]> = {
+  
+}
+
+
 class Config {
 
   makeFeature(this: any, fn: string) {
@@ -113,9 +124,13 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/{mbid}/high-level",
-              "parts": [
-                "{mbid}",
-                "high-level"
+              "segments": [
+                {
+                  "var": "mbid"
+                },
+                {
+                  "lit": "high-level"
+                }
               ],
               "select": {
                 "exist": [
@@ -126,7 +141,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "{mbid}",
+                "high-level"
+              ]
             }
           ]
         }
@@ -189,9 +208,13 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/{mbid}/low-level",
-              "parts": [
-                "{mbid}",
-                "low-level"
+              "segments": [
+                {
+                  "var": "mbid"
+                },
+                {
+                  "lit": "low-level"
+                }
               ],
               "select": {
                 "exist": [
@@ -202,7 +225,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "{mbid}",
+                "low-level"
+              ]
             }
           ]
         }
@@ -219,6 +246,7 @@ class Config {
           "type": "`$INTEGER`"
         },
         {
+          "format": "uuid",
           "name": "mbid",
           "short": "MusicBrainz ID",
           "type": "`$STRING`"
@@ -246,9 +274,13 @@ class Config {
               "kind": "http",
               "method": "GET",
               "orig": "/{mbid}/count",
-              "parts": [
-                "{mbid}",
-                "count"
+              "segments": [
+                {
+                  "var": "mbid"
+                },
+                {
+                  "lit": "count"
+                }
               ],
               "select": {
                 "exist": [
@@ -258,7 +290,11 @@ class Config {
               "transform": {
                 "req": "`reqdata`",
                 "res": "`body`"
-              }
+              },
+              "parts": [
+                "{mbid}",
+                "count"
+              ]
             }
           ]
         }
@@ -274,6 +310,7 @@ class Config {
 const config = new Config()
 
 export {
-  config
+  config,
+  FEATURE_PLUGINS,
 }
 

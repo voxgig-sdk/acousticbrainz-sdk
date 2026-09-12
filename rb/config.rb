@@ -86,9 +86,13 @@ module AcousticbrainzConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/{mbid}/high-level",
-                  "parts" => [
-                    "{mbid}",
-                    "high-level",
+                  "segments" => [
+                    {
+                      "var" => "mbid",
+                    },
+                    {
+                      "lit" => "high-level",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -100,6 +104,10 @@ module AcousticbrainzConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "{mbid}",
+                    "high-level",
+                  ],
                 },
               ],
             },
@@ -162,9 +170,13 @@ module AcousticbrainzConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/{mbid}/low-level",
-                  "parts" => [
-                    "{mbid}",
-                    "low-level",
+                  "segments" => [
+                    {
+                      "var" => "mbid",
+                    },
+                    {
+                      "lit" => "low-level",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -176,6 +188,10 @@ module AcousticbrainzConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "{mbid}",
+                    "low-level",
+                  ],
                 },
               ],
             },
@@ -192,6 +208,7 @@ module AcousticbrainzConfig
               "type" => "`$INTEGER`",
             },
             {
+              "format" => "uuid",
               "name" => "mbid",
               "short" => "MusicBrainz ID",
               "type" => "`$STRING`",
@@ -219,9 +236,13 @@ module AcousticbrainzConfig
                   "kind" => "http",
                   "method" => "GET",
                   "orig" => "/{mbid}/count",
-                  "parts" => [
-                    "{mbid}",
-                    "count",
+                  "segments" => [
+                    {
+                      "var" => "mbid",
+                    },
+                    {
+                      "lit" => "count",
+                    },
                   ],
                   "select" => {
                     "exist" => [
@@ -232,6 +253,10 @@ module AcousticbrainzConfig
                     "req" => "`reqdata`",
                     "res" => "`body`",
                   },
+                  "parts" => [
+                    "{mbid}",
+                    "count",
+                  ],
                 },
               ],
             },
