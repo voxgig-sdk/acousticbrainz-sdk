@@ -28,7 +28,7 @@ loading a specific record.
 ### 1. Create a client
 
 ```ts
-import { AcousticbrainzSDK } from '@voxgig-sdk/acousticbrainz'
+import { AcousticbrainzSDK } from '@voxgig-sdk/acousticbrainz-sdk'
 
 const client = new AcousticbrainzSDK()
 ```
@@ -479,7 +479,7 @@ acousticbrainz/
 Import the SDK from the package root:
 
 ```ts
-import { AcousticbrainzSDK } from '@voxgig-sdk/acousticbrainz'
+import { AcousticbrainzSDK } from '@voxgig-sdk/acousticbrainz-sdk'
 ```
 
 ### Entity state

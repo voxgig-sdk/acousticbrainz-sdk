@@ -105,7 +105,7 @@ local result, err = client:HighLevel():load({ mbid = "example" })
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/acousticbrainz` | publish pending — [install from git tag](https://github.com/voxgig-sdk/acousticbrainz-sdk/releases) |
+| TypeScript | `@voxgig-sdk/acousticbrainz-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/acousticbrainz-sdk/releases) |
 | Python | `voxgig-sdk-acousticbrainz` | publish pending — [install from git tag](https://github.com/voxgig-sdk/acousticbrainz-sdk/releases) |
 | PHP | `voxgig-sdk/acousticbrainz` | publish pending — [install from git tag](https://github.com/voxgig-sdk/acousticbrainz-sdk/releases) |
 | Golang | `github.com/voxgig-sdk/acousticbrainz-sdk/go` | `go get github.com/voxgig-sdk/acousticbrainz-sdk/go@latest` |
@@ -119,7 +119,7 @@ local result, err = client:HighLevel():load({ mbid = "example" })
 ### TypeScript
 
 ```ts
-import { AcousticbrainzSDK } from '@voxgig-sdk/acousticbrainz'
+import { AcousticbrainzSDK } from '@voxgig-sdk/acousticbrainz-sdk'
 
 const client = new AcousticbrainzSDK()
 
