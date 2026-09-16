@@ -38,6 +38,12 @@ main: kit: entity: metadata: {
               }
             ]
           }
+          contract: {
+            id: "GET /{mbid}/count"
+            json: "{\"operationId\":\"getSubmissionCount\",\"parameters\":[{\"description\":\"MusicBrainz ID (MBID) of the recording\",\"in\":\"path\",\"name\":\"mbid\",\"required\":true,\"schema\":{\"example\":\"0dad432b-16cc-4bf0-8961-fd31d124b01b\",\"format\":\"uuid\",\"type\":\"string\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"count\":{\"description\":\"Number of submissions for this recording\",\"type\":\"integer\"},\"mbid\":{\"description\":\"MusicBrainz ID\",\"format\":\"uuid\",\"type\":\"string\"}},\"type\":\"object\"}}},\"description\":\"Successful response with submission count\"},\"404\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"description\":\"Error message\",\"type\":\"string\"},\"status\":{\"description\":\"HTTP status code\",\"type\":\"integer\"}},\"type\":\"object\"}}},\"description\":\"Recording not found\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/{mbid}/count"
           segments: [

@@ -46,6 +46,12 @@ main: kit: entity: high_level: {
               }
             ]
           }
+          contract: {
+            id: "GET /{mbid}/high-level"
+            json: "{\"operationId\":\"getHighLevelData\",\"parameters\":[{\"description\":\"MusicBrainz ID (MBID) of the recording\",\"in\":\"path\",\"name\":\"mbid\",\"required\":true,\"schema\":{\"example\":\"0dad432b-16cc-4bf0-8961-fd31d124b01b\",\"format\":\"uuid\",\"type\":\"string\"}},{\"description\":\"Offset number for submissions (0 for most recent)\",\"in\":\"query\",\"name\":\"n\",\"required\":false,\"schema\":{\"default\":0,\"minimum\":0,\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"description\":\"High-level semantic music features\",\"properties\":{\"highlevel\":{\"additionalProperties\":{\"properties\":{\"all\":{\"additionalProperties\":{\"type\":\"number\"},\"type\":\"object\"},\"probability\":{\"maximum\":1,\"minimum\":0,\"type\":\"number\"},\"value\":{\"type\":\"string\"}},\"type\":\"object\"},\"description\":\"High-level semantic descriptors\",\"type\":\"object\"},\"metadata\":{\"properties\":{\"audio_properties\":{\"properties\":{\"bit_rate\":{\"type\":\"integer\"},\"codec\":{\"type\":\"string\"},\"length\":{\"type\":\"number\"},\"sample_rate\":{\"type\":\"integer\"}},\"type\":\"object\"},\"tags\":{\"properties\":{\"musicbrainz_recordingid\":{\"items\":{\"type\":\"string\"},\"type\":\"array\"}},\"type\":\"object\"},\"version\":{\"properties\":{\"essentia\":{\"type\":\"string\"},\"models_essentia_git_sha\":{\"type\":\"string\"}},\"type\":\"object\"}},\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Successful response with high-level data\"},\"404\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"description\":\"Error message\",\"type\":\"string\"},\"status\":{\"description\":\"HTTP status code\",\"type\":\"integer\"}},\"type\":\"object\"}}},\"description\":\"Recording not found\"}},\"securitySource\":\"unspecified\"}"
+            source: "openapi3"
+            version: 1
+          }
           method: "GET"
           orig: "/{mbid}/high-level"
           segments: [

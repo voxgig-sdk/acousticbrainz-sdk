@@ -5,6 +5,8 @@ import * as Fs from 'node:fs'
 
 import { test, describe, afterEach } from 'node:test'
 import assert from 'node:assert'
+import { createLiveTransport } from '../../live-runner'
+import { runLiveEntity } from '../../live-entity'
 
 
 import { AcousticbrainzSDK, BaseFeature, stdutil } from '../../..'
@@ -47,16 +49,13 @@ describe('HighLevelEntity', async () => {
 
     const live = 'TRUE' === process.env.ACOUSTICBRAINZ_TEST_LIVE
     for (const op of ['load']) {
-      if (maybeSkipControl(t, 'entityOp', 'high_level.' + op, live)) return
+      if (!live && maybeSkipControl(t, 'entityOp', 'high_level.' + op, live)) return
     }
 
+    
     const setup = basicSetup()
-    // The basic flow consumes synthetic IDs and field values from the
-    // fixture (entity TestData.json). Those don't exist on the live API.
-    // Skip live runs unless the user provided a real ENTID env override.
-    if (setup.syntheticOnly) {
-      t.skip('live entity test uses synthetic IDs from fixture — set ACOUSTICBRAINZ_TEST_HIGH_LEVEL_ENTID JSON to run live')
-      return
+    if (setup.live) {
+      return runLiveEntity(setup, {"active":true,"alias":{"field":{}},"fields":[{"active":true,"name":"highlevel","req":false,"short":"High-level semantic descriptors","type":"`$OBJECT`","index$":0},{"active":true,"name":"metadata","req":false,"type":"`$OBJECT`","index$":1}],"name":"high_level","op":{"load":{"input":"data","name":"load","points":[{"active":true,"args":{"params":[{"active":true,"example":"0dad432b-16cc-4bf0-8961-fd31d124b01b","kind":"param","name":"mbid","orig":"mbid","reqd":true,"type":"`$STRING`","index$":0}],"query":[{"active":true,"example":0,"kind":"query","name":"n","orig":"n","reqd":false,"type":"`$INTEGER`","index$":0}]},"contract":{"id":"GET /{mbid}/high-level","json":"{\"operationId\":\"getHighLevelData\",\"parameters\":[{\"description\":\"MusicBrainz ID (MBID) of the recording\",\"in\":\"path\",\"name\":\"mbid\",\"required\":true,\"schema\":{\"example\":\"0dad432b-16cc-4bf0-8961-fd31d124b01b\",\"format\":\"uuid\",\"type\":\"string\"}},{\"description\":\"Offset number for submissions (0 for most recent)\",\"in\":\"query\",\"name\":\"n\",\"required\":false,\"schema\":{\"default\":0,\"minimum\":0,\"type\":\"integer\"}}],\"protocol\":\"http\",\"responses\":{\"200\":{\"content\":{\"application/json\":{\"schema\":{\"description\":\"High-level semantic music features\",\"properties\":{\"highlevel\":{\"additionalProperties\":{\"properties\":{\"all\":{\"additionalProperties\":{\"type\":\"number\"},\"type\":\"object\"},\"probability\":{\"maximum\":1,\"minimum\":0,\"type\":\"number\"},\"value\":{\"type\":\"string\"}},\"type\":\"object\"},\"description\":\"High-level semantic descriptors\",\"type\":\"object\"},\"metadata\":{\"properties\":{\"audio_properties\":{\"properties\":{\"bit_rate\":{\"type\":\"integer\"},\"codec\":{\"type\":\"string\"},\"length\":{\"type\":\"number\"},\"sample_rate\":{\"type\":\"integer\"}},\"type\":\"object\"},\"tags\":{\"properties\":{\"musicbrainz_recordingid\":{\"items\":{\"type\":\"string\"},\"type\":\"array\"}},\"type\":\"object\"},\"version\":{\"properties\":{\"essentia\":{\"type\":\"string\"},\"models_essentia_git_sha\":{\"type\":\"string\"}},\"type\":\"object\"}},\"type\":\"object\"}},\"type\":\"object\"}}},\"description\":\"Successful response with high-level data\"},\"404\":{\"content\":{\"application/json\":{\"schema\":{\"properties\":{\"error\":{\"description\":\"Error message\",\"type\":\"string\"},\"status\":{\"description\":\"HTTP status code\",\"type\":\"integer\"}},\"type\":\"object\"}}},\"description\":\"Recording not found\"}},\"securitySource\":\"unspecified\"}","source":"openapi3","version":1},"kind":"http","method":"GET","orig":"/{mbid}/high-level","segments":[{"var":"mbid"},{"lit":"high-level"}],"select":{"exist":["mbid","n"]},"transform":{"req":"`reqdata`","res":"`body`"},"index$":0}],"key$":"load"}},"relations":{"ancestors":[]},"key$":"high_level","name__orig":"high_level","Name":"HighLevel","name_":"high_level","name-":"high-level","NAME":"HIGH_LEVEL","index$":0}, {"active":true,"entity":"high_level","key$":"BasicHighLevelFlow","kind":"basic","name":"BasicHighLevelFlow","param":{},"step":[{"active":true,"data":{},"input":{"ref":"high_level_ref01","srcdatavar":"high_level_ref01_data","suffix":"_dt0"},"match":{"id":"high_level01"},"op":"load","spec":[],"valid":[{"apply":"TextFieldMark","def":{"mark":"Mark01-high_level_ref01"}}],"index$":0}]}, 'HighLevel')
     }
     const client = setup.client
     const struct = setup.struct
@@ -107,13 +106,6 @@ function basicSetup(extra?: any) {
       }]
     })
 
-  // Detect whether the user provided a real ENTID JSON via env var. The
-  // basic flow consumes synthetic IDs from the fixture file; without an
-  // override those synthetic IDs reach the live API and 4xx. Surface this
-  // to the test so it can skip rather than fail.
-  const idmapEnvVal = process.env['ACOUSTICBRAINZ_TEST_HIGH_LEVEL_ENTID']
-  const idmapOverridden = null != idmapEnvVal && idmapEnvVal.trim().startsWith('{')
-
   const env = envOverride({
     'ACOUSTICBRAINZ_TEST_HIGH_LEVEL_ENTID': idmap,
     'ACOUSTICBRAINZ_TEST_LIVE': 'FALSE',
@@ -124,7 +116,13 @@ function basicSetup(extra?: any) {
 
   const live = 'TRUE' === env.ACOUSTICBRAINZ_TEST_LIVE
 
+  const transport = createLiveTransport()
   if (live) {
+    const rawIds = process.env['ACOUSTICBRAINZ_TEST_HIGH_LEVEL_ENTID']
+    idmap = rawIds && rawIds.trim() ? JSON.parse(rawIds) : {}
+    if (!idmap || Array.isArray(idmap) || typeof idmap !== 'object') {
+      throw new Error('Live ENTID must be a JSON object')
+    }
     client = new AcousticbrainzSDK(merge([
       // FIRST, so the generated fields below win: sdk-test-control.json's
       // test.client.options adds to the live client, it does not redirect it.
@@ -136,7 +134,8 @@ function basicSetup(extra?: any) {
       // argument at all - so a bare 'extra' silently discarded the apikey
       // and server values above and handed the SDK undefined. Harmless
       // while there was nothing in that object; not harmless now.
-      extra || {}
+      extra || {},
+      { system: { fetch: transport.fetch } }
     ]))
   }
 
@@ -149,7 +148,7 @@ function basicSetup(extra?: any) {
     data: entityData,
     explain: 'TRUE' === env.ACOUSTICBRAINZ_TEST_EXPLAIN,
     live,
-    syntheticOnly: live && !idmapOverridden,
+    transport,
     now: Date.now(),
   }
 

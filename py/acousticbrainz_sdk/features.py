@@ -1,12 +1,18 @@
 # Acousticbrainz SDK feature factory
 
 from acousticbrainz_sdk.feature.base_feature import AcousticbrainzBaseFeature
+from acousticbrainz_sdk.feature.ratelimit_feature import AcousticbrainzRatelimitFeature
+from acousticbrainz_sdk.feature.retry_feature import AcousticbrainzRetryFeature
 from acousticbrainz_sdk.feature.test_feature import AcousticbrainzTestFeature
+from acousticbrainz_sdk.feature.timeout_feature import AcousticbrainzTimeoutFeature
 
 
 _FEATURES = {
     "base": lambda: AcousticbrainzBaseFeature(),
+    "ratelimit": lambda: AcousticbrainzRatelimitFeature(),
+    "retry": lambda: AcousticbrainzRetryFeature(),
     "test": lambda: AcousticbrainzTestFeature(),
+    "timeout": lambda: AcousticbrainzTimeoutFeature(),
 }
 
 
