@@ -1,5 +1,5 @@
 # Flows
 
-@"BasicHighLevelFlow.aon"
-@"BasicLowLevelFlow.aon"
-@"BasicMetadataFlow.aon"
+@"./BasicHighLevelFlow.aon"
+@"./BasicLowLevelFlow.aon"
+@"./BasicMetadataFlow.aon"

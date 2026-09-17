@@ -105,12 +105,12 @@ local result, err = client:HighLevel():load({ mbid = "example" })
 
 | Language | Package | Install |
 | --- | --- | --- |
-| TypeScript | `@voxgig-sdk/acousticbrainz-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/acousticbrainz-sdk/releases) |
-| Python | `voxgig-sdk-acousticbrainz` | publish pending — [install from git tag](https://github.com/voxgig-sdk/acousticbrainz-sdk/releases) |
-| PHP | `voxgig-sdk/acousticbrainz` | publish pending — [install from git tag](https://github.com/voxgig-sdk/acousticbrainz-sdk/releases) |
+| TypeScript | `@voxgig-sdk/acousticbrainz-sdk` | publish pending — [install from git tag](https://github.com/voxgig-sdk/acousticbrainz-sdk/tags) |
+| Python | `voxgig-sdk-acousticbrainz` | publish pending — [install from git tag](https://github.com/voxgig-sdk/acousticbrainz-sdk/tags) |
+| PHP | `voxgig-sdk/acousticbrainz` | publish pending — [install from git tag](https://github.com/voxgig-sdk/acousticbrainz-sdk/tags) |
 | Golang | `github.com/voxgig-sdk/acousticbrainz-sdk/go` | `go get github.com/voxgig-sdk/acousticbrainz-sdk/go@latest` |
-| Ruby | `voxgig-sdk-acousticbrainz` | publish pending — [install from git tag](https://github.com/voxgig-sdk/acousticbrainz-sdk/releases) |
-| Lua | `voxgig-sdk-acousticbrainz` | publish pending — [install from git tag](https://github.com/voxgig-sdk/acousticbrainz-sdk/releases) |
+| Ruby | `voxgig-sdk-acousticbrainz` | publish pending — [install from git tag](https://github.com/voxgig-sdk/acousticbrainz-sdk/tags) |
+| Lua | `voxgig-sdk-acousticbrainz` | publish pending — [install from git tag](https://github.com/voxgig-sdk/acousticbrainz-sdk/tags) |
 | Go CLI | `github.com/voxgig-sdk/acousticbrainz-sdk/go-cli` | `go install github.com/voxgig-sdk/acousticbrainz-sdk/go-cli/cmd/acousticbrainz@latest` |
 | Go MCP server | `github.com/voxgig-sdk/acousticbrainz-sdk/go-mcp` | `go get github.com/voxgig-sdk/acousticbrainz-sdk/go-mcp@latest` |
 

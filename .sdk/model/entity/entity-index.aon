@@ -1,5 +1,5 @@
 # Entity Models
 
-@"high_level.aon"
-@"low_level.aon"
-@"metadata.aon"
+@"./high_level.aon"
+@"./low_level.aon"
+@"./metadata.aon"

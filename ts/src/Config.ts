@@ -127,15 +127,15 @@ class Config {
 
     entity: {
       
-      high_level: {
-      },
-
-      low_level: {
-      },
-
-      metadata: {
-      },
-
+        high_level: {
+        },
+  
+        low_level: {
+        },
+  
+        metadata: {
+        },
+  
     }
   }
 
